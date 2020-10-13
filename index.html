@@ -15,21 +15,54 @@
     <link rel="stylesheet" href="assets/css/all.min.css">
 
     <!-- Añadiendo mis setilos css -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <link rel="stylesheet" href="assets/css/responsive.css">
 
 
 </head>
 
 <body>
 
+    <!-- *********************************************************************************************************
+                                                Barra de navegación
+    **************************************************************************************************************-->
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="assets/img/logo/logo_navbar350x90.jpg"
+                    alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsableNavbar"
+                aria-controls="collapsableNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
+            <div class="collapse navbar-collapse" id="collapsableNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"><i class="fas fa-home"></i> Inicio<span
+                                class="sr-only">(current)</span></a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-hotel"></i> Hoteles</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-car"></i> Autos</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 
     <!-- Añadiendo scrpts js -->
     <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/all.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
 
     
 </body>
 </html>
+
