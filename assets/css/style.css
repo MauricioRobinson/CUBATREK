@@ -29,8 +29,43 @@ body{
 }
 
 
+/*-----------------------------------------------------------------------------------------------------------------------
+                        ESTILOS DEL HEADER DE LA PAGINA INICIO
+-------------------------------------------------------------------------------------------------------------------------*/
+#main-header.hero-image{
+    width: 100%;
+    height: 320px;
+    background-image: url(../img/portada/portada_header_inicio.jpg);
+    background-size: 150%;
+    animation: main-header-movement 20s linear alternate infinite;
+    border-radius: 5px;
+    box-shadow: 
+    0px 0px 3px rgba(0, 0, 0, .5),
+    1px 1px 5px rgba(0, 0, 0, .6),
+    -1px -1px 5px rgba(0, 0, 0, .6);
+    position: relative;
+}
 
+#main-header .main-header-title{
+    position: absolute;
+    bottom: 3px;
+    left: 5px;
+    font-size: 2.5em;
+    color: #001524;
+    filter: opacity(.8);
+}
 
+/*-----------------------------------------------------------------------------------------------------------------------
+                        ANIMACIONES CSS
+-------------------------------------------------------------------------------------------------------------------------*/
+@keyframes main-header-movement{
+    from{
+        background-position: bottom left;
+    }
+    to{
+        background-position: top right;
+    }
+}
 
 
 
