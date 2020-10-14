@@ -18,6 +18,21 @@
         color: #001524;
         font-size: 1.3em;
     }
+
+    /*-----------------------------------------------------------------------------------------------------------------------
+                        ESTILOS DE LA SECCION DE HOTELES RECOMENDADOS
+    -------------------------------------------------------------------------------------------------------------------------*/
+    #hoteles-recomendados .card {
+        width: 300px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow:
+            0px 0px 6px rgba(0, 0, 0, .4),
+            0px 0px 7px rgba(0, 0, 0, .4),
+            1px 1px 8px rgba(0, 0, 0, .4),
+            2px 2px 9px rgba(0, 0, 0, .4);
+        margin: 2em auto;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -28,6 +43,21 @@
     #nav ul .nav-link {
         color: #001524;
         font-size: 1.5em;
+    }
+
+    /*-----------------------------------------------------------------------------------------------------------------------
+                        ESTILOS DE LA SECCION DE HOTELES RECOMENDADOS
+    -------------------------------------------------------------------------------------------------------------------------*/
+    #hoteles-recomendados .card {
+        width: 300px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow:
+            0px 0px 6px rgba(0, 0, 0, .4),
+            0px 0px 7px rgba(0, 0, 0, .4),
+            1px 1px 8px rgba(0, 0, 0, .4),
+            2px 2px 9px rgba(0, 0, 0, .4);
+        margin: 2em auto;
     }
 }
 
