@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -51,4 +52,58 @@ class Hotel {
      * @ORM\OneToMany(targetEntity="Reservacion", mappedBy="hotel") 
      */
     private $reservaciones;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Foto", mappedBy="hotel") 
+     */
+    private $fotos;
+    
+     public function __construct() 
+    {
+        $this->reservaciones = new ArrayCollection();
+        $this->fotos = new ArrayCollection();
+    }
+    public function getId()
+    {
+        return $this->id;
+    } 
+    
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+    
+    public function getDisponibilidad()
+    {
+        return $this->disponibilidad;
+    }
+    
+    public function getFotos()
+    {
+        return $this->fotos;
+    }
+    
+    public function getReservas()
+    {
+        return $this->reservaciones;
+    }
+ 
+        public function getCantReservas()
+    {
+        return $this->num_reservas;
+    }
+    
+    public function getRango()
+    {
+        return $this->rating;
+    }
+    
+    public function getPrecio()
+    {
+        return $this->precio_regular;
+    }
+    public function getRebaja()
+    {
+        return $this->precio_rebaja;
+    }
 }

@@ -21,5 +21,36 @@ class Foto {
      * @ORM\Column(type="string") 
      */ 
     private $url;
+   
+    /**
+     * @ORM\ManyToOne(targetEntity="Hotel", inversedBy="fotos") 
+     */    
+    private $hotel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Auto", inversedBy="fotos") 
+     */    
+    private $auto;
+    
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    public function getUrl()
+    {
+        return $this->url;
+    }
+    
+    public function getAuto()
+    {
+        return $this->auto;
+    }
+    
+    public function getHotel()
+    {
+        return $this->hotel;
+    }
+    
 }
  
