@@ -26,7 +26,11 @@ class Hotel {
      * @ORM\Column(type="integer") 
      */
     private $disponibilidad;
-
+    
+    /**
+     * @ORM\Column(type="integer") 
+     */
+    private $rating;
 
     /**
      * @ORM\Column(type="integer") 
@@ -44,12 +48,7 @@ class Hotel {
     private $precio_rebaja;
     
     /**
-     * @ORM\Column(type="date") 
-     */ 
-    private $fecha_entrada;
-    
-    /**
-     * @ORM\Column(type="date") 
-     */ 
-    private $fecha_salida;
+     * @ORM\OneToMany(targetEntity="Reservacion", mappedBy="hotel") 
+     */
+    private $reservaciones;
 }
