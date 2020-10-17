@@ -211,15 +211,6 @@ div.ventana-playa{
     margin: 2em 0px;
 }
 
-div.ventana-ciudad{
-    background: url(../img/ventanas/ciudad.jpg) 0 / cover fixed;
-    box-shadow: 
-    0px 0px 2px inset rgba(0, 0, 0, .3),
-    0px 0px 3px inset rgba(0, 0, 0, .5),
-    0px 0px 4px inset rgba(0, 0, 0, .6);
-    margin: 2em 0px;
-}
-
 
 /*-----------------------------------------------------------------------------------------------------------------------
                         ESTILOS DE LA SECCION AUTOS PARA EXPLORAR
@@ -235,35 +226,6 @@ div.ventana-ciudad{
     text-shadow: 1px 1px 4px rgba(0, 0, 0, .4);
     text-align: center;
 }
-#autos-remonedados div.media{
-    width: 100%;
-    margin-bottom: 1.5em;
-}
-#autos-recomendados a{
-   text-decoration: none;
-   color: black;
-}
-#autos-recomendados button{
-    background-color: #001524;
-    color: #ff7d00;
-    background-color: #001524;
-    border-radius: 5px 5px 5px 5px;
-    padding: 1px;
-    font-size: 0.8em;
-}
-/* #autos-recomendados .precio-carro, .desde{
-    
-} */
-
-/* #autos-recomendados .media .precio-carro {
-    
-    width: 100%;
-    color: #ff7d00;
-    background-color: #001524;
-    border-radius: 5px 5px 5px 5px;
-    padding: 7px;
-    text-align: center;
-} */
 
 
 /*-----------------------------------------------------------------------------------------------------------------------
