@@ -80,4 +80,34 @@ class Reservacion {
     {
         return $this->hotel;
     }
+    
+    public function setNombre(string $nombre)
+    {
+        $this->nombre= $nombre;
+    }
+    
+    public function setApellido( string $apellido)
+    {
+        $this->apellido = $apellido;
+    }
+    
+    public function setIdentidad(string $identidad)
+    {
+        $this->identidad = $identidad;
+    }
+    
+    public function setFechaEntrada(DateTime $fecha_entrada)
+    {
+        $this->fecha_entrada = $fecha_entrada;
+    }
+    
+    public function setFechaSalida(DateTime $fecha_saida)
+    {
+        $this->fecha_salida = $fecha_saida;
+    }
+    
+    public function setHotel(Hotel $hotel)
+    {
+        $this->hotel=$hotel;
+    }        
 }

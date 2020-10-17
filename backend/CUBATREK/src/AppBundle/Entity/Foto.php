@@ -52,5 +52,20 @@ class Foto {
         return $this->hotel;
     }
     
+    public function setUrl(string $url)
+    {
+        $this->url = $url;
+    }        
+            
+      public function setHote(Hotel $hotel)
+    {
+          $this->hotel = $hotel;
+    }    
+    
+    public function setAuto(Auto $auto)
+    {
+        $this->auto = $auto;
+    } 
+    
 }
   

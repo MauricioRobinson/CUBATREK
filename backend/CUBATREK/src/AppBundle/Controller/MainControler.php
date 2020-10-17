@@ -21,6 +21,7 @@ class MainControler extends Controller
         $hotel->setDisponibilidad(200);
         $hotel->setPrecioRegular(89.88);
         $hotel->setPrecioRebaja(70.99);
+       
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($hotel);
         $entityManager->flush();

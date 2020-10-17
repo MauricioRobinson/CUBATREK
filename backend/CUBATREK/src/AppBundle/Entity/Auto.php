@@ -106,4 +106,44 @@ class Auto {
     {
         return $this->tipo_transmicion;
     }
+    
+    public function setMarca(string $marca)
+    {
+        $this->marca = $marca;
+    }
+    
+    public function setCantAsientos(int $cant_asientos)
+    {
+        $this->cant_asientos = $cant_asientos;
+    }
+    
+   public function setCategoria(string $categoria)
+    {
+       $this->categoria = $categoria;
+    }
+    
+   public function setMotor(string $motor)
+    {
+       $this->motor = $motor;
+    }
+    
+    public function setPrecio(float $precio)
+    {
+        $this->precio = $precio;
+    }
+  
+    public function setReservasion(Reservacion $reservacion)
+    {
+        $this->reservacion = $reservacion;
+    }
+    
+    public function setTipoTransicion(bool $tipo_transicion)
+    {
+        $this->tipo_transmicion = $tipo_transicion;
+    }
+    
+    public function addFoto(Foto $foto)
+    {
+        $this->fotos[] = $foto;
+    }
 }
