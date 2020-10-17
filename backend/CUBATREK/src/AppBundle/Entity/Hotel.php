@@ -106,4 +106,45 @@ class Hotel {
     {
         return $this->precio_rebaja;
     }
+    
+    public function setDisponibilidad(int $disponibilidad)
+    {
+        $this->disponibilidad = $disponibilidad;
+    }
+    
+     public function addFoto(Foto $foto= \NULL)
+    {
+         $this->fotos[] = $foto;
+    }
+    
+     public function setNombre(string $nombre)
+    {
+         $this->nombre = $nombre;
+    }
+    
+     public function setCantReservas(int $cant_reservas)
+    {
+         $this->num_reservas = $cant_reservas;
+    }
+    
+     public function setPrecioRebaja(double $precio_rebaja)
+    {
+         $this->precio_rebaja = $precio_rebaja;
+    }
+    
+     public function setPrecioRegular(double $precio_regular)
+    {
+        $this->precio_regular = $precio_regular;
+    }
+    
+     public function setRating(int $rango)
+    {
+         $this->rating = $rango;
+    }
+    
+     public function addReservacion(Reservacion $reserva = \NULL )
+    {
+         $this->reservaciones[] = $reserva;
+    }
+    
 }

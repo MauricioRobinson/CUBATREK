@@ -5,14 +5,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Doctrine\ORM\EntityManagerInterface as em;
+use AppBundle\Entity\Hotel;
 
 class MainControler extends Controller 
 {
- /**
-     * @Route ("/test/{page}",name="prueba",requirements={"page": "\d+"}) 
+    /**
+     * @Route ("/test",name="prueba") 
      */
-    public function testAction($page=1)
+    public function testAction()
     {   
-        return new Response('<html> <body>Estas en la pagina:<Strong>'.$page.'</Strong></body> </html>');
+        $em;
+        $respuesta = new Response('<html> <body>Estas en la pagina:<Strong>'.$page.'</Strong></body> </html>');
     }
 }
