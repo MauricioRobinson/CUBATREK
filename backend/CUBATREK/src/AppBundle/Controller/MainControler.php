@@ -5,7 +5,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
-use Doctrine\ORM\EntityManagerInterface as em;
 use AppBundle\Entity\Hotel;
 
 class MainControler extends Controller 
@@ -15,7 +14,18 @@ class MainControler extends Controller
      */
     public function testAction()
     {   
-        $em;
-        $respuesta = new Response('<html> <body>Estas en la pagina:<Strong>'.$page.'</Strong></body> </html>');
+        $hotel = new Hotel();
+        $hotel->setNombre("Hilton Varadero");
+        $hotel->setCantReservas(109);
+        $hotel->setRating(4);
+        $hotel->setDisponibilidad(200);
+        $hotel->setPrecioRegular(89.88);
+        $hotel->setPrecioRebaja(70.99);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($hotel);
+        $entityManager->flush();
+        
+        $respuesta = new Response('<html> <body>Vienbenido a:<Strong>'.$hotel->getNombre().'</Strong></body> </html>');
+        return $respuesta;
     }
 }

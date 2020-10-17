@@ -127,12 +127,12 @@ class Hotel {
          $this->num_reservas = $cant_reservas;
     }
     
-     public function setPrecioRebaja(double $precio_rebaja)
+     public function setPrecioRebaja(float $precio_rebaja)
     {
          $this->precio_rebaja = $precio_rebaja;
     }
     
-     public function setPrecioRegular(double $precio_regular)
+     public function setPrecioRegular(float $precio_regular)
     {
         $this->precio_regular = $precio_regular;
     }
