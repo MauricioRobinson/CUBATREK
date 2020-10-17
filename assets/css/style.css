@@ -284,6 +284,22 @@ div.ventana-ciudad{
     text-align: center;
 } */
 
+/*-----------------------------------------------------------------------------------------------------------------------
+                        ESTILOS DE LA SECCIÓN DE SUBSCRIBIRSE
+-------------------------------------------------------------------------------------------------------------------------*/
+#subscribirse {
+    text-align: center;
+    margin-bottom: 1.5em;
+    margin-top: 2.5em;
+    padding: 2em;
+}
+section#subscribirse h2.title{
+    font-size: 3em;
+    color: #001524;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, .4);
+}
+
+
 
 /*-----------------------------------------------------------------------------------------------------------------------
                         ESTILOS DEL FORMULARIO DE CONTACTO
