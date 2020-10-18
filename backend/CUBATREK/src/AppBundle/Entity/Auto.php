@@ -132,7 +132,7 @@ class Auto {
         $this->precio = $precio;
     }
   
-    public function setReservasion(Reservacion $reservacion)
+    public function setReservasion(Reservacion $reservacion=NULL)
     {
         $this->reservacion = $reservacion;
     }

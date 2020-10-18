@@ -14,19 +14,11 @@ class MainControler extends Controller
      */
     public function testAction()
     {   
-        $hotel = new Hotel();
-        $hotel->setNombre("Hilton Varadero");
-        $hotel->setCantReservas(109);
-        $hotel->setRating(4);
-        $hotel->setDisponibilidad(200);
-        $hotel->setPrecioRegular(89.88);
-        $hotel->setPrecioRebaja(70.99);
-       
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($hotel);
-        $entityManager->flush();
-        
-        $respuesta = new Response('<html> <body>Vienbenido a:<Strong>'.$hotel->getNombre().'</Strong></body> </html>');
+        $id = 2;
+        $entidad = new EntityControler($this ->getDoctrine()->getManager());
+        $entidad->deleteHotel($id);
+
+        $respuesta = new Response('<html> <body>Vienbenido a:<Strong> Todo bien</Strong></body> </html>');
         return $respuesta;
     }
 }

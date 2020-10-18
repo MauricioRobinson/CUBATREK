@@ -57,12 +57,12 @@ class Foto {
         $this->url = $url;
     }        
             
-      public function setHote(Hotel $hotel)
+      public function setHote(Hotel $hotel=NULL)
     {
           $this->hotel = $hotel;
     }    
     
-    public function setAuto(Auto $auto)
+    public function setAuto(Auto $auto=NULL)
     {
         $this->auto = $auto;
     } 

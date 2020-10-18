@@ -46,6 +46,7 @@ class Reservacion {
      */
     private $hotel;
     
+    //Sección de los métodos get
     public function getNombre()
     {
         return $this->nombre;
@@ -81,6 +82,7 @@ class Reservacion {
         return $this->hotel;
     }
     
+    //Sección de los métodos set
     public function setNombre(string $nombre)
     {
         $this->nombre= $nombre;
@@ -106,7 +108,7 @@ class Reservacion {
         $this->fecha_salida = $fecha_saida;
     }
     
-    public function setHotel(Hotel $hotel)
+    public function setHotel(Hotel $hotel=NULL)
     {
         $this->hotel=$hotel;
     }        
