@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\Foto;
-
+use AppBundle\Entity\Auto;
 /**
  * Description of FotoController
  *
@@ -20,9 +20,17 @@ class FotoController extends Controller {
         $this->em = $em;
     }
     
-    public function crearFoto()
+    public function crearFoto(int $id_a,string $url)
     {
-        
+        $repo = $this->em->getRepository(Auto::class);
+        $auto = $repo->findById($id_a);
+        $foto = new Foto();
+        $foto->setUrl($url);
+        $auto->getFotos()->add($foto);
+        $foto->setAuto($auto);
+        $em = $this->em;
+        $em->persist($foto);
+        $em->flush();
     }
     
     public function actualizarFoto()
@@ -37,6 +45,6 @@ class FotoController extends Controller {
     
     public function obtenerFotos()
     {
-        
+         
     }
 }
