@@ -263,17 +263,16 @@ div.ventana-ciudad{
    text-decoration: none;
    color: black;
 }
-#autos-recomendados button{
+#autos-recomendados span.badge-color{
     background-color: #001524;
     color: #ff7d00;
-    background-color: #001524;
-    border-radius: 5px 5px 5px 5px;
+    /* border-radius: 5px 5px 5px 5px;
     padding: 1px;
-    font-size: 0.8em;
+    font-size: 0.8em; */
 }
-/* #autos-recomendados .precio-carro, .desde{
-    
-} */
+#autos-recomendados li #precio{
+    float: right;
+}
 
 /* #autos-recomendados .media .precio-carro {
     
