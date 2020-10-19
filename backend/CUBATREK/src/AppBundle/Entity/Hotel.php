@@ -142,9 +142,4 @@ class Hotel {
          $this->rating = $rango;
     }
     
-     public function addReservacion(Reservacion $reserva = \NULL )
-    {
-         $this->reservaciones[] = $reserva;
-    }
-    
 }

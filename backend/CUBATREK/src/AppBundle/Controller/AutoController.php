@@ -45,8 +45,14 @@ class AutoController extends Controller {
     {
         $repo = $this->em->getRepository(Auto::class);
         $auto = $repo->findOneById($parametros[0]);
-        $auto->setPrecio($parametros[1]);
-        $auto->setCategoria($parametros[2]);        
+        if($parametros[1] != NULL)
+        {
+            $auto->setPrecio($parametros[1]);
+        }
+        if($parametros[2] != NULL)
+        {
+            $auto->setCategoria($parametros[2]);
+        }        
         $em = $this->em;
         $em->persist($auto);
         $em->flush();
@@ -84,10 +90,25 @@ class AutoController extends Controller {
         $reservacion->setFechaSalida($fecha_salida);
         
         $repo = $this->em->getRepository(Auto::class);
-        $auto = $repo->findById($idA);
-        $this->em->persist($reservacion);
-        $auto->setReservasion($reservacion);
-        $this->em->persist($auto);
-        $this->em->flush();
+        $auto = $repo->findOneById($idA);
+        if($auto->getReserva() == NULL)
+        {
+         $auto->setReservasion($reservacion);
+         $this->em->persist($reservacion);
+         $this->em->persist($auto);
+         $this->em->flush();
+        }
+    }
+    
+    public function finReserva(int $id)
+    {
+        $repo = $this->em->getRepository(Auto::class);
+        $auto = $repo->findOneById($id);
+        if($auto->getReserva() != NULL)
+        {
+            $auto->setReservasion();
+            $this->em->persist($auto);
+            $this->em->flush();
+        }
     }
 }

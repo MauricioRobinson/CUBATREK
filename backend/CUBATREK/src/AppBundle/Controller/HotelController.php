@@ -87,4 +87,32 @@ class HotelController extends Controller {
         $hoteles = $repo->findAll();
         return $hoteles;
     }
+    
+      
+     public function addReservacion($idH,string $nombre,string $apellido,string $identidad,  \DateTime $fecha_entrada,  \DateTime $fecha_salida)
+    {
+        $reservacion = new Reservacion();
+        $reservacion->setNombre($nombre);
+        $reservacion->setApellido($apellido);
+        $reservacion->setIdentidad($identidad);
+        $reservacion->setFechaEntrada($fecha_entrada);
+        $reservacion->setFechaSalida($fecha_salida);
+        
+        $repo = $this->em->getRepository(Hoyel::class);
+        $hotel = $repo->findOneById($idH);
+        $hotel->getReservas()->add($reservacion);
+        $reservacion->setHotel($hotel);
+        $this->em->persist($reservacion);
+        $this->em->flush();
+    }
+    
+     public function finReserva(int $id)
+    {
+       $repo = $this->em->getRepository(Reservacion::class);
+       $reservacion = $repo->findOneById($id);
+       $hotel = $reservacion->getHotel();
+       $reservas = $hotel->getReservas();
+       $reservas->removeElement($reservacion);
+       $reservacion->setHotel(null);
+    } 
 }

@@ -98,12 +98,12 @@ class Reservacion {
         $this->identidad = $identidad;
     }
     
-    public function setFechaEntrada(DateTime $fecha_entrada)
+    public function setFechaEntrada( \DateTime $fecha_entrada)
     {
         $this->fecha_entrada = $fecha_entrada;
     }
     
-    public function setFechaSalida(DateTime $fecha_saida)
+    public function setFechaSalida( \DateTime $fecha_saida)
     {
         $this->fecha_salida = $fecha_saida;
     }

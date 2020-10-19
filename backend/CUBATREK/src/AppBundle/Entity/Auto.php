@@ -38,7 +38,7 @@ class Auto {
     private $tipo_transmicion;
     
     /**
-     * @ORM\Column(type="decimal") 
+     * @ORM\Column(type="decimal",scale=2) 
      */
     private $precio;
     
@@ -140,10 +140,5 @@ class Auto {
     public function setTipoTransicion(bool $tipo_transicion)
     {
         $this->tipo_transmicion = $tipo_transicion;
-    }
-    
-    public function addFoto(Foto $foto)
-    {
-        $this->fotos[] = $foto;
     }
 }
