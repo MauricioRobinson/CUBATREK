@@ -268,7 +268,7 @@
                 </div>
             </div>
             <div class="container my-4">
-                <a href="#" class="btn container">Ver hoteles</a>
+                <a href="hoteles/index.html" class="btn container">Ver hoteles</a>
             </div>
         </div>
     </section>
@@ -343,54 +343,54 @@
                                                 VENTANA CIUDAD
     **************************************************************************************************************-->
     <div class="ventana-ciudad parallax">
-
-    </div>
-
-    <!-- *********************************************************************************************************
+        <!-- *********************************************************************************************************
                                             SECCIÓN DE SUBSCRIPCIÓN 
     **************************************************************************************************************-->
-    <section id="subscribirse" class="container bg-light">
-        <h2 class="title">Subscribirme</h2>
-        <p class="small">Subscr&iacute;bete para que recibas todas nuestras ofertas y promociones</p>
-        <form action="#" method="POST" class="form-inline text-md-center">
-            <label class="sr-only" for="name">Nombre</label>
-            <input type="text" class="form-control mb-2 mr-sm-2" id="name" placeholder="Su nombre" required>
+        <section id="subscribirse" class="container bg-light">
+            <h2 class="title">Subscribirme</h2>
+            <p class="small">Subscr&iacute;bete para que recibas todas nuestras ofertas y promociones</p>
+            <form action="#" method="POST" class="form-inline">
+                <div class="container-fluid">
+                    <label class="sr-only" for="name">Nombre</label>
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="name" placeholder="Su nombre" required>
 
-            <label for="email" class="sr-only">Correo</label>
-            <input type="email" id="email" class="form-control mb-2 mr-sm-2" placeholder="Su correo" required>
+                    <label for="email" class="sr-only">Correo</label>
+                    <input type="email" id="email" class="form-control mb-2 mr-sm-2" placeholder="Su correo" required>
 
-            <button type="submit" class="btn mb-2">Subscribirme <i class="fas fa-envelope-open"></i></button>
-        </form>
-    </section>
+                    <button type="submit" class="btn mb-2">Subscribirme <i class="fas fa-envelope-open"></i></button>
+                </div>
+            </form>
+        </section>
+    </div>
 
 
     <!-- *********************************************************************************************************
                                             FORMULARIO DE CONTACTO 
     **************************************************************************************************************-->
     <!-- TODO:
-    1-Validar la entrada de datos con JS
-    2-Escapar todos los caracteres de programación para evitar los ataques XSS y la inyección de JS desde los campos del formulario
-    3-Validar con mensajes la entrada de datos en el formulario -->
+    1-Validar la entrada de datos con JS (done)
+    2-Escapar todos los caracteres de programación para evitar los ataques XSS y la inyección de JS desde los campos del formulario (to do)
+    3-Validar con mensajes la entrada de datos en el formulario (done) -->
     <div id="contacto" class="container bg-light p-5">
         <h2 class="title">Cont&aacute;ctenos</h2>
         <p class="text-danger small">Todos los campos con * son obligatorios</p>
-        <form id="formulario-contacto" method="POST" action="#" class="needs-validation" validate>
+        <form id="contact-form" class="needs-validation" novalidate>
             <div class="form-row">
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="name">Nombre <span class="text-danger">*</span></label>
                     <input type="text" class="form-control shadow" id="name" placeholder="Su nombre" required>
                     <div class="valid-feedback">
-                        Correcto
+                        Correcto!
                     </div>
                     <div class="invalid-feedback">
-                        Por favor, ingrese un nombre v&aacute;lido
+                        Por favor, introduce un nombre v&aacute;lido.
                     </div>
                 </div>
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="lastname">Apellido <span class="text-danger">*</span></label>
                     <input type="text" class="form-control shadow" id="lastname" placeholder="Su apellido" required>
                     <div class="valid-feedback">
-                        Correcto
+                        Correcto!
                     </div>
                     <div class="invalid-feedback">
                         Por favor, ingrese un apellido v&aacute;lido
@@ -400,9 +400,10 @@
             <div class="form-row">
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="email">Email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control shadow" id="email" placeholder="Su email" required>
+                    <input type="email" class="form-control shadow" id="email" placeholder="usuario@example.com"
+                        required>
                     <div class="valid-feedback">
-                        Correcto
+                        Correcto!
                     </div>
                     <div class="invalid-feedback">
                         Por favor, ingrese un email v&aacute;lido
@@ -410,13 +411,14 @@
                 </div>
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="confirmEmail">Confirmar email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control shadow" id="confirmEmail" placeholder="Confirme su email"
+                    <input type="email" class="form-control shadow" id="confirmEmail" placeholder="usuario@example.com"
                         required>
                     <div class="valid-feedback">
-                        Correcto
+                        Correcto!
                     </div>
                     <div class="invalid-feedback">
-                        Por favor, verifique que su email sea v&aacute;lido
+                        Por favor, verifique que su email sea v&aacute;lido y que coincida con el que insertado
+                        anteriormente.
                     </div>
                 </div>
             </div>
@@ -424,6 +426,12 @@
                 <div class="form-group col-sm-12">
                     <label for="mensaje">Mensaje <span class="text-danger">*</span></label>
                     <textarea type="text" class="form-control shadow" rows="8" id="mensaje" required></textarea>
+                    <div class="valid-feedback">
+                        Correcto!
+                    </div>
+                    <div class="invalid-feedback">
+                        Por favor, aseg&uacute;rese de haber escrito un mensaje.
+                    </div>
                 </div>
             </div>
 
@@ -437,10 +445,10 @@
                     CUBATREK.
                 </label>
                 <div class="valid-feedback">
-                    Correcto
+                    Correcto!
                 </div>
                 <div class="invalid-feedback">
-                    Por favor, marque la casilla para continuar
+                    Debes estar de acuerdo para poder enviar el mensaje.
                 </div>
             </div>
 
@@ -449,6 +457,7 @@
             </div>
         </form>
     </div>
+
 
 
     <!-- *********************************************************************************************************
@@ -493,10 +502,13 @@
 
     <a id="boton-subir" href="#nav" class="btn"><i class="fas fa-arrow-circle-up"></i></a>
 
-    <!-- Añadiendo scrpts js -->
+    <!-- Añadiendo scripts js -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/all.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/validate-form.js"></script>
+
+
 
 
 </body>
