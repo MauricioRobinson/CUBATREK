@@ -8,8 +8,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 
 class MainControler extends Controller 
-{
+{   
     /**
+     * @Route ("",name="inicio")
+     */
+    public function mainAction()
+    {
+        $nombre = "Marco Antonio";
+        return $this->render('default/main.html.twig',array('nombre'=>$nombre));
+    }
+
+     /**
      * @Route ("/test",name="prueba") 
      */
     public function testAction()

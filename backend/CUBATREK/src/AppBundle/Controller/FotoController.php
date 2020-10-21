@@ -3,7 +3,6 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\EntityManager;
-use AppBundle\Entity\Foto;
 use AppBundle\Entity\Auto;
 /**
  * Description of FotoController
@@ -33,18 +32,9 @@ class FotoController extends Controller {
         $em->flush();
     }
     
-    public function actualizarFoto()
-    {
-        
-    }
-    
     public function deleteFoto()
     {
         
     }
     
-    public function obtenerFotos()
-    {
-         
-    }
 }

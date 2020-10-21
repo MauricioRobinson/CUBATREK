@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Listado de hoteles</h1>
+    {% if hoteles is defined %}
+        {%for hotel in hoteles%}
+            <p>
+                {{hotel.getNombre}}
+            </p></n>
+        {%endfor%}
+    {%endif%}
+{% endblock%}

@@ -2,7 +2,11 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Hotel;
+use AppBundle\Entity\Reservacion;
+use AppBundle\Entity\Foto;
 use Doctrine\ORM\EntityManager;
 
 /**
@@ -81,11 +85,14 @@ class HotelController extends Controller {
         $em->flush();
     }
     
+    /**
+     * @Route ("/hoteles")
+     */
     public function obtenerHoteles()
     {
         $repo = $this->em->getRepository(Hotel::class);
         $hoteles = $repo->findAll();
-        return $hoteles;
+        return $this->render('default/main.html.twig',array('hoteles'=>$hoteles));
     }
     
       

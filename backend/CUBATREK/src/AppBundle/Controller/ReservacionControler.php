@@ -19,25 +19,12 @@ class ReservacionControler extends Controller {
     {
         $this->em = $em;
     }
-    
-    public function crearReservacion()
-    {
-        
-    }
-    
-    public function actualizarReservacion()
-    {
-        
-    }   
-    
-    public function deleteReservacion()
-    {
-        
-    }
-    
+       
     public function obtenerReservaciones()
     {
-        
+        $repo = $this->em->getRepository(Reservacion::class);
+        $reservas = $repo->findAll();
+        return $reservas;
     }        
                  
 }
