@@ -2,11 +2,29 @@
 
 {% block body %}
     <h1>Listado de hoteles</h1>
-    {% if hoteles is defined %}
+    <table>
+         <thead>
+             <tr role="row">
+                <th>Nombre</th>
+                <th>Disponibilidad</th>
+                <th>Rango</th>
+                <th>Costo</th>
+                
+            </tr>
+         </thead>
+         <tbody>
+        {% if hoteles is defined %}
         {%for hotel in hoteles%}
-            <p>
-                {{hotel.getNombre}}
-            </p></n>
+            <tr role="row">
+                <td>{{hotel.getNombre}}</td>
+                <td>{{hotel.getDisponibilidad}} </td>
+                <td>{{hotel.getRango}}</td>
+                <td>{{hotel.getPrecio}}</td>  
+                <td><button>Reservar</button></td>
+            </tr>
         {%endfor%}
-    {%endif%}
+        {%endif%}
+        </tbody>
+    </table>
+   
 {% endblock%}

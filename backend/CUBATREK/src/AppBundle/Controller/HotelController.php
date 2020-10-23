@@ -97,18 +97,27 @@ class HotelController extends Controller {
     
       
      public function addReservacion($idH,string $nombre,string $apellido,string $identidad,  \DateTime $fecha_entrada,  \DateTime $fecha_salida)
-    {
+    {   
+        //Creando la reservacion con los datos pasados por parametro
         $reservacion = new Reservacion();
         $reservacion->setNombre($nombre);
         $reservacion->setApellido($apellido);
         $reservacion->setIdentidad($identidad);
         $reservacion->setFechaEntrada($fecha_entrada);
         $reservacion->setFechaSalida($fecha_salida);
-        
-        $repo = $this->em->getRepository(Hoyel::class);
+                
+        //Obteniendo el hotel vinculado a la reservacion
+        $repo = $this->em->getRepository(Hotel::class);
         $hotel = $repo->findOneById($idH);
+        
+        //Agregando la relacion entre las dos entidades y actualizando la disponibilidad 
         $hotel->getReservas()->add($reservacion);
+        $disponibilidad = $hotel->getDisponibilidad()-1;
+        $hotel->setDisponibilidad($disponibilidad);
         $reservacion->setHotel($hotel);
+        
+        //Guardando los datos en la BD
+        $this->em->persist($hotel);
         $this->em->persist($reservacion);
         $this->em->flush();
     }
@@ -118,8 +127,15 @@ class HotelController extends Controller {
        $repo = $this->em->getRepository(Reservacion::class);
        $reservacion = $repo->findOneById($id);
        $hotel = $reservacion->getHotel();
+        
+       $disponibilidad = $hotel->getDisponibilidad()-1;
+       $hotel->setDisponibilidad($disponibilidad);
        $reservas = $hotel->getReservas();
        $reservas->removeElement($reservacion);
        $reservacion->setHotel(null);
+       
+       $this->em->persist($hotel);
+       $this->em->persist($reservacion);
+       $this->em->flush();
     } 
 }

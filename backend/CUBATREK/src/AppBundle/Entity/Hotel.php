@@ -28,27 +28,17 @@ class Hotel {
      */
     private $disponibilidad;
     
-    /**
-     * @ORM\Column(type="integer") 
+    /** 
+     * @ORM\Column(type="string")
      */
-    private $rating;
+    private $cadena;
 
     /**
      * @ORM\Column(type="integer") 
      */
-    private $num_reservas;
+    private $categoria;
     
-    /**
-     * @ORM\Column(type="decimal",scale=2)
-     */
-    private $precio_regular;
-    
-    /** 
-     * @ORM\Column(type="decimal",scale=2)
-     */ 
-    private $precio_rebaja;
-    
-    /**
+     /**
      * @ORM\OneToMany(targetEntity="Reservacion", mappedBy="hotel") 
      */
     private $reservaciones;
@@ -58,10 +48,17 @@ class Hotel {
      */
     private $fotos;
     
-     public function __construct() 
+    /**
+     * @ORM\OneToMany(targetEntity="Habitacion", mappedBy="hotel")  
+     */
+    private $tiposHabitaciones;
+
+
+    public function __construct() 
     {
         $this->reservaciones = new ArrayCollection();
         $this->fotos = new ArrayCollection();
+        $this->tiposHabitaciones =new ArrayCollection();
     }
     public function getId()
     {
@@ -78,6 +75,11 @@ class Hotel {
         return $this->disponibilidad;
     }
     
+    public function getCadena()
+    {
+        return $this->cadena;
+    }
+
     public function getFotos()
     {
         return $this->fotos;
@@ -87,34 +89,19 @@ class Hotel {
     {
         return $this->reservaciones;
     }
- 
-        public function getCantReservas()
+    public function getCategoria()
     {
-        return $this->num_reservas;
+        return $this->categoria;
     }
     
-    public function getRango()
+    public function getTipoHab()
     {
-        return $this->rating;
+        return $this->tiposHabitaciones;
     }
-    
-    public function getPrecio()
-    {
-        return $this->precio_regular;
-    }
-    public function getRebaja()
-    {
-        return $this->precio_rebaja;
-    }
-    
+
     public function setDisponibilidad(int $disponibilidad)
     {
         $this->disponibilidad = $disponibilidad;
-    }
-    
-     public function addFoto(Foto $foto= \NULL)
-    {
-         $this->fotos[] = $foto;
     }
     
      public function setNombre(string $nombre)
@@ -122,24 +109,15 @@ class Hotel {
          $this->nombre = $nombre;
     }
     
-     public function setCantReservas(int $cant_reservas)
+    
+     public function setCategoria(int $categoria)
     {
-         $this->num_reservas = $cant_reservas;
+         $this->categoria = $categoria;
     }
     
-     public function setPrecioRebaja(float $precio_rebaja)
+    public function setCadena(string $cadena)
     {
-         $this->precio_rebaja = $precio_rebaja;
-    }
-    
-     public function setPrecioRegular(float $precio_regular)
-    {
-        $this->precio_regular = $precio_regular;
-    }
-    
-     public function setRating(int $rango)
-    {
-         $this->rating = $rango;
+        $this->cadena = $cadena;
     }
     
 }
