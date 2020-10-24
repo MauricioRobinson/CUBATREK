@@ -22,7 +22,7 @@ class ReservacionControler extends Controller {
        
     public function obtenerReservaciones()
     {
-        $repo = $this->em->getRepository(Reservacion::class);
+         $repo = $this->em->getRepository(Reservacion::class);
         $reservas = $repo->findAll();
         return $reservas;
     }        

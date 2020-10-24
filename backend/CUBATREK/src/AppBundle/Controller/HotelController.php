@@ -5,7 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Hotel;
-use AppBundle\Entity\Reservacion;
+use AppBundle\Entity\Habitacion;
 use AppBundle\Entity\Foto;
 use Doctrine\ORM\EntityManager;
 
@@ -24,16 +24,13 @@ class HotelController extends Controller {
         $this->em = $em;
     }
     
-    public function crearHotel(string $nombre,int $rango,int $disponibilidad,float $precio_regular,float $precio_rebaja)
+    public function crearHotel(string $nombre,int $categoria,int $disponibilidad,string $cadena)
     {
-        $in = 0;
         $hotel = new Hotel();
         $hotel->setNombre($nombre);
-        $hotel->setCantReservas($in);
-        $hotel->setRating($rango);
+        $hotel->setCadena($cadena);
+        $hotel->setCategoria($categoria);
         $hotel->setDisponibilidad($disponibilidad);
-        $hotel->setPrecioRegular($precio_regular);
-        $hotel->setPrecioRebaja($precio_rebaja);
        
         $entityManager = $this->em;
         $entityManager->persist($hotel);
@@ -95,30 +92,31 @@ class HotelController extends Controller {
         return $this->render('default/main.html.twig',array('hoteles'=>$hoteles));
     }
     
-      
-     public function addReservacion($idH,string $nombre,string $apellido,string $identidad,  \DateTime $fecha_entrada,  \DateTime $fecha_salida)
+     public function addHabtitacion($idH,string $tipo,float $precio,float $rebaja,int $pax,  \DateTime $inicio,  \DateTime $fin,string $politica, string $observacion)
     {   
-        //Creando la reservacion con los datos pasados por parametro
-        $reservacion = new Reservacion();
-        $reservacion->setNombre($nombre);
-        $reservacion->setApellido($apellido);
-        $reservacion->setIdentidad($identidad);
-        $reservacion->setFechaEntrada($fecha_entrada);
-        $reservacion->setFechaSalida($fecha_salida);
+        //Creando la habitacion con los datos pasados por parametro
+        $habitacion = new Habitacion();
+        $habitacion->setTipo($tipo);
+        $habitacion->setPrecio($precio);
+        $habitacion->setRebaja($rebaja);
+        $habitacion->setPax($pax);
+        $habitacion->setInicio($inicio);
+        $habitacion->setFin($fin);
+        $habitacion->setPolitica($politica);
+        $habitacion->setObservacion($observacion);
                 
-        //Obteniendo el hotel vinculado a la reservacion
+        //Obteniendo el hotel vinculado a la habitacion
         $repo = $this->em->getRepository(Hotel::class);
         $hotel = $repo->findOneById($idH);
         
-        //Agregando la relacion entre las dos entidades y actualizando la disponibilidad 
-        $hotel->getReservas()->add($reservacion);
-        $disponibilidad = $hotel->getDisponibilidad()-1;
-        $hotel->setDisponibilidad($disponibilidad);
-        $reservacion->setHotel($hotel);
+        //Agregando la relacion entre las dos entidades 
+        $hotel->getTipoHab()->add($habitacion);
+        //$disponibilidad = $hotel->getDisponibilidad()-1;
+        //$hotel->setDisponibilidad($disponibilidad);
+        $habitacion->setHotel($hotel);
         
         //Guardando los datos en la BD
-        $this->em->persist($hotel);
-        $this->em->persist($reservacion);
+        $this->em->persist($habitacion);
         $this->em->flush();
     }
     

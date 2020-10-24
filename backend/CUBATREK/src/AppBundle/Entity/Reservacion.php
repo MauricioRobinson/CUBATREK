@@ -42,9 +42,9 @@ class Reservacion {
     private $fecha_salida;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Hotel", inversedBy="reservaciones") 
+     * @ORM\ManyToOne(targetEntity="Habitacion", inversedBy="reservaciones") 
      */
-    private $hotel;
+    private $habitacion;
     
     //Sección de los métodos get
     public function getNombre()
@@ -61,7 +61,7 @@ class Reservacion {
     {
         return $this->id;
     }
-    
+     
     public function getFechaEntrada()
     {
         return $this->fecha_entrada;
@@ -77,9 +77,9 @@ class Reservacion {
         return $this->identidad;
     }
     
-    public function getHotel()
+    public function getHabitacion()
     {
-        return $this->hotel;
+        return $this->habitacion;
     }
     
     //Sección de los métodos set
@@ -108,8 +108,8 @@ class Reservacion {
         $this->fecha_salida = $fecha_saida;
     }
     
-    public function setHotel(Hotel $hotel=NULL)
+    public function setHabitacion(Habitacion $habitacion=NULL)
     {
-        $this->hotel=$hotel;
+        $this->habitacion = $habitacion;
     }        
 }

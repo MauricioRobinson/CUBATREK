@@ -1,5 +1,4 @@
 <?php
-// src/AppBundle/Entity/Hotel.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -38,11 +37,6 @@ class Hotel {
      */
     private $categoria;
     
-     /**
-     * @ORM\OneToMany(targetEntity="Reservacion", mappedBy="hotel") 
-     */
-    private $reservaciones;
-    
     /**
      * @ORM\OneToMany(targetEntity="Foto", mappedBy="hotel") 
      */
@@ -56,7 +50,6 @@ class Hotel {
 
     public function __construct() 
     {
-        $this->reservaciones = new ArrayCollection();
         $this->fotos = new ArrayCollection();
         $this->tiposHabitaciones =new ArrayCollection();
     }
@@ -85,10 +78,6 @@ class Hotel {
         return $this->fotos;
     }
     
-    public function getReservas()
-    {
-        return $this->reservaciones;
-    }
     public function getCategoria()
     {
         return $this->categoria;
