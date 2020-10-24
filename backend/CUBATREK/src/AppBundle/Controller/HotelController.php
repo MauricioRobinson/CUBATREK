@@ -119,21 +119,4 @@ class HotelController extends Controller {
         $this->em->persist($habitacion);
         $this->em->flush();
     }
-    
-     public function finReserva(int $id)
-    {
-       $repo = $this->em->getRepository(Reservacion::class);
-       $reservacion = $repo->findOneById($id);
-       $hotel = $reservacion->getHotel();
-        
-       $disponibilidad = $hotel->getDisponibilidad()-1;
-       $hotel->setDisponibilidad($disponibilidad);
-       $reservas = $hotel->getReservas();
-       $reservas->removeElement($reservacion);
-       $reservacion->setHotel(null);
-       
-       $this->em->persist($hotel);
-       $this->em->persist($reservacion);
-       $this->em->flush();
-    } 
 }

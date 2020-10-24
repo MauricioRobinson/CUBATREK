@@ -92,14 +92,18 @@ class HabitacionControler extends Controller {
        $em = $em = $this->getDoctrine()->getManager();
        $repo = $em->getRepository(Reservacion::class);
        $reservacion = $repo->findOneById($id);
-       $habitacion = $reservacion->getHabitacion();
-       $reservas = $habitacion->getReservas();
-       $reservas->removeElement($reservacion);
-       $reservacion->Habitacion(null);
+       if($reservacion != NULL)
+       {
+        $habitacion = $reservacion->getHabitacion();
+      
+        $reservas = $habitacion->getReservas();
+        $reservas->removeElement($reservacion);
+        $reservacion->Habitacion(null);
        
-       $em->persist($habitacion);
-       $em->persist($reservacion);
-       $em->flush();
+        $em->persist($habitacion);
+        $em->persist($reservacion);
+        $em->flush();
+       }
     }        
     
     
