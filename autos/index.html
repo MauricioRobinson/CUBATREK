@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <title>CUBATREK - AUTOS DE RENTA</title>
+    <title>CUBATREK</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="autos en Cuba, rent de autos, Cuba, Cubatrek">
+    <meta name="description" content="Cubatrek Travel Agency, Agencia de viajes Cubatrek">
+    <meta name="keywords" content="autos en Cuba, rent de autos, Cuba, Cubatrek">
 
     <!-- Añadiendo Bootstrap -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
@@ -23,6 +25,351 @@
 
 <body>
 
+    <!-- *********************************************************************************************************
+                                                Barra de navegación
+    **************************************************************************************************************-->
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light navbar-color">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html"><img src="../assets/img/logo/logo_navbar350x90.jpg" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsableNavbar"
+                aria-controls="collapsableNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsableNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"><i class="fas fa-home"></i> Inicio<span
+                                class="sr-only"></span></a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="../hoteles/index.html"><i class="fas fa-hotel"></i> Hoteles</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-car"></i> Autos</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- *********************************************************************************************************
+                                                HEADER DE LA PAGINA AUTOS DE RENTA
+    **************************************************************************************************************-->
+    <header id="autos-header" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators d-none d-md-inline-flex">
+            <li data-target="#autos-header" data-slide-to="0" class="active"></li>
+            <li data-target="#autos-header" data-slide-to="1"></li>
+            <li data-target="#autos-header" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../assets/img/portada/a1.jpg" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+                <img src="../assets/img/portada/a2.jpg" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+                <img src="../assets/img/portada/a3.jpg" class="d-block w-100" alt="">
+            </div>
+        </div>
+    </header>
+
+    <div class="text-center">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent w-100 mt-3">
+                <li class="breadcrumb-item"><a class="text-decoration-none" href="../../index.html">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Autos de renta</li>
+            </ol>
+        </nav>
+    </div>
+
+    <section class="container-fluid">
+        <div class="row row-cols-sm-1">
+            <div class="dropdown mb-3 col-sm-6 p-3 d-block d-md-none">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filtrar <i class="fas fa-filter"></i>
+                </button>
+                <div class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenuButton">
+                    <div id="filtro-autos" class="p-3">
+                        <h2 class="h5 text-center text-muted">Filtrar</h2>
+                        <div class="close"><i class="fas fa-window-close"></i></div>
+                        <ul id="categoria" class="list-unstyled">
+                            <h3 class="h6">Categor&iacute;a</h3>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="auto-economico">
+                                <label class="form-check-label" for="auto-economico">
+                                    Econ&oacute;mico
+                                </label>
+                            </li>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="auto-medio">
+                                <label class="form-check-label" for="auto-medio">
+                                    Medio
+                                </label>
+                            </li>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="auto-c-standard">
+                                <label class="form-check-label" for="auto-c-standard">
+                                    C-Standard Autom&aacute;tico
+                                </label>
+                            </li>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="auto-d-standard">
+                                <label class="form-check-label" for="auto-d-standard">
+                                    D-Standard High Autom&aacute;tico
+                                </label>
+                            </li>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="auto-e-premium">
+                                <label class="form-check-label" for="auto-e-premium">
+                                    E-Premium
+                                </label>
+                            </li>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="auto-e-premium-plus">
+                                <label class="form-check-label" for="auto-e-premium-plus">
+                                    E-Premium-Plus
+                                </label>
+                            </li>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="auto-f-lujo">
+                                <label class="form-check-label" for="auto-f-lujo">
+                                    F-Lujo
+                                </label>
+                            </li>
+                        </ul>
+
+                        <ul id="franquicia" class="list-unstyled">
+                            <h3 class="h6">Receptivo</h3>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="cubacar">
+                                <label class="form-check-label" for="cubacar">
+                                    Cubacar
+                                </label>
+                            </li>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="havanautos">
+                                <label class="form-check-label" for="havanautos">
+                                    Havanautos
+                                </label>
+                            </li>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="rex">
+                                <label class="form-check-label" for="rex">
+                                    Rex
+                                </label>
+                            </li>
+                        </ul>
+
+                        <ul id="precio-autos" class="list-unstyled">
+                            <h3 class="h6">Precio por dia</h3>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="bajo">
+                                <label class="form-check-label" for="bajo">
+                                    $0 - $99
+                                </label>
+                            </li>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="medio-bajo">
+                                <label class="form-check-label" for="medio-bajo">
+                                    $100 - $199
+                                </label>
+                            </li>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="medio">
+                                <label class="form-check-label" for="medio">
+                                    $200 - $299
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="filtro-autos" class="col-md-3 bg-light p-3 shadow d-none d-md-block">
+                <h2 class="h5 text-center text-muted">Filtrar</h2>
+                <ul id="categoria" class="list-unstyled">
+                    <h3 class="h6">Categor&iacute;a</h3>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="auto-economico">
+                        <label class="form-check-label" for="auto-economico">
+                            Econ&oacute;mico
+                        </label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="auto-medio">
+                        <label class="form-check-label" for="auto-medio">
+                            Medio
+                        </label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="auto-c-standard">
+                        <label class="form-check-label" for="auto-c-standard">
+                            C-Standard Autom&aacute;tico
+                        </label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="auto-d-standard">
+                        <label class="form-check-label" for="auto-d-standard">
+                            D-Standard High Autom&aacute;tico
+                        </label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="auto-e-premium">
+                        <label class="form-check-label" for="auto-e-premium">
+                            E-Premium
+                        </label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="auto-e-premium-plus">
+                        <label class="form-check-label" for="auto-e-premium-plus">
+                            E-Premium-Plus
+                        </label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="auto-f-lujo">
+                        <label class="form-check-label" for="auto-f-lujo">
+                            F-Lujo
+                        </label>
+                    </li>
+                </ul>
+
+                <ul id="franquicia" class="list-unstyled">
+                    <h3 class="h6">Receptivo</h3>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="cubacar">
+                        <label class="form-check-label" for="cubacar">
+                            Cubacar
+                        </label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="havanautos">
+                        <label class="form-check-label" for="havanautos">
+                            Havanautos
+                        </label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="rex">
+                        <label class="form-check-label" for="rex">
+                            Rex
+                        </label>
+                    </li>
+                </ul>
+
+                <ul id="precio-autos" class="list-unstyled">
+                    <h3 class="h6">Precio por dia</h3>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="bajo">
+                        <label class="form-check-label" for="bajo">
+                            $0 - $99
+                        </label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="medio-bajo">
+                        <label class="form-check-label" for="medio-bajo">
+                            $100 - $199
+                        </label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="medio">
+                        <label class="form-check-label" for="medio">
+                            $200 - $299
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+    
+            <div class="col-md-9">
+                <div id="progreso-reserva-auto" class="mb-4">
+                    <p>Progreso de su reserva</p>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                            role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"
+                            style="width: 25%"></div>
+                    </div>
+                </div>
+                <div class="row row-cols-sm-1">
+                    <div id="autos-disponibles" class="mb-2 container">
+                        <h2 class="mb-5 text-wrap">Autos disponibles para rentar</h2>
+                        <ul class="list-unstyled">
+                            <a class="text-decoration-none shadow text-reset" href="../autos/parque/mercedes-c-class.html">
+                                <li class="media mb-3 shadow-sm bg-light border">
+                                    <img src="../assets/img/autos/Mercedes_C_class_85x64.jpg"
+                                        class="img-thumbnail rounded w-100" alt="...">
+                                    <div class="media-body ml-3 w-100">
+                                        <h5 id="auto-name" class="mt-0 mb-1">Auto name</h5>
+                                        <div id="auto-short-description">
+                                            <i class="fas fa-user"></i><span id="asientos"
+                                                class="badge badge-light mr-3">4</span>
+                                            <i class="fas fa-gas-pump ml-3"></i><span id="combustible"
+                                                class="badge badge-light">gasolina</span>
+                                            <br>
+                                            <i class="fas fa-suitcase-rolling"></i><span id="capacidad-maletas"
+                                                class="badge badge-light mr-3">4</span>
+                                            <i class="fas fa-code-branch ml-3"></i><span id="transmision"
+                                                class="badge badge-light">transimision</span>
+                                        </div>
+                                        <span id="auto-precio" class="badge badge-warning">desde $80.00 USD/dia</span>
+                                        <a id="ver-auto" href="../autos/parque/mercedes-c-class.html" class="btn btn-outline-warning float-sm-left float-md-right">Ver auto</a>
+                                    </div>
+                                </li>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- *********************************************************************************************************
+                                            SECCIÓN DEL FOOTER
+    **************************************************************************************************************-->
+    <footer id="footer" class="container py-5 border-top">
+        <div class="row">
+            <div class="col-sm-12 col-md mb-4 border-right px-5">
+                &copy; 2020 CUBATREK TRAVEL AGENCY
+                <img class="img-fluid" src="../assets/img/logo/logo_navbar350x90.jpg" alt="Logo de CUBATREK">
+            </div>
+            <div id="navegacion-rapida" class="col-sm-6 col-md border-right px-5">
+                <h5>Navegaci&oacute;n r&aacute;pida</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a href="../hoteles/index.html" class="text-muted">Hoteles</a></li>
+                    <!-- <li><a href="#" class="text-muted">Casas de renta</a></li> -->
+                    <li><a href="index.html" class="text-muted">Autos para rentar</a></li>
+                    <!-- <li><a href="#" class="text-muted">Circuitos</a></li> -->
+                </ul>
+            </div>
+
+            <div id="sobre-nosotros" class="col-sm-6 col-md border-right px-5">
+                <h5>Sobre nosotros</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a href="#" class="text-muted">Pol&iacute;tica de privacidad</a></li>
+                    <li><a href="#" class="text-muted">T&eacute;rminos y condiciones</a></li>
+                    <li><a href="#" class="text-muted">Sobre nosotros</a></li>
+                    <li><a href="#" class="text-muted">&Uacute;ltimas noticias</a></li>
+                </ul>
+            </div>
+
+            <div id="redes-sociales" class="col-sm-6 col-md px-5">
+                <h5>S&iacute;ganos en las redes</h5>
+                <ul class="row row-cols-sm-1 row-cols-md-3 list-unstyled text-small">
+                    <li><a href="#" class="text-muted"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" class="text-muted"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#" class="text-muted"><i class="fab fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <a id="boton-subir" href="#nav" class="btn"><i class="fas fa-arrow-circle-up"></i></a>
+
 
 
 
@@ -31,6 +378,7 @@
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    
+
 </body>
+
 </html>
