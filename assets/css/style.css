@@ -45,7 +45,7 @@ a#boton-subir .fa-arrow-circle-up{
     color: #001524;
     font-size: 1.2em;
 }
-#nav ul .active, .nav-link:hover{
+#nav ul .active, #nav .nav-link:hover{
     background-color: #15616d57;
     border-radius: 3px;
     color: black;
@@ -420,6 +420,11 @@ section#hotel div#hotel-name .carousel-item{
 }
 #info-hotel .fa-hotel, .fa-info-circle, .fa-bed, .fa-glass-martini-alt, .fa-concierge-bell, .fa-map-marker-alt{
     color: var(--bg-blue);
+}
+
+div#ubicacion-hotel{
+    width: 100%;
+    min-height: 300px;
 }
 
 
