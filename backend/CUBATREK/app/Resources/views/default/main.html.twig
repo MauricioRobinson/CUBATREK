@@ -16,11 +16,10 @@
         {% if hoteles is defined %}
         {%for hotel in hoteles%}
             <tr role="row">
-                <td>{{hotel.getNombre}}</td>
+                <td>{{hotel.getNombre}}             |</td>
                 <td>{{hotel.getDisponibilidad}} </td>
-                <td>{{hotel.getRango}}</td>
-                <td>{{hotel.getPrecio}}</td>  
-                <td><button>Reservar</button></td>
+               {# <td><a href = "{{path('reservar_hotel',{'habitacion':hotel.getTipoHab[0]})}}" >Reservar</a> Reservar</td> #}
+                <td><a href ="{{path('crear_habitacion',{'idH':hotel.getId})}}">Agregar Habitacion</a></td>
             </tr>
         {%endfor%}
         {%endif%}

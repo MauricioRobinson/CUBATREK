@@ -22,11 +22,6 @@ class Hotel {
      */
     private $nombre;
     
-    /**
-     * @ORM\Column(type="integer") 
-     */
-    private $disponibilidad;
-    
     /** 
      * @ORM\Column(type="string")
      */
@@ -38,6 +33,11 @@ class Hotel {
     private $categoria;
     
     /**
+     * ORM\Column(type="string") 
+     */
+    private $region;
+    
+    /**
      * @ORM\OneToMany(targetEntity="Foto", mappedBy="hotel") 
      */
     private $fotos;
@@ -46,6 +46,16 @@ class Hotel {
      * @ORM\OneToMany(targetEntity="Habitacion", mappedBy="hotel")  
      */
     private $tiposHabitaciones;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Temporadas", mappedBy="hotel")  
+     */
+    private $temporadas;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Oferta", mappedBy="hotel")  
+     */
+    private $ofertas;
 
 
     public function __construct() 

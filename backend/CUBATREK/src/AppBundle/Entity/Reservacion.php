@@ -42,6 +42,16 @@ class Reservacion {
     private $fecha_salida;
     
     /**
+     * @ORM\Column(type="integer") 
+     */
+    private $pax;
+    
+    /**
+     * @ORM\Column(type="string") 
+     */
+    private $correo;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Habitacion", inversedBy="reservaciones") 
      */
     private $habitacion;
@@ -82,6 +92,16 @@ class Reservacion {
         return $this->habitacion;
     }
     
+    public function getPax()
+    {
+        return $this->pax;
+    }
+
+    public function getCorreo()
+    {
+        return $this->correo;
+    }
+
     //Sección de los métodos set
     public function setNombre(string $nombre)
     {
@@ -111,5 +131,14 @@ class Reservacion {
     public function setHabitacion(Habitacion $habitacion=NULL)
     {
         $this->habitacion = $habitacion;
+    }
+    public function setPax(int $cant_pax)
+    {
+        $this->pax = $cant_pax;
     }        
+    
+    public function setCorreo(string $correo)
+    {
+        $this->correo = $correo;
+    }
 }

@@ -6,17 +6,15 @@ use Doctrine\ORM\EntityManagerInterface;
 use AppBundle\Entity\Hotel;
 use AppBundle\Entity\Habitacion;
 use AppBundle\Entity\Reservacion;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class HabitacionControler extends Controller {
-    
-   protected $em = null;
-    protected $kernel = null;
-
-    public function __construct()
-    {
-        $this->em = new EntityManager();
-    }
-    
+   
+    /** 
+     * @Route ("/reservarHabitacion/{habitacion}/{nombre}/{apellido}/{identidad}/{inicio}/{fin}")
+     */
     public function addReserva(Habitacion $hab,string $nombre,string $apellido,string $identidad, \DateTime $inicio, \DateTime $fin )
     {
         //Creando la habitacion con los datos pasados por parametro
@@ -38,6 +36,8 @@ class HabitacionControler extends Controller {
         $em = $this->getDoctrine()->getManager();
         $em->persist($reserva);
         $em->flush();
+        
+        return new Response('<html> <body>Todo esta:<Strong>OK</Strong></body> </html>');
     }
     
     public function actuaizarHabitacion(int $id,string $tipo,float $precio,float $rebaja,int $pax,  \DateTime $inicio,  \DateTime $fin,string $politica, string $observacion)
@@ -106,6 +106,12 @@ class HabitacionControler extends Controller {
        }
     }        
     
-    
+    /**
+     * @Route ("/reservacionH/{habitacion}",name="reservar_hotel") 
+     */
+    public function formReserva(Habitacion $habitacion)
+    {
+        
+    }
  
 }

@@ -21,30 +21,15 @@ class Habitacion {
      */
     private $tipo;
     
-    /**
-     * @ORM\Column(type="decimal",scale=2)   
+     /**
+     * @ORM\Column(type="integer") 
      */
-    private $precio;
-    
-    /**
-     * @ORM\Column(type="decimal",scale=2)      
-     */
-    private $rebaja;
+    private $disponibilidad;
     
     /**
      * @ORM\Column(type="integer")   
      */
-    private $pax;
-    
-    /**
-     * @ORM\Column(type="date")   
-     */
-    private $inicio;
-    
-    /**
-     * @ORM\Column(type="date")   
-     */
-    private $fin;
+    private $extraPax;
     
     /**
      * @ORM\Column(type="text")   
@@ -150,7 +135,7 @@ class Habitacion {
     
     public function setInicio(\DateTime $inicio)
     {
-        $this->incio = $inicio;
+        $this->inicio = $inicio;
     }
     
     public function setFin(\DateTime $fin)
