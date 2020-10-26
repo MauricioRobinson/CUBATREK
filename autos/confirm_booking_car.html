@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>CUBATREK</title>
     <meta charset="UTF-8">
@@ -22,13 +23,236 @@
 
 <body>
 
+    <!-- *********************************************************************************************************
+                                                Barra de navegación
+    **************************************************************************************************************-->
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light navbar-color">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html"><img src="../assets/img/logo/logo_navbar350x90.jpg" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsableNavbar"
+                aria-controls="collapsableNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
+            <div class="collapse navbar-collapse" id="collapsableNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"><i class="fas fa-home"></i> Inicio<span
+                                class="sr-only"></span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../hoteles/index.html"><i class="fas fa-hotel"></i> Hoteles</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html"><i class="fas fa-car"></i> Autos</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- *********************************************************************************************************
+                                                INFORMACION DE RESERVA DEL AUTO DE RENTA
+    **************************************************************************************************************-->
+    <div class="container my-5">
+        <p class="text-right">Paso 3: Confirmar datos de reserva</p>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar"
+                aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row row-cols-sm-1 row-col-md-3">
+            <!-- INFORMACION DEL CLIENTE -->
+            <div id="" class="col-sm-12 col-md-4">
+                <div class="container bg-light py-4 my-5 shadow">
+                    <h2 class="h4 mb-4">Informaci&oacute;n del cliente</h2>
+                    <div class="container-fluid border-bottom mb-3">
+                        <div class="row row-cols-2">
+                            <h6 class="text-muted">Nombre</h6>
+                            <h6 class="text-muted">Apellido</h6>
+
+                            <span class="small" id="nombre-cliente">Orlo</span>
+                            <span class="small" id="apellido-cliente">Rogahn</span>
+                        </div>
+                    </div>
+                    <div class="container-fluid border-bottom mb-3">
+                        <div class="row row-cols-1">
+                            <h6 class="text-muted">Email</h6>
+                            <span id="email-cliente" class="small">Keely.Dach23@hotmail.com</span>
+                        </div>
+                    </div>
+                    <div class="container-fluid border-bottom mb-3">
+                        <div class="row row-cols-3">
+                            <h6 class="text-muted">Licencia</h6>
+                            <h6 class="text-muted">ID</h6>
+                            <h6 class="text-muted">Tel&eacute;fono</h6>
+
+                            <span id="licencia-cliente" class="small">5s56456f</span>
+                            <span id="id-cliente" class="small">44482867</span>
+                            <span id="telefono-cliente" class="small">421-537-6503</span>
+                        </div>
+                    </div>
+                    <div class="container-fluid mb-3">
+                        <div class="row row-cols-1">
+                            <h6 class="text-muted">Direcci&oacute;n</h6>
+                            <span id="direccion-cliente" class="small">Kovacek Cape </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INFORMACION DE LA RESERVA DEL AUTO -->
+            <div id="" class="col-sm-12 col-md-4">
+                <div class="container bg-light py-4 my-5 shadow">
+                    <h2 class="h4 mb-4">Informaci&oacute;n de la reserva</h2>
+                    <div class="container-fluid border-bottom mb-3">
+                        <div class="row row-cols-2 mb-3 border-bottom">
+                            <h6 class="text-muted">Fecha recogida</h6>
+                            <h6 class="text-muted">Hora recogida</h6>
+
+                            <span class="small" id="fecha-recogida">Mon Oct 26 2020</span>
+                            <span class="small" id="hora-recogida">09:00 am</span>
+                        </div>
+                        <div class="row row-cols-2">
+                            <h6 class="text-muted">Fecha entrega</h6>
+                            <h6 class="text-muted">Hora entrega</h6>
+
+                            <span class="small" id="fecha-entrega">Mon Oct 30 2020</span>
+                            <span class="small" id="hora-entrega">09:00 am</span>
+                        </div>
+                    </div>
+                    <div class="container-fluid border-bottom mb-3">
+                        <div class="row row-cols-2">
+                            <h6 class="text-muted">Per&iacute;odo de la renta</h6>
+                            <h6 class="text-muted">Categor&iacute;a</h6>
+
+                            <span id="periodo-renta" class="small">6 d&iacute;as</span>
+                            <span id="categoria-auto" class="small">Medio</span>
+                        </div>
+                    </div>
+                    <div class="container-fluid border-bottom mb-3">
+                        <div class="row row-cols-1">
+                            <h6 class="text-muted">Tipo de auto</h6>
+                            <span id="car-name" class="small">Mercedes Benz C Class</span>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row row-cols-1">
+                            <img src="../assets/img/autos/Mercedes_C_class.png" alt="" class="img-fluid rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INFORMACION DE PAGO -->
+            <div id="" class="col-sm-12 col-md-4">
+                <div class="container bg-light py-4 my-5 shadow">
+                    <h2 class="h4 mb-4">Informaci&oacute;n de pago</h2>
+                    <div class="container-fluid mb-3">
+                        <div class="row row-cols-1">
+                            <table class="table table-striped table-light table-hover shadow-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Descripci&oacute;n</th>
+                                        <th>Debes pagar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Auto</td>
+                                        <td>91 USD / d&iacute;a</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dep&oacute;sito</td>
+                                        <td>150 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Extras</td>
+                                        <td>5 USD / d&iacute;a</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cantidad de d&iacute;as</td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Subtotal:</th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total:</th>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <small class="text-muted small">
+                                El valor total es el valor subtotal por la cantidad de d&iacute;as de renta
+                            </small>
+                            <button role="button" type="submit" class="btn btn-block my-2">Confirmar reserva y pagar <i
+                                    class="fas fa-handshake"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- *********************************************************************************************************
+                                            SECCIÓN DEL FOOTER
+    **************************************************************************************************************-->
+    <footer id="footer" class="container py-5 border-top">
+        <div class="row">
+            <div class="col-sm-12 col-md mb-4 border-right px-5">
+                &copy; 2020 CUBATREK TRAVEL AGENCY
+                <img class="img-fluid" src="../assets/img/logo/logo_navbar350x90.jpg" alt="Logo de CUBATREK">
+            </div>
+            <div id="navegacion-rapida" class="col-sm-6 col-md border-right px-5">
+                <h5>Navegaci&oacute;n r&aacute;pida</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a href="../hoteles/index.html" class="text-muted">Hoteles</a></li>
+                    <!-- <li><a href="#" class="text-muted">Casas de renta</a></li> -->
+                    <li><a href="index.html" class="text-muted">Autos para rentar</a></li>
+                    <!-- <li><a href="#" class="text-muted">Circuitos</a></li> -->
+                </ul>
+            </div>
+
+            <div id="sobre-nosotros" class="col-sm-6 col-md border-right px-5">
+                <h5>Sobre nosotros</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a href="#" class="text-muted">Pol&iacute;tica de privacidad</a></li>
+                    <li><a href="#" class="text-muted">T&eacute;rminos y condiciones</a></li>
+                    <li><a href="#" class="text-muted">Sobre nosotros</a></li>
+                    <li><a href="#" class="text-muted">&Uacute;ltimas noticias</a></li>
+                </ul>
+            </div>
+
+            <div id="redes-sociales" class="col-sm-6 col-md px-5">
+                <h5>S&iacute;ganos en las redes</h5>
+                <ul class="row row-cols-sm-1 row-cols-md-3 list-unstyled text-small">
+                    <li><a href="https://www.facebook.com/cubatrekagency/" class="text-muted"><i
+                                class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/cubatrekagency/" class="text-muted"><i
+                                class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://twitter.com/cubatrekagency/" class="text-muted"><i
+                                class="fab fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
 
     <!-- Añadiendo scrpts js -->
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    
+
 </body>
+
 </html>
