@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>CUBATREK</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="Cubatrek Travel Agency, Agencia de viajes Cubatrek">
+    <meta name="keywords" content="autos en Cuba, rent de autos, Cuba, Cubatrek">
+
+    <!-- Añadiendo Bootstrap -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+
+    <!-- Añadiendo normalize.css -->
+    <link rel="stylesheet" href="../assets/css/normalize.css">
+
+    <!-- Añadiendo fontawesome -->
+    <link rel="stylesheet" href="../assets/css/all.min.css">
+
+    <!-- Añadiendo mis setilos css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+
+</head>
+
+<body>
+
+    <!-- *********************************************************************************************************
+                                                Barra de navegación
+    **************************************************************************************************************-->
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light navbar-color">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html"><img src="../assets/img/logo/logo_navbar350x90.jpg" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsableNavbar"
+                aria-controls="collapsableNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsableNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"><i class="fas fa-home"></i> Inicio<span
+                                class="sr-only"></span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../hoteles/index.html"><i class="fas fa-hotel"></i> Hoteles</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html"><i class="fas fa-car"></i> Autos</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <p class="text-center">Paso 2: Informaci&oacute;n de reserva</p>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar"
+                aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: 66%"></div>
+        </div>
+    </div>
+
+    <section id="booking-car-info" class="row row-cols-sm-1 row-cols-md-2">
+        <div id="imagen-auto" class="col-sm-12 col-md-6">
+            <div id="car-name" class="carousel slide container" data-ride="carousel">
+                <h2 id="car-name">Car type - Mercedes Benz C Class</h2>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../assets/img/autos/Mercedes_C_class.png" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+
+                <!-- *********************************************************************************************************
+                                                INFORMACION DEL AUTO
+    **************************************************************************************************************-->
+                <section id="info-auto" class="col-sm-12 mb-5 mt-1">
+                    <nav>
+                        <div class="nav nav-pills" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-car-info-tab" data-toggle="tab"
+                                href="#nav-car-info" role="tab" aria-controls="nav-car-info" aria-selected="true"><i
+                                    class="fas fa-car"></i> <i class="fas fa-info-circle"></i>
+                            </a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="info-carContent">
+                        <div class="tab-pane fade show active pt-2" id="nav-car-info" role="tabpanel"
+                            aria-labelledby="nav-car-info-tab">
+                            <table id="car-description" class="table">
+                                <thead>
+                                    <tr>
+                                        <th id="car-name">Car name</th>
+                                        <th id="incluye"><i class="fas fa-check text-success"></i></th>
+                                        <th id="no-incluye"><i class="fas fa-times text-danger"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>1</th>
+                                        <td>ABS</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>2</th>
+                                        <td>Bluethooth</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>3</th>
+                                        <td></td>
+                                        <td>Wifi</td>
+                                    </tr>
+                                    <tr>
+                                        <th>4</th>
+                                        <td>Pantalla t&aacute;ctil</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>5</th>
+                                        <td>Reproductor de m&uacute;sica</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>6</th>
+                                        <td>Neum&aacute;tico de repuesto</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+        <!-- *********************************************************************************************************
+                                                CALENDARIO DE RESERVAS
+    **************************************************************************************************************-->
+        <div id="calendario" class="col-sm-12 col-md-6">
+            <h2 class="ml-1 text-center">Recogida & Entrega </h2>
+            <form class="bg-light p-2 m-2 shadow-sm border rounded float-md-right" id="calendario-reservas" action=""
+                method="" novalidate>
+                <h3 class="text-muted small">Datos de reserva del auto</h3>
+                <div class="form-row">
+                    <div class="form-group col-sm-12 col-md-6">
+                        <label for="check-in">Recogida</label>
+                        <input type="date" name="" class="form-control mb-2" id="check-in" required>
+                    </div>
+                    <div class="form-group col-sm-12 col-md-6">
+                        <label for="hora-recogida">Hora recogida</label>
+                        <input type="time" name="" class="form-control mb-2" id="hora-recogida" required>
+                    </div>
+                    <div class="form-group col-sm-12 col-md-6">
+                        <label for="check-out">Entrega</label>
+                        <input type="date" name="" class="form-control mb-2" id="check-out" required>
+                    </div>
+                    <div class="form-group col-sm-12 col-md-6">
+                        <label for="hora-entrega">Hora entrega</label>
+                        <input type="time" name="" class="form-control mb-2" id="hora-entrega" required>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="provincia-recogida">Donde lo va a recoger</label>
+                        <select name="Provincia" id="provincia-recogida" class="form-control" required>Provincia
+                            <option value="La Habana" selected>La Habana</option>
+                            <option value="Pinar del R&iacute;o">Pinar del R&iacute;o</option>
+                            <option value="">Artemisa</option>
+                            <option value="">Mayabeque</option>
+                            <option value="">Varadero</option>
+                            <option value="">Villa Clara</option>
+                            <option value="">Cienfuegos</option>
+                            <option value="">Santi Sp&iacute;ritus</option>
+                            <option value="">Ciego de &Aacute;vila</option>
+                            <option value="">Camaguey</option>
+                            <option value="">Las Tunas</option>
+                            <option value="">Holgu&iacute;n</option>
+                            <option value="">Granma</option>
+                            <option value="">Santiago de Cuba</option>
+                            <option value="">Guant&aacute;namo</option>
+                        </select>
+                    </div>
+                    <div class="form-gruop col-sm-6">
+                        <label for="lugar-recogida">Lugar de recogida</label>
+                        <select name="Lugar" id="lugar-recogida" class="form-control" required>
+                            <option value="Aeropuerto" selected>Aeropuerto</option>
+                            <option value="Ciudad">Ciudad</option>
+                        </select>
+                    </div>
+                    <div class="form-gruop col-sm-12">
+                        <h3 class="text-muted text-center my-2 ml-2">Extras</h3>
+                    </div>
+                    <div class="form-gruop col-sm-6">
+                        <label for="conductor-adicional">Conductor adicional</label>
+                        <select name="" id="conductor-adicional" class="form-control" required>
+                            <option value="ninguno" selected>No</option>
+                            <option value="uno">1 / +5 USD x dia</option>
+                            <option value="dos">2 / +5 USD x dia</option>
+                        </select>
+                    </div>
+                    <div class="form-gruop col-sm-6">
+                        <label for="silla-bebe">Silla para beb&eacute;</label>
+                        <select name="" id="silla-bebe" class="form-control" required>
+                            <option value="ninguno" selected>No</option>
+                            <option value="uno">1 / +3 USD x dia</option>
+                        </select>
+                    </div>
+                    <div class="form-gruop col-sm-12">
+                        <h3 class="text-muted text-center my-3 ml-2">Datos del conductor</h3>
+                        <small id="aviso-email" class="form-text text-danger mb-2">
+                            * Son los datos que necesitamos para poder procesar la reserva
+                        </small>
+                    </div>
+                    <div class="form-gruop col-sm-6">
+                        <label for="nombre-conductor">Nombre *</label>
+                        <input type="text" name="" id="nombre-conductor" class="form-control mb-2" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-gruop col-sm-6">
+                        <label for="apellido-conductor">Apellido *</label>
+                        <input type="text" name="" id="apellido-conductor" class="form-control mb-2" placeholder="Apellido" required>
+                    </div>
+                    <div class="form-gruop col-sm-12">
+                        <label for="email-conductor">Email *</label>
+                        <input type="email" name="" id="email-conductor" class="form-control" placeholder="Email" required>
+                        <small id="aviso-email" class="form-text text-muted mb-2">
+                            Donde vas a recibir la confirmaci&oacute;n de la reserva y los datos
+                        </small>
+                    </div>
+                    <div class="form-gruop col-sm-4">
+                        <label for="licencia-conductor">Licencia *</label>
+                        <input type="text" name="" id="licencia-conductor" class="form-control mb-2" placeholder="Licencia" required>
+                    </div>
+                    <div class="form-gruop col-sm-4">
+                        <label for="id-conductor">ID o pasaporte *</label>
+                        <input type="text" name="" id="id-conductor" class="form-control mb-2" placeholder="ID o pasaporte" required>
+                    </div>
+                    <div class="form-gruop col-sm-4">
+                        <label for="telefono-conductor">Tel&eacute;fono *</label>
+                        <input type="tel" name="" id="telefono-conductor" class="form-control" placeholder="Tel&eacute;fono" required>
+                        <small id="aviso-email" class="form-text text-muted mb-2">
+                            Por si necesitamos informarte de algo importante
+                        </small>
+                    </div>
+                    <div class="form-gruop col-sm-12">
+                        <label for="id-conductor">Direcci&oacute;n en la que puedas estar (opcional)</label>
+                        <input type="text" name="" id="id-conductor" class="form-control" placeholder="Id o pasaporte">
+                        <small id="aviso-email" class="form-text text-muted mb-2">
+                            Por si necesitamos contactarte urgente
+                        </small>
+                    </div>
+                    <div class="container mt-4">
+                        <button class="btn text-center mb-2" type="button" data-toggle="collapse"
+                            data-target="#precio-parcial-auto" aria-expanded="false"
+                            aria-controls="precio-parcial-auto">
+                            Elegir auto <i class="fas fa-check-circle"></i>
+                        </button>
+                        <div class="collapse container" id="precio-parcial-auto">
+                            <table id="suma-precio-auto" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Descripci&oacute;n</th>
+                                        <th>Precio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Precio base</td>
+                                        <td>91 USD / d&iacute;a</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Seguro</td>
+                                        <td>15 USD / d&iacute;a</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dep&oacute;sito</td>
+                                        <td>150 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Extra</td>
+                                        <td> 5 USD / d&iacute;a</td>
+                                    </tr>
+                                    <tr>
+                                        <th>SUBTOTAL:</th>
+                                        <td> 230 USD</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="submit" class="btn" >Reservar auto <i class="fas fa-check-double"></i></button>
+                            <small class="text-danger form-text">
+                                El precio final est&aacute; sujeto a cambios por temporada y cantidad de d&iacute;as 
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- *********************************************************************************************************
+                                            SECCIÓN DEL FOOTER
+    **************************************************************************************************************-->
+    <footer id="footer" class="container py-5 border-top">
+        <div class="row">
+            <div class="col-sm-12 col-md mb-4 border-right px-5">
+                &copy; 2020 CUBATREK TRAVEL AGENCY
+                <img class="img-fluid" src="../assets/img/logo/logo_navbar350x90.jpg" alt="Logo de CUBATREK">
+            </div>
+            <div id="navegacion-rapida" class="col-sm-6 col-md border-right px-5">
+                <h5>Navegaci&oacute;n r&aacute;pida</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a href="../hoteles/index.html" class="text-muted">Hoteles</a></li>
+                    <!-- <li><a href="#" class="text-muted">Casas de renta</a></li> -->
+                    <li><a href="index.html" class="text-muted">Autos para rentar</a></li>
+                    <!-- <li><a href="#" class="text-muted">Circuitos</a></li> -->
+                </ul>
+            </div>
+
+            <div id="sobre-nosotros" class="col-sm-6 col-md border-right px-5">
+                <h5>Sobre nosotros</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a href="#" class="text-muted">Pol&iacute;tica de privacidad</a></li>
+                    <li><a href="#" class="text-muted">T&eacute;rminos y condiciones</a></li>
+                    <li><a href="#" class="text-muted">Sobre nosotros</a></li>
+                    <li><a href="#" class="text-muted">&Uacute;ltimas noticias</a></li>
+                </ul>
+            </div>
+
+            <div id="redes-sociales" class="col-sm-6 col-md px-5">
+                <h5>S&iacute;ganos en las redes</h5>
+                <ul class="row row-cols-sm-1 row-cols-md-3 list-unstyled text-small">
+                    <li><a href="https://www.facebook.com/cubatrekagency/" class="text-muted"><i
+                                class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/cubatrekagency/" class="text-muted"><i
+                                class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://twitter.com/cubatrekagency/" class="text-muted"><i
+                                class="fab fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Añadiendo scrpts js -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/all.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

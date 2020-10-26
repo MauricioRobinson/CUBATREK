@@ -43,11 +43,11 @@
                                 class="sr-only"></span></a>
                     </li>
 
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="../hoteles/index.html"><i class="fas fa-hotel"></i> Hoteles</a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="index.html"><i class="fas fa-car"></i> Autos</a>
                     </li>
 
@@ -98,7 +98,7 @@
                 <div class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenuButton">
                     <div id="filtro-autos" class="p-3">
                         <h2 class="h5 text-center text-muted">Filtrar</h2>
-                        <div class="close"><i class="fas fa-window-close"></i></div>
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <ul id="categoria" class="list-unstyled">
                             <h3 class="h6">Categor&iacute;a</h3>
                             <li class="form-check">
@@ -288,18 +288,18 @@
     
             <div class="col-md-9">
                 <div id="progreso-reserva-auto" class="mb-4">
-                    <p>Progreso de su reserva</p>
+                    <p>Paso 1: Escoja su auto</p>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
                             role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"
-                            style="width: 25%"></div>
+                            style="width: 33%"></div>
                     </div>
                 </div>
                 <div class="row row-cols-sm-1">
                     <div id="autos-disponibles" class="mb-2 container">
                         <h2 class="mb-5 text-wrap">Autos disponibles para rentar</h2>
                         <ul class="list-unstyled">
-                            <a class="text-decoration-none shadow text-reset" href="../autos/parque/mercedes-c-class.html">
+                            <a id="car-type" class="text-decoration-none shadow text-reset" href="booking_car.html">
                                 <li class="media mb-3 shadow-sm bg-light border">
                                     <img src="../assets/img/autos/Mercedes_C_class_85x64.jpg"
                                         class="img-thumbnail rounded w-100" alt="...">
@@ -317,7 +317,7 @@
                                                 class="badge badge-light">transimision</span>
                                         </div>
                                         <span id="auto-precio" class="badge badge-warning">desde $80.00 USD/dia</span>
-                                        <a id="ver-auto" href="../autos/parque/mercedes-c-class.html" class="btn btn-outline-warning float-sm-left float-md-right">Ver auto</a>
+                                        <a id="ver-auto" href="booking_car.html" class="btn btn-outline-warning float-sm-left float-md-right">Ver auto</a>
                                     </div>
                                 </li>
                             </a>
