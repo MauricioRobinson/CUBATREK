@@ -91,6 +91,7 @@
     <section class="container-fluid">
         <div class="row row-cols-sm-1">
             <div class="dropdown mb-3 col-sm-6 p-3 d-block d-md-none">
+                <!-- Filtro para movil -->
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Filtrar <i class="fas fa-filter"></i>
@@ -167,6 +168,18 @@
                             </li>
                         </ul>
 
+                        <ul id="transmision" class="list-unstyled">
+                            <h3 class="h6">Transmisi&oacute;n</h3>
+                            <li class="form-check">
+                                <input type="checkbox" id="manual" class="form-check-input">
+                                <label for="mecanico" class="form-check-label">Manual</label>
+                            </li>
+                            <li class="form-check">
+                                <input type="checkbox" id="automatico" class="form-check-input">
+                                <label for="automatico" class="form-check-label">Autom&aacute;tico</label>
+                            </li>
+                        </ul>
+
                         <ul id="precio-autos" class="list-unstyled">
                             <h3 class="h6">Precio por dia</h3>
                             <li class="form-check">
@@ -192,6 +205,7 @@
                 </div>
             </div>
 
+            <!-- Filtro para computadoras y tablets -->
             <div id="filtro-autos" class="col-md-3 bg-light p-3 shadow d-none d-md-block">
                 <h2 class="h5 text-center text-muted">Filtrar</h2>
                 <ul id="categoria" class="list-unstyled">
@@ -262,6 +276,18 @@
                     </li>
                 </ul>
 
+                <ul id="transmision" class="list-unstyled">
+                    <h3 class="h6">Transmisi&oacute;n</h3>
+                    <li class="form-check">
+                        <input type="checkbox" id="manual" class="form-check-input">
+                        <label for="manual" class="form-check-label">Manual</label>
+                    </li>
+                    <li class="form-check">
+                        <input type="checkbox" id="automatico" class="form-check-input">
+                        <label for="automatico" class="form-check-label">Autom&aacute;tico</label>
+                    </li>
+                </ul>
+
                 <ul id="precio-autos" class="list-unstyled">
                     <h3 class="h6">Precio por dia</h3>
                     <li class="form-check">
@@ -285,8 +311,8 @@
                 </ul>
             </div>
 
-    
             <div class="col-md-9">
+                <!-- Barra de progreso de reserva -->
                 <div id="progreso-reserva-auto" class="mb-4">
                     <p>Paso 1: Escoja su auto</p>
                     <div class="progress">
@@ -295,6 +321,7 @@
                             style="width: 33%"></div>
                     </div>
                 </div>
+                <!-- Listado de autos disponibles -->
                 <div class="row row-cols-sm-1">
                     <div id="autos-disponibles" class="mb-2 container">
                         <h2 class="mb-5 text-wrap">Autos disponibles para rentar</h2>
