@@ -142,8 +142,8 @@
     **************************************************************************************************************-->
         <div id="calendario" class="col-sm-12 col-md-6">
             <h2 class="ml-1 text-center">Recogida & Entrega </h2>
-            <form class="bg-light p-2 m-2 shadow-sm border rounded float-md-right" id="calendario-reservas" action=""
-                method="" novalidate>
+            <form class="bg-light p-2 m-2 shadow-sm border rounded float-md-right" id="calendario-reservas-auto"
+                action="" method="" novalidate>
                 <h3 class="text-muted small">Datos de reserva del auto</h3>
                 <div class="form-row">
                     <div class="form-group col-sm-12 col-md-6">
@@ -215,37 +215,43 @@
                     </div>
                     <div class="form-gruop col-sm-6">
                         <label for="nombre-conductor">Nombre *</label>
-                        <input type="text" name="" id="nombre-conductor" class="form-control mb-2" placeholder="Nombre" required>
+                        <input type="text" name="" id="nombre-conductor" class="form-control mb-2" placeholder="Nombre"
+                            required>
                     </div>
                     <div class="form-gruop col-sm-6">
                         <label for="apellido-conductor">Apellido *</label>
-                        <input type="text" name="" id="apellido-conductor" class="form-control mb-2" placeholder="Apellido" required>
+                        <input type="text" name="" id="apellido-conductor" class="form-control mb-2"
+                            placeholder="Apellido" required>
                     </div>
                     <div class="form-gruop col-sm-12">
                         <label for="email-conductor">Email *</label>
-                        <input type="email" name="" id="email-conductor" class="form-control" placeholder="Email" required>
+                        <input type="email" name="" id="email-conductor" class="form-control" placeholder="Email"
+                            required>
                         <small id="aviso-email" class="form-text text-muted mb-2">
                             Donde vas a recibir la confirmaci&oacute;n de la reserva y los datos
                         </small>
                     </div>
                     <div class="form-gruop col-sm-4">
                         <label for="licencia-conductor">Licencia *</label>
-                        <input type="text" name="" id="licencia-conductor" class="form-control mb-2" placeholder="Licencia" required>
+                        <input type="text" name="" id="licencia-conductor" class="form-control mb-2"
+                            placeholder="Licencia" required>
                     </div>
                     <div class="form-gruop col-sm-4">
-                        <label for="id-conductor">ID o pasaporte *</label>
-                        <input type="text" name="" id="id-conductor" class="form-control mb-2" placeholder="ID o pasaporte" required>
+                        <label for="id-conductor">NIC / pasaporte </label>
+                        <input type="text" name="" id="id-conductor" class="form-control mb-2"
+                            placeholder="NIC o pasaporte">
                     </div>
                     <div class="form-gruop col-sm-4">
                         <label for="telefono-conductor">Tel&eacute;fono *</label>
-                        <input type="tel" name="" id="telefono-conductor" class="form-control" placeholder="Tel&eacute;fono" required>
+                        <input type="tel" name="" id="telefono-conductor" class="form-control"
+                            placeholder="Tel&eacute;fono" required>
                         <small id="aviso-email" class="form-text text-muted mb-2">
                             Por si necesitamos informarte de algo importante
                         </small>
                     </div>
                     <div class="form-gruop col-sm-12">
                         <label for="id-conductor">Direcci&oacute;n en la que puedas estar (opcional)</label>
-                        <input type="text" name="" id="id-conductor" class="form-control" placeholder="Id o pasaporte">
+                        <input type="text" name="" id="id-conductor" class="form-control" placeholder="Dirección">
                         <small id="aviso-email" class="form-text text-muted mb-2">
                             Por si necesitamos contactarte urgente
                         </small>
@@ -287,9 +293,13 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <button type="submit" class="btn" >Reservar auto <i class="fas fa-check-double"></i></button>
+                            <!-- TODO:
+                                1-Aqui debe redireccionar a la pagina de confirmar reserva del auto una vez que se envíen los datos del formulario para mostrar el resumen de la reserva
+                            -->
+                            <button type="submit" class="btn" id="submit-datos-auto">Reservar auto <i
+                                    class="fas fa-check-double"></i></button>
                             <small class="text-danger form-text">
-                                El precio final est&aacute; sujeto a cambios por temporada y cantidad de d&iacute;as 
+                                El precio final est&aacute; sujeto a cambios por temporada y cantidad de d&iacute;as
                             </small>
                         </div>
                     </div>
@@ -347,6 +357,29 @@
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <!-- <script>
+        window.location = "http://127.0.0.1:5500/autos/confirm_booking_car.html";
+        window.location.href = "http://127.0.0.1:5500/autos/confirm_booking_car.html";
+        window.location.assign = ("http://127.0.0.1:5500/autos/confirm_booking_car.html");
+        window.location.replace = ("http://127.0.0.1:5500/autos/confirm_booking_car.html");
+
+        function enviarDatos(datos){
+            $.ajax({
+                url: "http://127.0.0.1:5500/autos/confirm_booking_car.html",
+                type: "POST",
+                data: JSON.stringify(datos),
+                success: window.location = "http://127.0.0.1:5500/autos/confirm_booking_car.html",
+                error: function(e){
+                    console.log(JSON.stringify(e));
+                }
+            });
+        }
+
+        $("#submit-datos-auto").on("click", function(){
+            var datos = [];
+            datos.push($("#nombre"))
+        });
+    </script> -->
 
 </body>
 
