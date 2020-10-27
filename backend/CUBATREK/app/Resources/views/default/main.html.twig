@@ -6,9 +6,9 @@
          <thead>
              <tr role="row">
                 <th>Nombre</th>
-                <th>Disponibilidad</th>
-                <th>Rango</th>
-                <th>Costo</th>
+                <th>Cadena</th>
+                <th>Area</th>
+                <th>Categoria</th>
                 
             </tr>
          </thead>
@@ -17,7 +17,9 @@
         {%for hotel in hoteles%}
             <tr role="row">
                 <td>{{hotel.getNombre}}             |</td>
-                <td>{{hotel.getDisponibilidad}} </td>
+                <td>{{hotel.getCadena}} </td>
+                <td>{{hotel.getRegion}}</td>
+                <td>{{hotel.getCategoria}}Estrellas</td>
                {# <td><a href = "{{path('reservar_hotel',{'habitacion':hotel.getTipoHab[0]})}}" >Reservar</a> Reservar</td> #}
                 <td><a href ="{{path('crear_habitacion',{'idH':hotel.getId})}}">Agregar Habitacion</a></td>
             </tr>
