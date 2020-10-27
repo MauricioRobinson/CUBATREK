@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Listado de hoteles</h1>
+    <table>
+         <thead>
+             <tr role="row">
+                <th>Nombre</th>
+                <th>Disponibilidad</th>
+                <th>Rango</th>
+                <th>Costo</th>
+                
+            </tr>
+         </thead>
+         <tbody>
+        {% if hoteles is defined %}
+        {%for hotel in hoteles%}
+            <tr role="row">
+                <td>{{hotel.getNombre}}</td>
+                <td>{{hotel.getDisponibilidad}} </td>
+                <td>{{hotel.getRango}}</td>
+                <td>{{hotel.getPrecio}}</td>  
+                <td><button>Reservar</button></td>
+            </tr>
+        {%endfor%}
+        {%endif%}
+        </tbody>
+    </table>
+   
+{% endblock%}
