@@ -6,6 +6,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\HabGet;
+use AppBundle\Form\FormHotel;
 use AppBundle\Entity\Hotel;
 use AppBundle\Entity\Habitacion;
 use AppBundle\Entity\Foto;
@@ -13,31 +14,28 @@ use Doctrine\ORM\EntityManager;
 
 
 class HotelController extends Controller {
-    
-    protected $em = null;
-    protected $kernel = null;
-
-    public function __construct(EntityManager $em)
-    {
-        $this->em = $em;
-    }
-    
+ 
     /**
-     * @Route ("/crearHotel/{nombre}/{categoria}/{disponibilidad}/{cadena}") 
+     * @Route ("/crearHotel", name="crear_hotel") 
      */
-    public function crearHotel(string $nombre,int $categoria,int $disponibilidad,string $cadena)
+    public function crearHotel(Request $request)
     {
         $hotel = new Hotel();
-        $hotel->setNombre($nombre);
-        $hotel->setCadena($cadena);
-        $hotel->setCategoria($categoria);
-        $hotel->setDisponibilidad($disponibilidad);
-       
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($hotel);
-        $entityManager->flush();
         
-        return new Response('<html> <body>Todo esta:<Strong>OK</Strong></body> </html>');
+        $form = $this->createForm(FormHotel::class, $hotel);
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid())
+        { 
+         $hotel = $form->getData();   
+         $entityManager = $this->getDoctrine()->getManager();
+         $entityManager->persist($hotel);
+         $entityManager->flush();
+        
+         return new Response('<html> <body>Todo esta:<Strong>OK</Strong></body> </html>');
+        }
+        
+        return $this->render('default/formHotel.html.twig',['form' => $form->createView()]);
     }
     
     public function actualizarHotel(array $parametros)

@@ -56,8 +56,6 @@ class Habitacion {
         $this->reservaciones = new ArrayCollection();
     }
 
-    
-
     public function getId()
     {
         return $this->id;
@@ -68,29 +66,9 @@ class Habitacion {
         return $this->tipo;
     }
     
-    public function getPrecio()
-    {
-        return $this->precio;
-    }
-    
-    public function getRebaja()
-    {
-        return $this->rebaja;
-    }
-    
     public function getPax()
     {
-        return $this->pax;
-    }
-    
-    public function getInicio()
-    {
-        return $this->inicio;
-    }
-    
-    public function getFin()
-    {
-        return $this->fin;
+        return $this->extraPax;
     }
     
     public function getPolitica()
@@ -103,6 +81,11 @@ class Habitacion {
         return $this->observacion;
     }
     
+    public function getDisponibilidad()
+    {
+        return $this->disponibilidad;
+    }        
+     
     public function getReservas()
     {
         return $this->reservaciones;
@@ -118,29 +101,9 @@ class Habitacion {
         $this->tipo=$tipo;
     }
     
-    public function setPrecio(float $precio)
-    {
-        $this->precio = $precio;
-    }
-    
-    public function setRebaja(float $rebaja)
-    {
-        $this->rebaja = $rebaja;
-    }
-    
     public function setPax(int $pax)
     {
-        $this->pax = $pax;
-    }
-    
-    public function setInicio(\DateTime $inicio)
-    {
-        $this->inicio = $inicio;
-    }
-    
-    public function setFin(\DateTime $fin)
-    {
-        $this->fin = $fin;
+        $this->extraPax = $pax;
     }
     
     public function setPolitica(string $politica)
@@ -153,6 +116,11 @@ class Habitacion {
         $this->observacion = $observacion;
     }
     
+    public function setDisponibilidad(int $disponibilidad)
+    {
+        $this->disponibilidad = $disponibilidad;
+    }
+
     public function setHotel(Hotel $hotel)
     {
         $this->hotel = $hotel;
