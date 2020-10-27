@@ -15,7 +15,7 @@ class FormOferta extends AbstractType {
     {
         $builder
                 ->add('tipo', TextType::class)
-                ->add('periodo', DateIntervalType::class )
+                ->add('periodo', DateIntervalType::class,['input'  => 'string'])
                 ->add('fechaLimite', DateType::class)
                 ->add('save', SubmitType::class, ['label' => 'Crear Hotel']);
     }

@@ -7,8 +7,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\HabGet;
 use AppBundle\Form\FormHotel;
+use AppBundle\Form\FormTemp;
+use AppBundle\Form\FormOferta;
 use AppBundle\Entity\Hotel;
 use AppBundle\Entity\Habitacion;
+use AppBundle\Entity\Temporadas;
+use AppBundle\Entity\Oferta;
 use AppBundle\Entity\Foto;
 use Doctrine\ORM\EntityManager;
 
@@ -91,6 +95,17 @@ class HotelController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Hotel::class);
         $hoteles = $repo->findAll();
+        return $this->render('default/hoteles.html.twig',array('hoteles'=>$hoteles));
+    }
+    
+    /**
+     * @Route ("/hotelesAdmin", name="hoteles_admin")
+     */
+    public function obtenerHotelesAddmin()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(Hotel::class);
+        $hoteles = $repo->findAll();
         return $this->render('default/main.html.twig',array('hoteles'=>$hoteles));
     }
     
@@ -120,6 +135,71 @@ class HotelController extends Controller {
         
         //Guardando los datos en la BD y redireccionando exito
         $em->persist($habitacion);
+        $em->flush();
+        return $this->redirectToRoute('hoteles');
+    }
+      return $this->render('default/HabitacionForm.html.twig', ['form' => $form->createView(),'idHotel'=>$idH]);
+    }
+    
+    
+    /**
+     * @Route ("/addTemp/{idH}", name="add_temp")
+     */
+    public function addTemporada(Request $request,$idH)
+    {   
+        //Creando la habitacion 
+        $temporada = new Temporadas();
+        //Obteniendo los datos de la Temporada en un formulario
+        $form = $this->createForm(FormTemp::class, $temporada);
+        
+        $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid())
+    {
+                
+        //Obteniendo el hotel vinculado a la habitacion
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(Hotel::class);
+        $hotel = $repo->findOneById($idH);
+        $temporada = $form->getData();
+        //Agregando la relacion entre las dos entidades 
+        $hotel->getTemporadas()->add($temporada);
+        $temporada->setHotel($hotel);
+        
+        //Guardando los datos en la BD y redireccionando exito
+        $em->persist($temporada);
+        $em->flush();
+        return $this->redirectToRoute('hoteles');
+    }
+      return $this->render('default/HabitacionForm.html.twig', ['form' => $form->createView(),'idHotel'=>$idH]);
+    }
+    
+    /**
+     * @Route ("/addOferta/{idH}", name="add_oferta")
+     */
+    public function addOferta(Request $request,$idH)
+    {   
+        //Creando la habitacion 
+        $oferta = new Oferta();
+        //Obteniendo los datos de la Temporada en un formulario
+        $form = $this->createForm(FormOferta::class, $oferta);
+        
+        $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid())
+    {
+                
+        //Obteniendo el hotel vinculado a la habitacion
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(Hotel::class);
+        $hotel = $repo->findOneById($idH);
+        $oferta = $form->getData();
+        //Agregando la relacion entre las dos entidades 
+        $hotel->getOfertas()->add($oferta);
+        $oferta->setHotel($hotel);
+        
+        //Guardando los datos en la BD y redireccionando exito
+        $em->persist($oferta);
         $em->flush();
         return $this->redirectToRoute('hoteles');
     }

@@ -22,7 +22,7 @@ class Oferta {
     private $tipo;
     
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string")
      */
     private $periodo;
     
@@ -54,16 +54,16 @@ class Oferta {
     {
         return $this->periodo;
     }
-    public function setPeriodo(\DateTime $periodo)
+    public function setPeriodo(string $periodo)
     {
         $this->periodo = $periodo;
     }
     
-    public function getFlimite()
+    public function getFechaLimite()
     {
       return $this->fechaLimite;  
     }
-    public function setFlimite(\DateTime $fechaLimite)
+    public function setFechaLimite(\DateTime $fechaLimite)
     {
         $this->fechaLimite = $fechaLimite;
     }
