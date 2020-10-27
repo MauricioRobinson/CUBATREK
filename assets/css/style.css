@@ -515,19 +515,20 @@ div#ubicacion-hotel {
     border: 2px solid black;
     border-radius: 50%;
 }
-#autos-disponibles a#ver-auto{
-    float: right;
-    background-color: transparent;
-    box-shadow: none;
-    color: black;
-    font-weight: lighter;
-    margin: 0;
-    border: 2px solid #f0ad4e;
-    border-radius: 0px;
-    border-right: none;
-    border-bottom: none;
-    margin-right: -1px;
+#autos-disponibles div#car-type{
+    position: relative;
 }
-#autos-disponibles a#ver-auto:hover{
-    background-color: #f0ad4e;
+#autos-disponibles div#car-type li.card:hover{
+    background-color: #fcfcfc;
+    cursor: pointer;
+}
+#autos-disponibles div#car-type #car-img{
+    position: absolute;
+    right: 7px;
+    top: 7px;
+}
+#autos-disponibles div#car-type #logo-proveedor{
+    position: absolute;
+    right: 20px;
+    top: 80px;
 }
