@@ -2,10 +2,14 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use AppBundle\Entity\Auto;
 use AppBundle\Entity\Foto;
-use AppBundle\Entity\Reservacion;
+use AppBundle\Entity\ReservaAuto;
 
 /**
  * Description of AutoController
@@ -13,15 +17,7 @@ use AppBundle\Entity\Reservacion;
  * @author SALUD
  */
 class AutoController extends Controller {
-    
-    protected $em = null;
-    protected $kernel = null;
-
-    public function __construct(EntityManager $em)
-    {
-        $this->em = $em;
-    }
-    
+   
     public function crearAuto(string $marca,int $cant_asientos,string $categoria,string $motor,float $precio,bool $tipo_transicion,string $url=NULL)
     {
          $auto = new Auto();
@@ -73,14 +69,18 @@ class AutoController extends Controller {
         $em->flush();
     }
     
+    /**
+     * @Route ("/autos", name = "auto-lista")
+     */
     public function obtenerAutos()
-    {
-        $repo = $this->em->getRepository(Auto::class);
+    {   
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(Auto::class);
         $auto = $repo->findAll();
-        return $auto;
+        return $this->render('autos/index.html.twig');
     }
     
-    public function reservar($idA,string $nombre,string $apellido,string $identidad,  \DateTime $fecha_entrada,  \DateTime $fecha_salida)
+    public function reservar()
     {
         $reservacion = new Reservacion();
         $reservacion->setNombre($nombre);

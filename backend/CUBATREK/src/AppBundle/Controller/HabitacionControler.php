@@ -39,14 +39,29 @@ class HabitacionControler extends Controller {
         $reserva->setHabitacion($habitacion);
         
         //Guardando los datos en la BD y redireccionando exito
-        $em->persist($oferta);
+        $em->persist($reserva);
         $em->flush();
-        return $this->redirectToRoute('');
+        $idR = $reserva->getId();
+        return $this->redirectToRoute('habitacion-reservada',['id'=>$idR]);
     }
       return $this->render('default/formReserva.html.twig', ['form' => $form->createView(),'hotel'=>$hotel,'habitacion'=>$habitacion]);
     }
     
-    public function actuaizarHabitacion(int $id,string $tipo,float $precio,float $rebaja,int $pax,  \DateTime $inicio,  \DateTime $fin,string $politica, string $observacion)
+    /** 
+     * @Route ("/HabitacionReservada/13577893{id}23124124242414", name = "habitacion-reservada")
+     */
+    public function resultado($id)
+    {
+        $em = $this->getDoctrine()->getManager(); 
+        $repo = $em->getRepository(Reservacion::class);
+        $reserva = $repo->findOneById($id);
+        $habitacion = $reserva->getHabitacion();
+        $hotel = $habitacion->getHotel();
+         return $this->render('default/resultadoReserva.html.twig', ['reserva' => $reserva,'hotel'=>$hotel,'habitacion'=>$habitacion]);
+        
+    }
+
+        public function actuaizarHabitacion(int $id,string $tipo,float $precio,float $rebaja,int $pax,  \DateTime $inicio,  \DateTime $fin,string $politica, string $observacion)
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Habitacion::class);
@@ -111,13 +126,4 @@ class HabitacionControler extends Controller {
         $em->flush();
        }
     }        
-    
-    /**
-     * @Route ("/reservacionH/{habitacion}",name="reservar_hotel") 
-     */
-    public function formReserva(Habitacion $habitacion)
-    {
-        
-    }
- 
 }
