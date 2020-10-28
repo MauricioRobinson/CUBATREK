@@ -233,25 +233,48 @@
     **************************************************************************************************************-->
         <div id="calendario" class="col-sm-12 col-md-6">
             <h2 class="ml-1 text-center">Recogida & Entrega </h2>
-            <form class="bg-light p-2 m-2 shadow-sm border rounded float-md-right" id="calendario-reservas-auto"
-                action="" method="" novalidate>
+            <form class="validated bg-light p-2 m-2 shadow-sm border rounded float-md-right" id="calendario-reservas-auto" novalidate>
                 <h3 class="text-muted small">Datos de reserva del auto</h3>
                 <div class="form-row">
                     <div class="form-group col-sm-12 col-md-6">
                         <label for="check-in">Recogida</label>
                         <input type="date" name="" class="form-control mb-2" id="check-in" required>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Entre una fecha v&aacute;lida
+                        </div>
                     </div>
                     <div class="form-group col-sm-12 col-md-6">
                         <label for="hora-recogida">Hora recogida</label>
                         <input type="time" name="" class="form-control mb-2" id="hora-recogida" required>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Entre una hora v&aacute;lida
+                        </div>
                     </div>
                     <div class="form-group col-sm-12 col-md-6">
                         <label for="check-out">Entrega</label>
                         <input type="date" name="" class="form-control mb-2" id="check-out" required>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Entre una fecha v&aacute;lida
+                        </div>
                     </div>
                     <div class="form-group col-sm-12 col-md-6">
                         <label for="hora-entrega">Hora entrega</label>
                         <input type="time" name="" class="form-control mb-2" id="hora-entrega" required>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Entre una hora v&aacute;lida
+                        </div>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="provincia-recogida">Donde lo va a recoger</label>
@@ -272,6 +295,12 @@
                             <option value="">Santiago de Cuba</option>
                             <option value="">Guant&aacute;namo</option>
                         </select>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Debe escoger una provincia
+                        </div>
                     </div>
                     <div class="form-gruop col-sm-6">
                         <label for="lugar-recogida">Lugar de recogida</label>
@@ -279,6 +308,12 @@
                             <option value="Aeropuerto" selected>Aeropuerto</option>
                             <option value="Ciudad">Ciudad</option>
                         </select>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Debe escoger un lugar de recogida
+                        </div>
                     </div>
                     <div class="form-gruop col-sm-12">
                         <h3 class="text-muted text-center my-2 ml-2">Extras</h3>
@@ -290,6 +325,12 @@
                             <option value="uno">1 / +5 USD x dia</option>
                             <option value="dos">2 / +5 USD x dia</option>
                         </select>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Incorrecto!
+                        </div>
                     </div>
                     <div class="form-gruop col-sm-6">
                         <label for="silla-bebe">Silla para beb&eacute;</label>
@@ -297,6 +338,12 @@
                             <option value="ninguno" selected>No</option>
                             <option value="uno">1 / +3 USD x dia</option>
                         </select>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Incorrecto!
+                        </div>
                     </div>
                     <div class="form-gruop col-sm-12">
                         <h3 class="text-muted text-center my-3 ml-2">Datos del conductor</h3>
@@ -308,16 +355,34 @@
                         <label for="nombre-conductor">Nombre *</label>
                         <input type="text" name="" id="nombre-conductor" class="form-control mb-2" placeholder="Nombre"
                             required>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Entre un nombre v&aacute;lido
+                        </div>
                     </div>
                     <div class="form-gruop col-sm-6">
                         <label for="apellido-conductor">Apellido *</label>
                         <input type="text" name="" id="apellido-conductor" class="form-control mb-2"
                             placeholder="Apellido" required>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Entre una apellido v&aacute;lido
+                        </div>
                     </div>
                     <div class="form-gruop col-sm-12">
                         <label for="email-conductor">Email *</label>
                         <input type="email" name="" id="email-conductor" class="form-control" placeholder="Email"
                             required>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Entre un email v&aacute;lido
+                        </div>
                         <small id="aviso-email" class="form-text text-muted mb-2">
                             Donde vas a recibir la confirmaci&oacute;n de la reserva y los datos
                         </small>
@@ -326,6 +391,12 @@
                         <label for="licencia-conductor">Licencia *</label>
                         <input type="text" name="" id="licencia-conductor" class="form-control mb-2"
                             placeholder="Licencia" required>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Entre una licencia v&aacute;lida
+                        </div>
                     </div>
                     <div class="form-gruop col-sm-4">
                         <label for="id-conductor">NIC / pasaporte </label>
@@ -336,6 +407,12 @@
                         <label for="telefono-conductor">Tel&eacute;fono *</label>
                         <input type="tel" name="" id="telefono-conductor" class="form-control"
                             placeholder="Tel&eacute;fono" required>
+                            <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Entre un tel&eacute;fono v&aacute;lido
+                        </div>
                         <small id="aviso-email" class="form-text text-muted mb-2">
                             Por si necesitamos informarte de algo importante
                         </small>
@@ -343,6 +420,9 @@
                     <div class="form-gruop col-sm-12">
                         <label for="id-conductor">Direcci&oacute;n en la que puedas estar (opcional)</label>
                         <input type="text" name="" id="id-conductor" class="form-control" placeholder="Dirección">
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
                         <small id="aviso-email" class="form-text text-muted mb-2">
                             Por si necesitamos contactarte urgente
                         </small>
@@ -351,6 +431,12 @@
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="apruebo" required>
                             <label class="custom-control-label" for="apruebo">Confirmo que he le&iacute;do y estoy de acuerdo con la <a href="#">Pol&iacute;tica de Privacidad</a> y los <a href="#">T&eacute;rminos y condiciones</a> de CUBATREK</label>
+                            <div class="valid-feedback">
+                            Correcto!
+                            </div>
+                            <div class="invalid-feedback">
+                                Debe estar de acuerdo para poder continuar
+                            </div>
                         </div>
                     </div>
                     <div class="container mt-4">
@@ -374,19 +460,15 @@
                                     </tr>
                                     <tr>
                                         <td>Seguro</td>
-                                        <td>15 USD / d&iacute;a</td>
+                                        <td>Inclu&iacute;do</td>
                                     </tr>
                                     <tr>
-                                        <td>Dep&oacute;sito</td>
+                                        <td>Dep&oacute;sito de garant&iacute;a</td>
                                         <td>150 USD</td>
                                     </tr>
                                     <tr>
-                                        <td>Extra</td>
-                                        <td> 5 USD / d&iacute;a</td>
-                                    </tr>
-                                    <tr>
                                         <th>SUBTOTAL:</th>
-                                        <td> 230 USD</td>
+                                        <td> 241 USD</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -454,6 +536,7 @@
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/validate-form.js"></script>
 
 </body>
 

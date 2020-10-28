@@ -340,12 +340,12 @@
                                         <div class="container-fluid my-4">
                                             <div class="row row-cols-2">
                                                 <div class="col-8">
-                                                    <button type="button" class="btn" data-toggle="collapse"
-                                                        data-target="#ver-descripcion-auto" aria-expanded="false"
-                                                        aria-controls="ver-descripcion-auto">
+                                                    <button type="button" id="ver-descripcion-auto" class="btn" data-toggle="collapse"
+                                                        data-target="#car-name" aria-expanded="false"
+                                                        aria-controls="car-name">
                                                         Ver descripcion
                                                     </button>
-                                                    <div class="collapse container" id="ver-descripcion-auto">
+                                                    <div class="collapse container" id="car-name">
                                                         <ul class="list-group list-group-flush small shadow-sm">
                                                             <li class="list-group-item">
                                                                 <i class="fas fa-snowflake"></i> Aire
@@ -365,7 +365,140 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <span id="precio-auto" class="float-right h3 font-weight-bold">$140 USD</span>
+                                                    <span id="precio-auto" class="float-right h3 font-weight-bold">$140
+                                                        USD</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container border-top mt-2 pt-2">
+                                            <a href="booking_car.html" role="button" class="btn btn-block">Ver auto <i
+                                                    class="fas fa-chevron-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </div>
+
+                            <div id="car-type" class="text-decoration-none shadow text-reset">
+                                <li class="card mb-3 shadow-sm border p-1">
+                                    <div class="card-body">
+                                        <img src="../assets/img/autos/Mercedes_C_class_85x64.jpg" alt=""
+                                            class="img-fluid img-thumbnail ml-3" id="car-img">
+                                        <img src="../assets/img/iconos/havanautos.png" alt="" id="logo-proveedor"
+                                            class="img-fluid float-right">
+                                        <h5>
+                                            <i class="fas fa-car"></i>
+                                            <span id="car-name">Car name</span>
+                                            <p class="text-muted small">o similar</p>
+                                        </h5>
+                                        <div id="auto-short-description" class="border-bottom mb-2 pb-2">
+                                            <i class="fas fa-user"></i><span id="asientos"
+                                                class="badge badge-light mr-3">5</span>
+                                            <i class="fas fa-gas-pump ml-3"></i><span id="combustible"
+                                                class="badge badge-light">gasolina</span>
+                                            <br />
+                                            <i class="fas fa-suitcase-rolling"></i><span id="capacidad-maletas"
+                                                class="badge badge-light mr-3">4</span>
+                                            <i class="fas fa-code-branch ml-3"></i><span id="transmision"
+                                                class="badge badge-light">transimision</span>
+                                        </div>
+
+                                        <div class="container-fluid my-4">
+                                            <div class="row row-cols-2">
+                                                <div class="col-8">
+                                                    <button type="button" id="ver-descripcion-auto" class="btn" data-toggle="collapse"
+                                                        data-target="#car-name" aria-expanded="false"
+                                                        aria-controls="car-name">
+                                                        Ver descripcion
+                                                    </button>
+                                                    <div class="collapse container" id="car-name">
+                                                        <ul class="list-group list-group-flush small shadow-sm">
+                                                            <li class="list-group-item">
+                                                                <i class="fas fa-snowflake"></i> Aire
+                                                                acondicionado
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <i class="fas fa-gas-pump"></i> Full/Full
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <i class="fas fa-road"></i> Km ilimitados
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <i class="fas fa-check text-success"></i> Seguro
+                                                                inclu&iacute;do
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <span id="precio-auto" class="float-right h3 font-weight-bold">$140
+                                                        USD</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="container border-top mt-2 pt-2">
+                                            <a href="booking_car.html" role="button" class="btn btn-block">Ver auto <i
+                                                    class="fas fa-chevron-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </div>
+
+                            <div id="car-type" class="text-decoration-none shadow text-reset">
+                                <li class="card mb-3 shadow-sm border p-1">
+                                    <div class="card-body">
+                                        <img src="../assets/img/autos/Mercedes_C_class_85x64.jpg" alt=""
+                                            class="img-fluid img-thumbnail ml-3" id="car-img">
+                                        <img src="../assets/img/iconos/rex.png" alt="" id="logo-proveedor"
+                                            class="img-fluid float-right">
+                                        <h5>
+                                            <i class="fas fa-car"></i>
+                                            <span id="car-name">Car name</span>
+                                            <p class="text-muted small">o similar</p>
+                                        </h5>
+                                        <div id="auto-short-description" class="border-bottom mb-2 pb-2">
+                                            <i class="fas fa-user"></i><span id="asientos"
+                                                class="badge badge-light mr-3">5</span>
+                                            <i class="fas fa-gas-pump ml-3"></i><span id="combustible"
+                                                class="badge badge-light">gasolina</span>
+                                            <br />
+                                            <i class="fas fa-suitcase-rolling"></i><span id="capacidad-maletas"
+                                                class="badge badge-light mr-3">4</span>
+                                            <i class="fas fa-code-branch ml-3"></i><span id="transmision"
+                                                class="badge badge-light">transimision</span>
+                                        </div>
+
+                                        <div class="container-fluid my-4">
+                                            <div class="row row-cols-2">
+                                                <div class="col-8">
+                                                    <button type="button" id="ver-descripcion-auto" class="btn" data-toggle="collapse"
+                                                        data-target="#car-name" aria-expanded="false"
+                                                        aria-controls="car-name">
+                                                        Ver descripcion
+                                                    </button>
+                                                    <div class="collapse container" id="car-name">
+                                                        <ul class="list-group list-group-flush small shadow-sm">
+                                                            <li class="list-group-item">
+                                                                <i class="fas fa-snowflake"></i> Aire
+                                                                acondicionado
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <i class="fas fa-gas-pump"></i> Full/Full
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <i class="fas fa-road"></i> Km ilimitados
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <i class="fas fa-check text-success"></i> Seguro
+                                                                inclu&iacute;do
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <span id="precio-auto" class="float-right h3 font-weight-bold">$140
+                                                        USD</span>
                                                 </div>
                                             </div>
 
