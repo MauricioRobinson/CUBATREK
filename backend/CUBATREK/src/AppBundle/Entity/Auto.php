@@ -119,7 +119,7 @@ class Auto {
     
     public function getAsientos()
     {
-        return $this->cantAsiento;
+        return $this->cantAsientos;
     }
     
     public function getCategoria()

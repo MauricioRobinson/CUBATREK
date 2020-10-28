@@ -76,11 +76,14 @@ class AutoController extends Controller {
     {   
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Auto::class);
-        $auto = $repo->findAll();
-        return $this->render('autos/index.html.twig');
+        $autos = $repo->findAll();
+        return $this->render('autos/index.html.twig',array('autos'=>$autos));
     }
     
-    public function reservar()
+    /**
+     * @Route ("/auto/reservar/{id}", name = "auto-reserva")
+     */
+    public function reservar(Request $request,$id)
     {
         $reservacion = new Reservacion();
         $reservacion->setNombre($nombre);
