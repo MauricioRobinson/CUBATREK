@@ -219,7 +219,7 @@ class Auto {
         $this->tipo_transmicion = $tipo_transicion;
     }
     
-    public function setCombustible(srting $combustible)
+    public function setCombustible(string $combustible)
     {
         $this->combustible = $combustible;
     }
@@ -229,7 +229,7 @@ class Auto {
         $this->capacidadEquipaje = $capacidad;
     }
     
-    public function setAgencia(srting $agencia)
+    public function setAgencia(string $agencia)
     {
         $this->agencia = $agencia;
     }
