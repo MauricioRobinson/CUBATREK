@@ -34,13 +34,23 @@ class Reservacion {
     /**
      * @ORM\Column(type="date") 
      */ 
-    private $fecha_entrada;
+    private $fechaEntrada;
     
     /**
      * @ORM\Column(type="date") 
      */ 
-    private $fecha_salida;
+    private $fechaSalida;
     
+    /**
+     * @ORM\Column(type="integer") 
+     */
+    private $pax;
+    
+    /**
+     * @ORM\Column(type="string") 
+     */
+    private $correo;
+
     /**
      * @ORM\ManyToOne(targetEntity="Habitacion", inversedBy="reservaciones") 
      */
@@ -64,12 +74,12 @@ class Reservacion {
      
     public function getFechaEntrada()
     {
-        return $this->fecha_entrada;
+        return $this->fechaEntrada;
     }
     
     public function getFechaSalida()
     {
-        return $this->fecha_salida;
+        return $this->fechaSalida;
     }
     
     public function getIdentidad()
@@ -82,6 +92,16 @@ class Reservacion {
         return $this->habitacion;
     }
     
+    public function getPax()
+    {
+        return $this->pax;
+    }
+
+    public function getCorreo()
+    {
+        return $this->correo;
+    }
+
     //Sección de los métodos set
     public function setNombre(string $nombre)
     {
@@ -100,16 +120,25 @@ class Reservacion {
     
     public function setFechaEntrada( \DateTime $fecha_entrada)
     {
-        $this->fecha_entrada = $fecha_entrada;
+        $this->fechaEntrada  = $fecha_entrada;
     }
     
     public function setFechaSalida( \DateTime $fecha_saida)
     {
-        $this->fecha_salida = $fecha_saida;
+        $this->fechaSalida = $fecha_saida;
     }
     
     public function setHabitacion(Habitacion $habitacion=NULL)
     {
         $this->habitacion = $habitacion;
+    }
+    public function setPax(int $cant_pax)
+    {
+        $this->pax = $cant_pax;
     }        
+    
+    public function setCorreo(string $correo)
+    {
+        $this->correo = $correo;
+    }
 }

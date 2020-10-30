@@ -2,10 +2,15 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use AppBundle\Entity\Auto;
 use AppBundle\Entity\Foto;
-use AppBundle\Entity\Reservacion;
+use AppBundle\Entity\ReservaAuto;
+use AppBundle\Form\FormReservaA;
 
 /**
  * Description of AutoController
@@ -13,16 +18,8 @@ use AppBundle\Entity\Reservacion;
  * @author SALUD
  */
 class AutoController extends Controller {
-    
-    protected $em = null;
-    protected $kernel = null;
-
-    public function __construct(EntityManager $em)
-    {
-        $this->em = $em;
-    }
-    
-    public function crearAuto(string $marca,int $cant_asientos,string $categoria,string $motor,float $precio,bool $tipo_transicion,string $url=NULL)
+   
+    public function crearAuto()
     {
          $auto = new Auto();
          $auto->setMarca($marca);
@@ -73,33 +70,52 @@ class AutoController extends Controller {
         $em->flush();
     }
     
+    /**
+     * @Route ("/autos", name = "auto-lista")
+     */
     public function obtenerAutos()
-    {
-        $repo = $this->em->getRepository(Auto::class);
-        $auto = $repo->findAll();
-        return $auto;
+    {   
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(Auto::class);
+        $autos = $repo->findAll();
+        return $this->render('autos/index.html.twig',array('autos'=>$autos));
     }
     
-    public function reservar($idA,string $nombre,string $apellido,string $identidad,  \DateTime $fecha_entrada,  \DateTime $fecha_salida)
+    /**
+     * @Route ("/auto/reservar/{id}", name = "auto-reserva")
+     */
+    public function reservar(Request $request,$id)
     {
-        $reservacion = new Reservacion();
-        $reservacion->setNombre($nombre);
-        $reservacion->setApellido($apellido);
-        $reservacion->setIdentidad($identidad);
-        $reservacion->setFechaEntrada($fecha_entrada);
-        $reservacion->setFechaSalida($fecha_salida);
-        
-        $repo = $this->em->getRepository(Auto::class);
-        $auto = $repo->findOneById($idA);
-        if($auto->getReserva() == NULL)
+        $reservacion = new ReservaAuto();
+        $form = $this->createForm(FormReservaA::class, $reservacion);
+        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(Auto::class);
+        $auto = $repo->findOneById($id);
+        if ($form->isSubmitted() && $form->isValid())
         {
-         $auto->setReservasion($reservacion);
-         $this->em->persist($reservacion);
-         $this->em->persist($auto);
-         $this->em->flush();
+        $reservacion = $form->getData();
+        $reservacion->setAuto($auto);
+        $em->persist($reservacion);
+        $em->flush();
+        $idR= $reservacion->getId();
+        return $this->redirectToRoute('auto-confirm',['id'=>$idR]);
         }
+        return $this->render('autos/booking_car.html.twig',['form' => $form->createView(),'auto'=>$auto]);
     }
     
+    /**
+     * @Route ("/auto/confirm/12r4r35y7{id}2fewte45", name = "auto-confirm")
+     */
+    public function reservaInfo($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(ReservaAuto::class);
+        $reserva = $repo->findOneById($id);
+        $auto = $reserva->getAuto();
+        return $this->render('autos/confirm_booking_car.html.twig',['reserva' =>$reserva ,'auto'=>$auto]);
+    }
+
     public function finReserva(int $id)
     {
         $repo = $this->em->getRepository(Auto::class);

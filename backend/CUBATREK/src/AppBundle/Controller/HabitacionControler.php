@@ -6,41 +6,62 @@ use Doctrine\ORM\EntityManagerInterface;
 use AppBundle\Entity\Hotel;
 use AppBundle\Entity\Habitacion;
 use AppBundle\Entity\Reservacion;
+use AppBundle\Form\FormReservaH;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class HabitacionControler extends Controller {
-    
-   protected $em = null;
-    protected $kernel = null;
-
-    public function __construct()
+   
+    /** 
+     * @Route ("/reservarHabitacion/{id}", name = "reservarH")
+     */
+    public function addReserva(Request $request,$id)
     {
-        $this->em = new EntityManager();
-    }
-    
-    public function addReserva(Habitacion $hab,string $nombre,string $apellido,string $identidad, \DateTime $inicio, \DateTime $fin )
-    {
-        //Creando la habitacion con los datos pasados por parametro
+        //Creando la habitacion 
         $reserva = new Reservacion;
-        $reserva->setNombre($nombre);
-        $reserva->setApellido($apellido);
-        $reserva->setIdentidad($identidad);
-        $reserva->setFechaEntrada($inicio);
-        $reserva->setFechaSalida($fin);
-              
+        //Obteniendo los datos de la Temporada en un formulario
+        $form = $this->createForm(FormReservaH::class, $reserva);
         
+        //Obteniendo el hotel vinculado a la habitacion
+        $em = $this->getDoctrine()->getManager(); 
+        $repo = $em->getRepository(Habitacion::class);
+        $habitacion = $repo->findOneById($id);
+        $hotel = $habitacion->getHotel();
+        $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid())
+    {
+        $reserva = $form->getData();
         //Agregando la relacion entre las dos entidades 
-        $hab->getReservas()->add($reserva);
-        //$disponibilidad = $hotel->getDisponibilidad()-1;
-        //$hotel->setDisponibilidad($disponibilidad);
-        $reserva->setHabitacion($hab);
+        $habitacion->getReservas()->add($reserva);
+        $reserva->setHabitacion($habitacion);
         
-        //Guardando los datos en la BD
-        $em = $this->getDoctrine()->getManager();
+        //Guardando los datos en la BD y redireccionando exito
         $em->persist($reserva);
         $em->flush();
+        $idR = $reserva->getId();
+        return $this->redirectToRoute('habitacion-reservada',['id'=>$idR]);
+    }
+      return $this->render('default/formReserva.html.twig', ['form' => $form->createView(),'hotel'=>$hotel,'habitacion'=>$habitacion]);
     }
     
-    public function actuaizarHabitacion(int $id,string $tipo,float $precio,float $rebaja,int $pax,  \DateTime $inicio,  \DateTime $fin,string $politica, string $observacion)
+    /** 
+     * @Route ("/HabitacionReservada/13577893{id}23124124242414", name = "habitacion-reservada")
+     */
+    public function resultado($id)
+    {
+        $em = $this->getDoctrine()->getManager(); 
+        $repo = $em->getRepository(Reservacion::class);
+        $reserva = $repo->findOneById($id);
+        $habitacion = $reserva->getHabitacion();
+        $hotel = $habitacion->getHotel();
+         return $this->render('default/resultadoReserva.html.twig', ['reserva' => $reserva,'hotel'=>$hotel,'habitacion'=>$habitacion]);
+        
+    }
+
+        public function actuaizarHabitacion(int $id,string $tipo,float $precio,float $rebaja,int $pax,  \DateTime $inicio,  \DateTime $fin,string $politica, string $observacion)
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Habitacion::class);
@@ -105,7 +126,4 @@ class HabitacionControler extends Controller {
         $em->flush();
        }
     }        
-    
-    
- 
 }

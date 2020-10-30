@@ -6,9 +6,9 @@
          <thead>
              <tr role="row">
                 <th>Nombre</th>
-                <th>Disponibilidad</th>
-                <th>Rango</th>
-                <th>Costo</th>
+                <th>Cadena</th>
+                <th>Area</th>
+                <th>Categoria</th>
                 
             </tr>
          </thead>
@@ -16,11 +16,14 @@
         {% if hoteles is defined %}
         {%for hotel in hoteles%}
             <tr role="row">
-                <td>{{hotel.getNombre}}</td>
-                <td>{{hotel.getDisponibilidad}} </td>
-                <td>{{hotel.getRango}}</td>
-                <td>{{hotel.getPrecio}}</td>  
-                <td><button>Reservar</button></td>
+                <td>{{hotel.getNombre}}             |</td>
+                <td>{{hotel.getCadena}} </td>
+                <td>{{hotel.getRegion}}</td>
+                <td>{{hotel.getCategoria}}Estrellas</td>
+               {# <td><a href = "{{path('reservar_hotel',{'habitacion':hotel.getTipoHab[0]})}}" >Reservar</a> Reservar</td> #}
+                <td><a href ="{{path('crear_habitacion',{'idH':hotel.getId})}}">Agregar Habitacion</a>_____</td>
+                <td><a href ="{{path('add_temp',{'idH':hotel.getId})}}">Agregar Temporada</a>_____</td>
+                <td><a href ="{{path('add_oferta',{'idH':hotel.getId})}}">Agregar Oferta</a>_____</td>
             </tr>
         {%endfor%}
         {%endif%}

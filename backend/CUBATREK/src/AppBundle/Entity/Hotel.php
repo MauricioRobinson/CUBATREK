@@ -22,11 +22,6 @@ class Hotel {
      */
     private $nombre;
     
-    /**
-     * @ORM\Column(type="integer") 
-     */
-    private $disponibilidad;
-    
     /** 
      * @ORM\Column(type="string")
      */
@@ -38,6 +33,11 @@ class Hotel {
     private $categoria;
     
     /**
+     * @ORM\Column(type="string") 
+     */
+    private $region;
+    
+    /**
      * @ORM\OneToMany(targetEntity="Foto", mappedBy="hotel") 
      */
     private $fotos;
@@ -46,12 +46,24 @@ class Hotel {
      * @ORM\OneToMany(targetEntity="Habitacion", mappedBy="hotel")  
      */
     private $tiposHabitaciones;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Temporadas", mappedBy="hotel")  
+     */
+    private $temporadas;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Oferta", mappedBy="hotel")  
+     */
+    private $ofertas;
 
 
     public function __construct() 
     {
         $this->fotos = new ArrayCollection();
         $this->tiposHabitaciones =new ArrayCollection();
+        $this->temporadas = new ArrayCollection;
+        $this->ofertas = new ArrayCollection();
     }
     public function getId()
     {
@@ -63,14 +75,14 @@ class Hotel {
         return $this->nombre;
     }
     
-    public function getDisponibilidad()
-    {
-        return $this->disponibilidad;
-    }
-    
     public function getCadena()
     {
         return $this->cadena;
+    }
+    
+    public function getRegion()
+    {
+        return $this->region;
     }
 
     public function getFotos()
@@ -88,16 +100,20 @@ class Hotel {
         return $this->tiposHabitaciones;
     }
 
-    public function setDisponibilidad(int $disponibilidad)
+    public function getTemporadas()
     {
-        $this->disponibilidad = $disponibilidad;
+        return $this->temporadas;
     }
     
-     public function setNombre(string $nombre)
+    public function getOfertas()
+    {
+        return $this->ofertas;
+    }
+
+    public function setNombre(string $nombre)
     {
          $this->nombre = $nombre;
     }
-    
     
      public function setCategoria(int $categoria)
     {
@@ -108,5 +124,8 @@ class Hotel {
     {
         $this->cadena = $cadena;
     }
-    
+    public function setRegion(string $region)
+    {
+        $this->region = $region;
+    }
 }
