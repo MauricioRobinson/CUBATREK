@@ -38,6 +38,9 @@ a#boton-subir.btn {
 a#boton-subir .fa-arrow-circle-up {
     font-size: 1.5em;
 }
+ul.pagination a.page-link{
+    color: black;
+} 
 
 /*-----------------------------------------------------------------------------------------------------------------------
                         ESTILOS DE LA BARRA DE NAVEGACIÓN
