@@ -11,6 +11,7 @@ use AppBundle\Entity\Auto;
 use AppBundle\Entity\Foto;
 use AppBundle\Entity\ReservaAuto;
 use AppBundle\Form\FormReservaA;
+use AppBundle\Form\Filtro;
 
 /**
  * Description of AutoController
@@ -73,12 +74,18 @@ class AutoController extends Controller {
     /**
      * @Route ("/autos", name = "auto-lista")
      */
-    public function obtenerAutos()
+    public function obtenerAutos(Request $request)
     {   
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Auto::class);
         $autos = $repo->findAll();
+        $form = $this->createForm(Filtro::class, $reservacion);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+             $autos = $repo->findBy(['categoria'=>$categoria]);
+        }
         return $this->render('autos/index.html.twig',array('autos'=>$autos));
+       
     }
     
     /**
@@ -92,14 +99,29 @@ class AutoController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Auto::class);
         $auto = $repo->findOneById($id);
+        $repo2 = $em->getRepository(ReservaAuto::class);
+        $reservado = $repo2->findOneByAuto($auto);
         if ($form->isSubmitted() && $form->isValid())
         {
-        $reservacion = $form->getData();
-        $reservacion->setAuto($auto);
-        $em->persist($reservacion);
-        $em->flush();
-        $idR= $reservacion->getId();
-        return $this->redirectToRoute('auto-confirm',['id'=>$idR]);
+            if ( $reservado ==NULL) {
+                $reservacion = $form->getData();
+                $reservacion->setAuto($auto);
+                
+                $fechaI = $reservacion->getFechaRecogida();
+                $fechaF = $reservacion->getFechaEntrega();
+                $diff = $fechaF->diff($fechaI);
+                $dias = $diff->format("%d");
+                $meses = $diff->format("%m");
+        
+                if( $meses < 1 && $dias > 3 ){
+                $em->persist($reservacion);
+                $em->flush();
+                $idR= $reservacion->getId();
+                return $this->redirectToRoute('auto-confirm',['id'=>$idR]);
+                } else { return new Response('<html> <body><h1>La resrvacion debe ser mayor a 3 dias y menor a 30</h1></body> </html>');
+               }
+            } else { return new Response('<html> <body><h1>'.$auto->getMarca().' auto ya sido reservado</h1></body> </html>');}   
+        
         }
         return $this->render('autos/booking_car.html.twig',['form' => $form->createView(),'auto'=>$auto]);
     }
