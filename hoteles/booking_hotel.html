@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>CUBATREK</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <!-- Añadiendo Bootstrap -->
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
+
+    <!-- Añadiendo normalize.css -->
+    <link rel="stylesheet" href="../../../assets/css/normalize.css">
+
+    <!-- Añadiendo fontawesome -->
+    <link rel="stylesheet" href="../../../assets/css/all.min.css">
+
+    <!-- Añadiendo mis setilos css -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../assets/css/responsive.css">
+
+</head>
+
+<body>
+
+    <!-- *********************************************************************************************************
+                                                Barra de navegación
+    **************************************************************************************************************-->
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light navbar-color">
+        <div class="container">
+            <a class="navbar-brand" href="../../../index.html"><img src="../../../assets/img/logo/logo_navbar350x90.jpg"
+                    alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsableNavbar"
+                aria-controls="collapsableNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsableNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../index.html"><i class="fas fa-home"></i> Inicio<span
+                                class="sr-only"></span></a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="../hoteles/index.html"><i class="fas fa-hotel"></i> Hoteles</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../autos/index.html"><i class="fas fa-car"></i> Autos</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="text-center">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent w-100 mt-3">
+                <li class="breadcrumb-item"><a class="text-decoration-none" href="../../../index.html">Inicio</a></li>
+                <li class="breadcrumb-item"><a class="text-decoration-none" href="../../index.html">Hoteles</a></li>
+                <li class="breadcrumb-item"><a class="text-decoration-none" href="../../destinos/la_habana.html">La
+                        Habana</a></li>
+                <li id="hotel-name" class="breadcrumb-item active" aria-current="page">Hotel Name</li>
+            </ol>
+        </nav>
+    </div>
+
+
+    <section id="hotel" class="container-fluid">
+        <h1 id="hotel-name">Hotel name</h1>
+        <div class="row row-cols-sm-1 row-cols-md-2">
+            <!-- *********************************************************************************************************
+                                                IMAGENES DEL HOTEL
+    **************************************************************************************************************-->
+            <div id="imagenes-hotel" class="col-sm-12 col-md-6">
+                <div id="hotel-name" class="carousel slide container" data-ride="carousel">
+                    <ol class="carousel-indicators d-lg-none">
+                        <li data-target="#hotel-name" data-slide-to="0" class="active"></li>
+                        <li data-target="#hotel-name" data-slide-to="1"></li>
+                        <li data-target="#hotel-name" data-slide-to="2"></li>
+                        <li data-target="#hotel-name" data-slide-to="3"></li>
+                        <li data-target="#hotel-name" data-slide-to="4"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../../../assets/img/hoteles/hotel1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../../../assets/img/hoteles/hotel1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../../../assets/img/hoteles/hotel1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../../../assets/img/hoteles/hotel1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../../../assets/img/hoteles/hotel1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#hotel-name" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#hotel-name" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <!-- *********************************************************************************************************
+                                                INFORMACION DEL HOTEL
+    **************************************************************************************************************-->
+                <section id="info-hotel" class="col-sm-12 mb-5 mt-1">
+                    <nav>
+                        <div class="nav nav-pills" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-servicios-tab" data-toggle="tab"
+                                href="#nav-servicios" role="tab" aria-controls="nav-servicios" aria-selected="true"><i
+                                    class="fas fa-hotel"></i> <i class="fas fa-info-circle"></i></a>
+
+                            <a class="nav-item nav-link" id="nav-accommodation-tab" data-toggle="tab"
+                                href="#nav-accommodation" role="tab" aria-controls="nav-accommodation"
+                                aria-selected="false"><i class="fas fa-bed"></i> <span id="num-habitaciones"
+                                    class="badge badge-pill badge-light">247</span></a>
+
+                            <a class="nav-item nav-link" id="nav-barDrinks-tab" data-toggle="tab" href="#nav-barDrinks"
+                                role="tab" aria-controls="nav-barDrinks" aria-selected="false"><i
+                                    class="fas fa-glass-martini-alt"></i> <span class="badge badge-pill badge-light"
+                                    id="num-bares">4</span></a>
+
+                            <a class="nav-item nav-link" id="nav-restaurant-tab" data-toggle="tab"
+                                href="#nav-restaurant" role="tab" aria-controls="nav-restaurant"
+                                aria-selected="false"><i class="fas fa-concierge-bell"></i> <span
+                                    class="badge badge-pill badge-light" id="num-restaurantes">3</span></a>
+
+                            <a class="nav-item nav-link" id="nav-ubication-tab" data-toggle="tab" href="#nav-ubication"
+                                role="tab" aria-controls="nav-ubication" aria-selected="false"><i
+                                    class="fas fa-map-marker-alt"></i></a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="info-hotelContent">
+                        <div class="tab-pane fade show active pt-2" id="nav-servicios" role="tabpanel"
+                            aria-labelledby="nav-servicios-tab">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos ad cum, laboriosam odit fuga
+                            a
+                            corporis accusamus autem obcaecati nihil nisi ipsa aperiam eveniet, earum modi repellendus
+                            facere quae adipisci!
+                            Molestiae animi molestias sunt tempore quos assumenda doloremque saepe tempora, voluptates
+                            ratione, temporibus rem odit alias cum consequuntur facere? Aliquid, ducimus? Aut atque
+                            dolorem
+                            sint tempore nesciunt, iste ullam blanditiis!
+                            Reiciendis, pariatur odio? At est officia labore inventore molestias, ducimus a debitis
+                            dolore
+                            aliquam! Facilis voluptatem numquam aliquam? Id perferendis exercitationem consectetur aut
+                            illum
+                            numquam accusamus, natus quos in ex.
+                            Distinctio ad veniam incidunt corrupti earum accusantium quam illum, doloremque recusandae
+                            reiciendis ipsa nulla sapiente numquam, consequatur eligendi explicabo expedita id ducimus,
+                            vitae non. Laboriosam soluta odio vel debitis odit.
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-accommodation" role="tabpanel"
+                            aria-labelledby="nav-accommodation-tab">
+
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-barDrinks" role="tabpanel"
+                            aria-labelledby="nav-barDrinks-tab">
+
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-restaurant" role="tabpanel"
+                            aria-labelledby="nav-restaurant-tab">
+
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-ubication" role="tabpanel"
+                            aria-labelledby="nav-ubication-tab">
+                            <div id="ubicacion-hotel" class="shadow">
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+            <!-- *********************************************************************************************************
+                                                CALENDARIO DE RESERVAS
+    **************************************************************************************************************-->
+            <div id="calendario" class="col-sm-12 col-md-6">
+                <h2>Check-in & check-out </h2>
+                <form class="validated bg-light p-3 shadow-sm border rounded float-md-right"
+                    id="calendario-reservas-hoteles" novalidate>
+                    <h3 class="text-muted text-center">Datos de la reserva</h3>
+                    <small class="form-text text-danger">
+                        * Son los datos que necesitamos para poder procesar la reserva
+                    </small>
+                    <div class="form-row mt-2">
+                        <div class="form-group col-sm-12 col-md-6">
+                            <label for="check-in">Entrada <span class="text-danger">*</span></label>
+                            <input type="date" name="check-in" class="form-control mb-2" id="check-in" required>
+                            <small class="form-text text-muted">Check-in</small>
+                            <div class="valid-feedback">
+                                Correcto!
+                            </div>
+                            <div class="invalid-feedback">
+                                Ingrese una fecha v&aacute;lida
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12 col-md-6">
+                            <label for="check-out">Salida <span class="text-danger">*</span></label>
+                            <input type="date" name="check-out" class="form-control mb-2" id="check-out" required>
+                            <small class="form-text text-muted">Check-out</small>
+                            <div class="valid-feedback">
+                                Correcto!
+                            </div>
+                            <div class="invalid-feedback">
+                                Ingrese una fecha v&aacute;lida
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row rows-cols-sm-1 row-cols-md-3 row-cols-lg-4 p-2">
+                                <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                                    <label for="habitaciones">Habitaciones<span class="text-danger">*</span></label>
+                                    <select name="habitaciones" class="form-control" id="habitaciones" required>
+                                        <option value="" selected>-</option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                        <option value="">4</option>
+                                        <option value="">5</option>
+                                        <option value="">6</option>
+                                        <option value="">7</option>
+                                        <option value="">8</option>
+                                    </select>
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Debe escoger cu&aacute;ntas habitaciones quiere
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                                    <label for="adultos">Adultos <span class="text-danger">*</span></label>
+                                    <select name="adultos" class="form-control" id="adultos" required>
+                                        <option value="" selected>-</option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                        <option value="">4</option>
+                                        <option value="">5</option>
+                                        <option value="">6</option>
+                                        <option value="">7</option>
+                                        <option value="">8</option>
+                                        <option value="">9</option>
+                                        <option value="">10</option>
+                                    </select>
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Debe indicar cu&aacute;ntos adultos son
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                                    <label for="niños">Niños <span class="text-danger">*</span></label>
+                                    <select name="niños" class="form-control" id="niños" required>
+                                        <option value="" selected>-</option>
+                                        <option value="">0</option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                        <option value="">4</option>
+                                        <option value="">5</option>
+                                        <option value="">6</option>
+                                    </select>
+                                    <small class="form-text text-muted">2-12 años</small>
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Debe indicar cu&aacute;ntos niños son
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                                    <label for="infantes">Infantes <span class="text-danger">*</span></label>
+                                    <select name="infantes" class="form-control" id="infantes" required>
+                                        <option value="" selected>-</option>
+                                        <option value="">0</option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                        <option value="">4</option>
+                                    </select>
+                                    <small class="form-text text-muted">0 - 1.99 años</small>
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Debe indicar cu&aacute;ntos infantes son
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <h3 class="text-muted text-center">Datos del cliente</h3>
+                        </div>
+                        <div class="form-group col-sm-12 col-md-6">
+                            <label for="name">Nombre <span class="text-danger">*</span></label>
+                            <input type="text" id="nombre-cliente" class="form-control mb-2" placeholder="Su nombre"
+                                required>
+                            <div class="valid-feedback">
+                                Correcto!
+                            </div>
+                            <div class="invalid-feedback">
+                                Por favor, ingrese un nombre v&aacute;lido
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12 col-md-6">
+                            <label for="apellido">Apellido <span class="text-danger">*</span></label>
+                            <input type="text" id="apellido-cliente" class="form-control mb-2" placeholder="Su apellido"
+                                required>
+                            <div class="valid-feedback">
+                                Correcto!
+                            </div>
+                            <div class="invalid-feedback">
+                                Por favor, ingrese un apellido v&aacute;lido
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="email">Email <span class="text-danger">*</span></label>
+                            <input type="email" name="apellido" id="apellido-cliente" class="form-control mb-2"
+                                placeholder="Su email" required>
+                                <small class="form-text text-muted">Donde recibir&aacute; el estado de su reserva</small>
+                            <div class="valid-feedback">
+                                Correcto!
+                            </div>
+                            <div class="invalid-feedback">
+                                Por favor, ingrese un email v&aacute;lido
+                            </div>
+                        </div>
+                        <div class="form-group mb-2 col-sm-12">
+                            <label for="mensaje">Mensaje (opcional)</label>
+                            <textarea name="mensaje" id="mensaje" rows="3" class="form-control mb-2"></textarea>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="apruebo" required>
+                                <label class="custom-control-label" for="apruebo">Confirmo que he le&iacute;do y estoy
+                                    de acuerdo con la <a href="#">Pol&iacute;tica de Privacidad</a> y los <a
+                                        href="#">T&eacute;rminos y condiciones</a> de OurWay Travel</label>
+                                <div class="valid-feedback">
+                                    Correcto!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Debe estar de acuerdo para poder continuar
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <button class="btn text-center mb-2" type="button" data-toggle="collapse"
+                                data-target="#precio-habitaciones-hotel" aria-expanded="false"
+                                aria-controls="precio-habitaciones-hotel">
+                                Ver disponibilidad <i class="fas fa-check-circle"></i>
+                            </button>
+                            <div class="collapse container" id="precio-habitaciones-hotel">
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Triple
+                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$64 USD</button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Doble
+                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$86 USD</button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Sencilla
+                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$115 USD</button>
+                                    </li>
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center disabled">
+                                        Vista al mar
+                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$105 USD</button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Junior Suite
+                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$130 USD</button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Suite
+                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$160 USD</button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Deluxe
+                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$240 USD</button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Grand Deluxe
+                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$520 USD</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- *********************************************************************************************************
+                                                SECCIÓN DE AUTOS RECOMENDADOS
+    **************************************************************************************************************-->
+    <section id="autos-recomendados">
+        <h2 class="title">Autos para explorar</h2>
+        <div class="container">
+            <div class="row row-cols-sm-1 row-cols-lg-3 container-fluid">
+                <div id="auto-economico" class="mb-2">
+                    <h2 class="h4">Econ&oacute;mico</h2>
+                    <ul class="list-unstyled">
+                        <li class="media mr-md-2 shadow-sm">
+                            <img src="../../../assets/img/autos/Kia-Picanto_85x64.jpg" class="mr-3" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1">Car name</h5>
+                                <span class="badge badge-light">categoria</span>
+                                <span class="badge badge-light">transmision</span>
+                                <span id="precio" class="badge badge-color">desde 80.00 USD</span>
+                            </div>
+                        </li>
+                        <li class="media mr-md-2 shadow-sm my-4">
+                            <img src="../../../assets/img/autos/Hyundai-Grand-i10_85x64.jpg" class="mr-3" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1">Car name</h5>
+                                <span class="badge badge-light">categoria</span>
+                                <span class="badge badge-light">transmision</span>
+                                <span id="precio" class="badge badge-color">desde 80.00 USD</span>
+                            </div>
+                        </li>
+                        <li class="media mr-md-2 shadow-sm">
+                            <img src="../../../assets/img/autos/MG3_85x64.jpg" class="mr-3" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1">Car name</h5>
+                                <span class="badge badge-light">categoria</span>
+                                <span class="badge badge-light">transmision</span>
+                                <span id="precio" class="badge badge-color">desde 80.00 USD</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="auto-medio-alto" class="mb-2">
+                    <h2 class="h4">Medio - Alto</h2>
+                    <ul class="list-unstyled">
+                        <li class="media mr-md-2 shadow-sm">
+                            <img src="../../../assets/img/autos/peugeot_301_85x64.jpg" class="mr-3" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1">Car name</h5>
+                                <span class="badge badge-light">categoria</span>
+                                <span class="badge badge-light">transmision</span>
+                                <span id="precio" class="badge badge-color">desde 80.00 USD</span>
+                            </div>
+                        </li>
+                        <li class="media mr-md-2 shadow-sm my-4">
+                            <img src="../../../assets/img/autos/MG5_85x64.jpg" class="mr-3" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1">Car name</h5>
+                                <span class="badge badge-light">categoria</span>
+                                <span class="badge badge-light">transmision</span>
+                                <span id="precio" class="badge badge-color">desde 80.00 USD</span>
+                            </div>
+                        </li>
+                        <li class="media mr-md-2 shadow-sm">
+                            <img src="../../../assets/img/autos/Geely-GC9_85x64.jpg" class="mr-3" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1">Car name</h5>
+                                <span class="badge badge-light">categoria</span>
+                                <span class="badge badge-light">transmision</span>
+                                <span id="precio" class="badge badge-color">desde 80.00 USD</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="auto-lujo" class="mb-2">
+                    <h2 class="h4">Lujo</h2>
+                    <ul class="list-unstyled">
+                        <li class="media mr-md-2 shadow-sm">
+                            <img src="../../../assets/img/autos/MG5_85x64.jpg" class="mr-3" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1">Car name</h5>
+                                <span class="badge badge-light">categoria</span>
+                                <span class="badge badge-light">transmision</span>
+                                <span id="precio" class="badge badge-color">desde 80.00 USD</span>
+                            </div>
+                        </li>
+                        <li class="media mr-md-2 shadow-sm my-4">
+                            <img src="../../../assets/img/autos/Mercedes_C_class_85x64.jpg" class="mr-3" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1">Car name</h5>
+                                <span class="badge badge-light">categoria</span>
+                                <span class="badge badge-light">transmision</span>
+                                <span id="precio" class="badge badge-color">desde 80.00 USD</span>
+                            </div>
+                        </li>
+                        <li class="media mr-md-2 shadow-sm">
+                            <img src="../../../assets/img/autos/Mercedes_E_class_85x64.jpg" class="mr-3" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1">Car name</h5>
+                                <span class="badge badge-light">categoria</span>
+                                <span class="badge badge-light">transmision</span>
+                                <span id="precio" class="badge badge-color">desde 80.00 USD</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- *********************************************************************************************************
+                                            SECCIÓN DEL FOOTER
+    **************************************************************************************************************-->
+    <footer id="footer" class="container py-5">
+        <div class="row">
+            <div class="col-sm-12 col-md mb-4 border-right px-5">
+                &copy; 2020 CUBATREK TRAVEL AGENCY
+                <img class="img-fluid" src="../../../assets/img/logo/logo_navbar350x90.jpg" alt="Logo de CUBATREK">
+            </div>
+            <div id="navegacion-rapida" class="col-sm-6 col-md border-right px-5">
+                <h5>Navegaci&oacute;n r&aacute;pida</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a href="../../../hoteles/index.html" class="text-muted">Hoteles</a></li>
+                    <!-- <li><a href="#" class="text-muted">Casas de renta</a></li> -->
+                    <li><a href="#" class="text-muted">Autos para rentar</a></li>
+                    <!-- <li><a href="#" class="text-muted">Circuitos</a></li> -->
+                </ul>
+            </div>
+
+            <div id="sobre-nosotros" class="col-sm-6 col-md border-right px-5">
+                <h5>Sobre nosotros</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a href="#" class="text-muted">Pol&iacute;tica de privacidad</a></li>
+                    <li><a href="#" class="text-muted">T&eacute;rminos y condiciones</a></li>
+                    <li><a href="#" class="text-muted">Sobre nosotros</a></li>
+                    <li><a href="#" class="text-muted">&Uacute;ltimas noticias</a></li>
+                </ul>
+            </div>
+
+            <div id="redes-sociales" class="col-sm-6 col-md px-5">
+                <h5>S&iacute;ganos en las redes</h5>
+                <ul class="row row-cols-sm-1 row-cols-md-3 list-unstyled text-small">
+                    <li><a href="#" class="text-muted"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" class="text-muted"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#" class="text-muted"><i class="fab fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Añadiendo scrpts js -->
+    <script src="../../../assets/js/jquery.min.js"></script>
+    <script src="../../../assets/js/all.min.js"></script>
+    <script src="../../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/validate-form.js"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE6hkpvQdGLdTN7gDtcoFR8jwzsnp9_jo"></script>
+    <script src="../assets/js/maps.js"></script> -->
+
+</body>
+
+</html>
