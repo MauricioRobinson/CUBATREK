@@ -30,7 +30,7 @@
         <div class="container">
             <a class="navbar-brand" href="../../../index.html"><img src="../../../assets/img/logo/logo_navbar350x90.jpg"
                     alt=""></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsableNavbar"
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="../../booking_hotel.htmlcollapsableNavbar"
                 aria-controls="collapsableNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -63,22 +63,32 @@
             <ol class="breadcrumb bg-transparent w-100 mt-3">
                 <li class="breadcrumb-item"><a class="text-decoration-none" href="../../../index.html">Inicio</a></li>
                 <li class="breadcrumb-item"><a class="text-decoration-none" href="../index.html">Hoteles</a></li>
-                <li class="breadcrumb-item active" aria-current="page">La Habana</li>
+                <li class="breadcrumb-item active" aria-current="page">Playas del Este</li>
             </ol>
         </nav>
+    </div>
+
+    <div class="container-fluid mb-5">
+        <p class="text-left">Paso 1: Escoge tu hotel</p>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar"
+                aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+            </div>
+        </div>
     </div>
 
     <div class="container-fluid">
         <div class="row row-cols-sm-1">
             <div class="dropdown mb-3 col-sm-6 p-3 d-block d-md-none">
+                <!-- Filtro para teléfono -->
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Filtrar <i class="fas fa-filter"></i>
                 </button>
                 <div class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenuButton">
-                    <div id="filtro-hoteles" class="p-3">
+                    <div class="close mr-2"><i class="fas fa-window-close"></i></div>
+                    <form id="filtro-hoteles" class="p-3">
                         <h2 class="h5 text-center text-muted">Filtrar</h2>
-                        <div class="close"><i class="fas fa-window-close"></i></div>
                         <ul id="categoria" class="list-unstyled">
                             <h3 class="h6">Categor&iacute;a</h3>
                             <li class="form-check">
@@ -108,6 +118,8 @@
                                     <i class="fas fa-star"></i>
                                 </label>
                             </li>
+                            <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i
+                                    class="fas fa-check"></i></button>
                         </ul>
 
                         <ul id="franquicia" class="list-unstyled">
@@ -142,6 +154,8 @@
                                     Solways
                                 </label>
                             </li>
+                            <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i
+                                    class="fas fa-check"></i></button>
                         </ul>
 
                         <ul id="precio-hoteles" class="list-unstyled">
@@ -149,39 +163,48 @@
                             <li class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="bajo">
                                 <label class="form-check-label" for="bajo">
-                                    $0 - $49
+                                    $0 - $99
                                 </label>
                             </li>
                             <li class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="medio-bajo">
                                 <label class="form-check-label" for="medio-bajo">
-                                    $50 - $99
+                                    $100 - $199
                                 </label>
                             </li>
                             <li class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="medio">
                                 <label class="form-check-label" for="medio">
-                                    $100 - $149
+                                    $200 - $299
                                 </label>
                             </li>
                             <li class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="medio-alto">
                                 <label class="form-check-label" for="medio-alto">
-                                    $150 - $199
+                                    $300 - $399
                                 </label>
                             </li>
                             <li class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="alto">
                                 <label class="form-check-label" for="alto">
-                                    $200 - $250
+                                    $400 - $499
                                 </label>
                             </li>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="muy-alto">
+                                <label class="form-check-label" for="muy-alto">
+                                    $500 +
+                                </label>
+                            </li>
+                            <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i
+                                    class="fas fa-check"></i></button>
                         </ul>
-                    </div>
+                    </form>
                 </div>
             </div>
 
-            <div id="filtro-hoteles" class="col-md-3 bg-light p-3 shadow d-none d-md-block">
+            <!-- Filtro para pc y tablets -->
+            <form id="filtro-hoteles" class="col-md-3 bg-light p-3 shadow d-none d-md-block">
                 <h2 class="h5 text-center text-muted">Filtrar</h2>
                 <ul id="categoria" class="list-unstyled">
                     <h3 class="h6">Categor&iacute;a</h3>
@@ -212,6 +235,7 @@
                             <i class="fas fa-star"></i>
                         </label>
                     </li>
+                    <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i class="fas fa-check"></i></button>
                 </ul>
 
                 <ul id="franquicia" class="list-unstyled">
@@ -246,6 +270,7 @@
                             Solways
                         </label>
                     </li>
+                    <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i class="fas fa-check"></i></button>
                 </ul>
 
                 <ul id="precio-hoteles" class="list-unstyled">
@@ -253,36 +278,42 @@
                     <li class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="bajo">
                         <label class="form-check-label" for="bajo">
-                            $0 - $49
+                            $0 - $99
                         </label>
                     </li>
                     <li class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="medio-bajo">
                         <label class="form-check-label" for="medio-bajo">
-                            $50 - $99
+                            $100 - $199
                         </label>
                     </li>
                     <li class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="medio">
                         <label class="form-check-label" for="medio">
-                            $100 - $149
+                            $200 - $299
                         </label>
                     </li>
                     <li class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="medio-alto">
                         <label class="form-check-label" for="medio-alto">
-                            $150 - $199
+                            $300 - $399
                         </label>
                     </li>
                     <li class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="alto">
                         <label class="form-check-label" for="alto">
-                            $200 - $250
+                            $400 - $499
                         </label>
                     </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="muy-alto">
+                        <label class="form-check-label" for="muy-alto">
+                            $500 +
+                        </label>
+                    </li>
+                    <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i class="fas fa-check"></i></button>
                 </ul>
-
-            </div>
+            </form>
 
             <div class="col-md-9">
                 <div class="row row-cols-sm-1">
@@ -290,7 +321,7 @@
                         <h2 class="mb-5 text-wrap">Hoteles en Playas del Este de La Habana</h2>
 
                         <ul class="list-unstyled">
-                            <a class="text-decoration-none shadow text-reset" href="Habana/hotel_nacional.html">
+                            <a class="text-decoration-none shadow text-reset" href="../../booking_hotel.html">
                                 <li class="media mb-3 shadow-sm bg-light">
                                     <img src="../../../assets/img/hoteles/img_hotel-prueba_85x64.jpg"
                                         class="mr-3 img-thumbnail rounded" alt="...">
@@ -298,7 +329,7 @@
                                         <h5 id="hotel-name" class="mt-0 mb-1">Hotel name</h5>
                                         <p id="hotel-short-description"></p>
                                         <span id="hotel-ubicacion" class="badge badge-light"><i
-                                                class="fas fa-map-marker-alt text-danger"></i> La Habana</span>
+                                                class="fas fa-map-marker-alt text-danger"></i> Playas del Este</span>
                                         <span id="hotel-categoria" class="badge badge-light">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
@@ -309,7 +340,7 @@
                                     </div>
                                 </li>
                             </a>
-                            <a class="text-decoration-none shadow text-reset" href="#">
+                            <a class="text-decoration-none shadow text-reset" href="../../booking_hotel.html">
                                 <li class="media mb-3 shadow-sm bg-light">
                                     <img src="../../../assets/img/hoteles/img_hotel-prueba_85x64.jpg"
                                         class="mr-3 img-thumbnail rounded" alt="...">
@@ -317,7 +348,7 @@
                                         <h5 id="hotel-name" class="mt-0 mb-1">Hotel name</h5>
                                         <p id="hotel-short-description"></p>
                                         <span id="hotel-ubicacion" class="badge badge-light"><i
-                                                class="fas fa-map-marker-alt text-danger"></i> La Habana</span>
+                                                class="fas fa-map-marker-alt text-danger"></i> Playas del Este</span>
                                         <span id="hotel-categoria" class="badge badge-light">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
@@ -328,7 +359,7 @@
                                     </div>
                                 </li>
                             </a>
-                            <a class="text-decoration-none shadow text-reset" href="#">
+                            <a class="text-decoration-none shadow text-reset" href="../../booking_hotel.html">
                                 <li class="media mb-3 shadow-sm bg-light">
                                     <img src="../../../assets/img/hoteles/img_hotel-prueba_85x64.jpg"
                                         class="mr-3 img-thumbnail rounded" alt="...">
@@ -336,7 +367,7 @@
                                         <h5 id="hotel-name" class="mt-0 mb-1">Hotel name</h5>
                                         <p id="hotel-short-description"></p>
                                         <span id="hotel-ubicacion" class="badge badge-light"><i
-                                                class="fas fa-map-marker-alt text-danger"></i> La Habana</span>
+                                                class="fas fa-map-marker-alt text-danger"></i> Playas del Este</span>
                                         <span id="hotel-categoria" class="badge badge-light">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
@@ -347,7 +378,7 @@
                                     </div>
                                 </li>
                             </a>
-                            <a class="text-decoration-none shadow text-reset" href="#">
+                            <a class="text-decoration-none shadow text-reset" href="../../booking_hotel.html">
                                 <li class="media mb-3 shadow-sm bg-light">
                                     <img src="../../../assets/img/hoteles/img_hotel-prueba_85x64.jpg"
                                         class="mr-3 img-thumbnail rounded" alt="...">
@@ -355,7 +386,7 @@
                                         <h5 id="hotel-name" class="mt-0 mb-1">Hotel name</h5>
                                         <p id="hotel-short-description"></p>
                                         <span id="hotel-ubicacion" class="badge badge-light"><i
-                                                class="fas fa-map-marker-alt text-danger"></i> La Habana</span>
+                                                class="fas fa-map-marker-alt text-danger"></i> Playas del Este</span>
                                         <span id="hotel-categoria" class="badge badge-light">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
@@ -366,7 +397,7 @@
                                     </div>
                                 </li>
                             </a>
-                            <a class="text-decoration-none shadow text-reset" href="#">
+                            <a class="text-decoration-none shadow text-reset" href="../../booking_hotel.html">
                                 <li class="media mb-3 shadow-sm bg-light">
                                     <img src="../../../assets/img/hoteles/img_hotel-prueba_85x64.jpg"
                                         class="mr-3 img-thumbnail rounded" alt="...">
@@ -374,7 +405,7 @@
                                         <h5 id="hotel-name" class="mt-0 mb-1">Hotel name</h5>
                                         <p id="hotel-short-description"></p>
                                         <span id="hotel-ubicacion" class="badge badge-light"><i
-                                                class="fas fa-map-marker-alt text-danger"></i> La Habana</span>
+                                                class="fas fa-map-marker-alt text-danger"></i> Playas del Este</span>
                                         <span id="hotel-categoria" class="badge badge-light">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
@@ -385,7 +416,7 @@
                                     </div>
                                 </li>
                             </a>
-                            <a class="text-decoration-none shadow text-reset" href="#">
+                            <a class="text-decoration-none shadow text-reset" href="../../booking_hotel.html">
                                 <li class="media mb-3 shadow-sm bg-light">
                                     <img src="../../../assets/img/hoteles/img_hotel-prueba_85x64.jpg"
                                         class="mr-3 img-thumbnail rounded" alt="...">
@@ -393,7 +424,7 @@
                                         <h5 id="hotel-name" class="mt-0 mb-1">Hotel name</h5>
                                         <p id="hotel-short-description"></p>
                                         <span id="hotel-ubicacion" class="badge badge-light"><i
-                                                class="fas fa-map-marker-alt text-danger"></i> La Habana</span>
+                                                class="fas fa-map-marker-alt text-danger"></i> Playas del Este</span>
                                         <span id="hotel-categoria" class="badge badge-light">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
@@ -404,7 +435,7 @@
                                     </div>
                                 </li>
                             </a>
-                        </ul>             
+                        </ul>
                     </div>
                 </div>
             </div>
