@@ -12,6 +12,7 @@ use AppBundle\Entity\Foto;
 use AppBundle\Entity\ReservaAuto;
 use AppBundle\Form\FormReservaA;
 use AppBundle\Form\Filtro;
+use AppBundle\Controller\TokenC;
 
 /**
  * Description of AutoController
@@ -41,7 +42,8 @@ class AutoController extends Controller {
     
     public function actualizarAuto(array $parametros)
     {
-        $repo = $this->em->getRepository(Auto::class);
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(Auto::class);
         $auto = $repo->findOneById($parametros[0]);
         if($parametros[1] != NULL)
         {
@@ -51,22 +53,22 @@ class AutoController extends Controller {
         {
             $auto->setCategoria($parametros[2]);
         }        
-        $em = $this->em;
+        
         $em->persist($auto);
         $em->flush();
     }
     
     public function deleteAuto($id)
     {
-        $repo = $this->em->getRepository(Auto::class);
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(Auto::class);
         $auto = $repo->findOneById($id);
         
         if (!$auto) 
         {
-           throw $this->createNotFoundException('No se encontro hotel con id '.$id);
+           throw $this->createNotFoundException('No se encontro auto con id '.$id);
         }
         
-        $em = $this->em;
         $em->remove($auto);
         $em->flush();
     }
@@ -76,15 +78,28 @@ class AutoController extends Controller {
      */
     public function obtenerAutos(Request $request)
     {   
+        $token = new TokenC();
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Auto::class);
+        $form = $this->createForm(Filtro::class, $token);
         $autos = $repo->findAll();
-        $form = $this->createForm(Filtro::class, $reservacion);
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
-             $autos = $repo->findBy(['categoria'=>$categoria]);
+         $token = $form->getData(); 
+         if ($token->getEconomico())
+         {
+             
+         }
+         $query = $repo->createQueryBuilder('a')
+                    ->where('a.categoria = :categoria AND a.precio < :precio')
+                    ->setParameters(['categoria'=>'Economico','precio'=>80])
+                    ->orderBy('a.precio','DESC')
+                    ->getQuery();
+             $autos = $query->getResult(); 
         }
-        return $this->render('autos/index.html.twig',array('autos'=>$autos));
+        
+        return $this->render('autos/index.html.twig',['form' => $form->createView(),'autos'=>$autos]);
        
     }
     
