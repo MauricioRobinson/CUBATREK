@@ -11,6 +11,8 @@ use AppBundle\Entity\Auto;
 use AppBundle\Entity\Foto;
 use AppBundle\Entity\ReservaAuto;
 use AppBundle\Form\FormReservaA;
+use AppBundle\Form\Filtro;
+use AppBundle\Controller\TokenC;
 
 /**
  * Description of AutoController
@@ -40,7 +42,8 @@ class AutoController extends Controller {
     
     public function actualizarAuto(array $parametros)
     {
-        $repo = $this->em->getRepository(Auto::class);
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(Auto::class);
         $auto = $repo->findOneById($parametros[0]);
         if($parametros[1] != NULL)
         {
@@ -50,22 +53,22 @@ class AutoController extends Controller {
         {
             $auto->setCategoria($parametros[2]);
         }        
-        $em = $this->em;
+        
         $em->persist($auto);
         $em->flush();
     }
     
     public function deleteAuto($id)
     {
-        $repo = $this->em->getRepository(Auto::class);
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(Auto::class);
         $auto = $repo->findOneById($id);
         
         if (!$auto) 
         {
-           throw $this->createNotFoundException('No se encontro hotel con id '.$id);
+           throw $this->createNotFoundException('No se encontro auto con id '.$id);
         }
         
-        $em = $this->em;
         $em->remove($auto);
         $em->flush();
     }
@@ -73,12 +76,31 @@ class AutoController extends Controller {
     /**
      * @Route ("/autos", name = "auto-lista")
      */
-    public function obtenerAutos()
+    public function obtenerAutos(Request $request)
     {   
+        $token = new TokenC();
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Auto::class);
+        $form = $this->createForm(Filtro::class, $token);
         $autos = $repo->findAll();
-        return $this->render('autos/index.html.twig',array('autos'=>$autos));
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+         $token = $form->getData(); 
+         if ($token->getEconomico())
+         {
+             
+         }
+         $query = $repo->createQueryBuilder('a')
+                    ->where('a.categoria = :categoria AND a.precio < :precio')
+                    ->setParameters(['categoria'=>'Economico','precio'=>80])
+                    ->orderBy('a.precio','DESC')
+                    ->getQuery();
+             $autos = $query->getResult(); 
+        }
+        
+        return $this->render('autos/index.html.twig',['form' => $form->createView(),'autos'=>$autos]);
+       
     }
     
     /**
@@ -92,14 +114,29 @@ class AutoController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Auto::class);
         $auto = $repo->findOneById($id);
+        $repo2 = $em->getRepository(ReservaAuto::class);
+        $reservado = $repo2->findOneByAuto($auto);
         if ($form->isSubmitted() && $form->isValid())
         {
-        $reservacion = $form->getData();
-        $reservacion->setAuto($auto);
-        $em->persist($reservacion);
-        $em->flush();
-        $idR= $reservacion->getId();
-        return $this->redirectToRoute('auto-confirm',['id'=>$idR]);
+            if ( $reservado ==NULL) {
+                $reservacion = $form->getData();
+                $reservacion->setAuto($auto);
+                
+                $fechaI = $reservacion->getFechaRecogida();
+                $fechaF = $reservacion->getFechaEntrega();
+                $diff = $fechaF->diff($fechaI);
+                $dias = $diff->format("%d");
+                $meses = $diff->format("%m");
+        
+                if( $meses < 1 && $dias > 3 ){
+                $em->persist($reservacion);
+                $em->flush();
+                $idR= $reservacion->getId();
+                return $this->redirectToRoute('auto-confirm',['id'=>$idR]);
+                } else { return new Response('<html> <body><h1>La resrvacion debe ser mayor a 3 dias y menor a 30</h1></body> </html>');
+               }
+            } else { return new Response('<html> <body><h1>'.$auto->getMarca().' auto ya sido reservado</h1></body> </html>');}   
+        
         }
         return $this->render('autos/booking_car.html.twig',['form' => $form->createView(),'auto'=>$auto]);
     }

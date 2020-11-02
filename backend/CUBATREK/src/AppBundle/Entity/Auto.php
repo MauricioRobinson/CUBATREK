@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -102,9 +103,15 @@ class Auto {
      */
     private $fotos;
     
+    /**
+     * @ORM\OneToMany(targetEntity="ReservaAuto", mappedBy="auto") 
+     */
+    private $reservas;
+    
     public function __construct() 
     {
         $this->fotos = new ArrayCollection();
+        $this->reservas = new ArrayCollection();
     }
     
     public function getId()
