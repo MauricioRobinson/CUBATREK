@@ -86,24 +86,122 @@ class AutoController extends Controller {
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
-         $token = $form->getData(); 
-         if ($token->getEconomico())
-         {
-             
-         }
-         $query = $repo->createQueryBuilder('a')
-                    ->where('a.categoria = :categoria AND a.precio < :precio')
-                    ->setParameters(['categoria'=>'Economico','precio'=>80])
-                    ->orderBy('a.precio','DESC')
-                    ->getQuery();
-             $autos = $query->getResult(); 
+         $token = $form->getData();
+         $autos= $this->filtrar($autos, $token);
+         
         }
         
         return $this->render('autos/index.html.twig',['form' => $form->createView(),'autos'=>$autos]);
        
     }
     
-    /**
+    function filtrar($autos,TokenC $token)
+    {
+        $categorias = array();
+        $provedores = array(); 
+        $transmiciones = array(); 
+        $precios = array(); 
+         
+        foreach ($autos as $auto){
+         if ($token->getEconomico() && $auto->getCategoria() == "Economico")
+         {
+            $categorias[] = $auto; 
+         }
+         
+         if ($token->getMedio() && $auto->getCategoria() == "Medio" )
+         {
+            $categorias[] = $auto; 
+         }
+         
+         if ($token->getCstandar() && $auto->getCategoria() == "C-Standar")
+         {
+            $categorias[] = $auto; 
+         }
+         
+         if ($token->getDStandard() && $auto->getCategoria() == "D-Standar")
+         {
+            $categorias[] = $auto; 
+         }
+         
+         if ($token->getEPremium() && $auto->getCategoria() == "E-Premium")
+         {
+            $categorias[] = $auto; 
+         }
+         
+         if ($token->getEPremiumPlus() && $auto->getCategoria() == "E-Premium-Plus")
+         {
+            $categorias[] = $auto; 
+         }
+         
+         if ($token->getFLujo() && $auto->getCategoria() == "F-Lujo")
+         {
+            $categorias[] = $auto; 
+         }
+         
+         if ($token->getCubacar() && $auto->getAgencia() == "Cuba Car")
+         {
+            $provedores[] = $auto; 
+         }
+         
+         if ($token->getHavanautos() && $auto->getAgencia() == "Havana Autos")
+         {
+            $provedores[] = $auto; 
+         }
+         
+         if ($token->getRentacarVIA() && $auto->getAgencia() == "RENTACAR VIA")
+         {
+            $provedores[] = $auto; 
+         }
+         
+         
+         if ($token->getManual() && $auto->getTransmision() == "M")
+         {
+            $transmiciones[] = $auto; 
+         }
+         if ($token->getAutomatica() && $auto->getTransmision() == "A")
+         {
+            $transmiciones[] = $auto; 
+         }
+         
+         if ($token->getPobre() && $auto->getPrecio() <= 99)
+         {
+            $precios[] = $auto; 
+         }
+         if ($token->getBarato() && $auto->getPrecio() >= 100 && $auto->getPrecio() < 200)
+         {
+            $precios[] = $auto; 
+         }
+         
+          if ($token->getCaro() && $auto->getPrecio() >200)
+         {
+            $precios[] = $auto; 
+         }
+          
+        }
+      if($token->getEconomico() || $token->getMedio() || $token->getCstandar()|| $token->getDStandard() || $token->getEPremium() || $token->getEPremiumPlus() || $token->getFLujo()) 
+      {
+        $autos = array_map('unserialize', array_intersect( array_map('serialize', $autos), array_map('serialize',$categorias) ));
+      }
+      
+      if( $token->getCubacar() || $token->getHavanautos() || $token->getRentacarVIA() ) 
+      {
+        $autos = array_map('unserialize', array_intersect( array_map('serialize', $autos), array_map('serialize',$provedores) ));
+      }
+      
+      if($token->getManual() || $token->getAutomatica()) 
+      {
+        $autos = array_map('unserialize', array_intersect( array_map('serialize', $autos), array_map('serialize',$transmiciones) ));
+      }
+      
+       if( $token->getPobre() || $token->getBarato() || $token->getCaro() ) 
+      {
+       $autos = array_map('unserialize', array_intersect( array_map('serialize', $autos), array_map('serialize',$precios) ));
+      }
+      
+      return $autos;
+    }
+
+        /**
      * @Route ("/auto/reservar/{id}", name = "auto-reserva")
      */
     public function reservar(Request $request,$id)
