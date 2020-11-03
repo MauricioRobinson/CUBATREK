@@ -1,34 +1,206 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <title>CUBATREK</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
     <!-- Añadiendo Bootstrap -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 
     <!-- Añadiendo normalize.css -->
-    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="../assets/css/normalize.css">
 
     <!-- Añadiendo fontawesome -->
-    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/all.min.css">
 
     <!-- Añadiendo mis setilos css -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
 
 </head>
+
 <body>
 
+    <!-- *********************************************************************************************************
+                                                Barra de navegación
+    **************************************************************************************************************-->
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light navbar-color">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html"><img src="../assets/img/logo/logo_navbar350x90.jpg"
+                    alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsableNavbar"
+                aria-controls="collapsableNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
+            <div class="collapse navbar-collapse" id="collapsableNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"><i class="fas fa-home"></i> Inicio<span
+                                class="sr-only"></span></a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="../hoteles/index.html"><i class="fas fa-hotel"></i> Hoteles</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../autos/"><i class="fas fa-car"></i> Autos</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html"><i class="fas fa-car"></i> Experiencias</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h1 class="text-center h1">Disfrute de experiencias &uacute;nicas</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <img src="../assets/img/logo/LOGO.png" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+    <section class="container-fluid">
+        <div class="row row-cols-sm-1 row-cols-md-3">
+            <div class="col-sm-12 col-md-4">
+                <a class="text-reset text-decoration-none" href="#">
+                    <div class="card mb-2 shadow">
+                        <h2 class="card-header h4 text-muted text-center">La Habana 1</h2>
+                        <img src="../assets/img/portada/p2.jpg" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="h2 text-center text-warning font-weight-bold pb-2">$180 USD <span
+                                    class="text-muted small">/ 2h</span></h3>
+                            <p class="card-text">
+                                <ul class="list-group list-group-flush list-unstyled">
+                                    <li class="list-group-item">Comienza 8:00 AM</li>
+                                    <li class="list-group-item">Recogida y retorno en Hotel u Hostal</li>
+                                    <li class="list-group-item">20 fotograf&iacute;as editadas en HI-RES</li>
+                                    <li class="list-group-item">Recorrido por La Habana</li>
+                                    <li class="list-group-item">Incluye 1 auto cl&aacute;sico (m&aacute;x 3 pasajeros)
+                                    </li>
+                                    <li class="list-group-item">No incluye propinas, bebidas y comidas, entradas a
+                                        lugares de inter&eacute;s o gastos personales</li>
+                                    <li class="list-group-item">1 año de backup</li>
+                                    <li class="list-group-item">Entrega en 3 d&iacute;as</li>
+                                    <button role="button" type="submit" class="btn">Reservar</button>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <a href="#" class="text-reset text-decoration-none">
+                    <div class="card mb-2">
+                        <h2 class="card-header shadow h4 text-muted text-center">La Habana 2</h2>
+                        <img src="../assets/img/portada/p2.jpg" alt="" class="card-img-top">
+                        <div class="card-body shadow">
+                            <h3 class="h2 text-center text-warning font-weight-bold pb-2">$260 USD <span
+                                    class="text-muted small">/ 3h</span></h3>
+                            <p class="card-text">
+                                <ul class="list-group list-group-flush list-unstyled">
+                                    <li class="list-group-item">Comienza 8:00 AM</li>
+                                    <li class="list-group-item">Recogida y retorno en Hotel u Hostal</li>
+                                    <li class="list-group-item">30 fotograf&iacute;as editadas en HI-RES</li>
+                                    <li class="list-group-item">Recorrido por La Habana</li>
+                                    <li class="list-group-item">Incluye 2 autos cl&aacute;sico (m&aacute;x 7 pasajeros)
+                                    </li>
+                                    <li class="list-group-item">Incluye 1 bebida</li>
+                                    <li class="list-group-item">No incluye propinas, comidas, entradas a lugares
+                                        de inter&eacute;s o gastos personales</li>
+                                    <li class="list-group-item">1 año de backup</li>
+                                    <li class="list-group-item">Entrega en 3 d&iacute;as</li>
+                                    <button role="button" type="submit" class="btn">Reservar</button>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <a href="#" class="text-reset text-decoration-none">
+                    <div class="card mb-2 shadow">
+                        <h2 class="card-header shadow h4 text-muted text-center">Varadero</h2>
+                        <img src="../assets/img/portada/p2.jpg" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="h2 text-center text-warning font-weight-bold pb-2">$160 USD <span
+                                    class="text-muted small">/ 2h</span></h3>
+                            <p class="card-text">
+                                <ul class="list-group list-group-flush list-unstyled">
+                                    <li class="list-group-item">Comienza 8:00 AM</li>
+                                    <li class="list-group-item">Recogida y retorno en Hotel u Hostal</li>
+                                    <li class="list-group-item">20 fotograf&iacute;as editadas en HI-RES</li>
+                                    <li class="list-group-item">Recorrido por La Habana</li>
+                                    <li class="list-group-item">Incluye 1 bebida</li>
+                                    <li class="list-group-item">Incluye 1 auto cl&aacute;sico (m&aacute;x 3 pasajeros)
+                                    </li>
+                                    <li class="list-group-item">No incluye propinas, comidas, entradas a lugares
+                                        de inter&eacute;s o gastos personales</li>
+                                    <li class="list-group-item">1 año de backup</li>
+                                    <li class="list-group-item">Entrega en 3 d&iacute;as</li>
+                                    <button role="button" type="submit" class="btn">Reservar</button>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- *********************************************************************************************************
+                                            SECCIÓN DEL FOOTER
+    **************************************************************************************************************-->
+    <footer id="footer" class="container-fluid py-5 border-top mt-5">
+        <div class="row">
+            <div class="col-sm-12 col-md mb-4 border-right px-5">
+                &copy; 2020 CUBATREK TRAVEL AGENCY
+                <img class="img-fluid" src="../assets/img/logo/logo_navbar350x90.jpg" alt="Logo de CUBATREK">
+            </div>
+            <div id="navegacion-rapida" class="col-sm-6 col-md border-right px-5">
+                <h5>Navegaci&oacute;n r&aacute;pida</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a href="../hoteles/index.html" class="text-muted">Hoteles</a></li>
+                    <li><a href="#" class="text-muted">Casas de renta</a></li>
+                    <li><a href="../autos/index.html" class="text-muted">Autos para rentar</a></li>
+                    <li><a href="#" class="text-muted">Circuitos</a></li>
+                </ul>
+            </div>
+
+            <div id="sobre-nosotros" class="col-sm-6 col-md border-right px-5">
+                <h5>Sobre nosotros</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a href="#" class="text-muted">Pol&iacute;tica de privacidad</a></li>
+                    <li><a href="#" class="text-muted">T&eacute;rminos y condiciones</a></li>
+                    <li><a href="#" class="text-muted">Sobre nosotros</a></li>
+                    <li><a href="#" class="text-muted">&Uacute;ltimas noticias</a></li>
+                </ul>
+            </div>
+
+            <div id="redes-sociales" class="col-sm-6 col-md px-5">
+                <h5>S&iacute;ganos en las redes</h5>
+                <ul class="row row-cols-sm-1 row-cols-md-3 list-unstyled text-small">
+                    <li><a href="#" class="text-muted"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" class="text-muted"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#" class="text-muted"><i class="fab fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
     <!-- Añadiendo scripts js -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/all.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/all.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>
