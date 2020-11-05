@@ -62,7 +62,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent w-100 mt-3">
                 <li class="breadcrumb-item"><a class="text-decoration-none" href="../../../index.html">Inicio</a></li>
-                <li class="breadcrumb-item"><a class="text-decoration-none" href="../index.html">Hoteles</a></li>
+                <li class="breadcrumb-item"><a class="text-decoration-none" href="../../index.html">Hoteles</a></li>
                 <li class="breadcrumb-item active" aria-current="page">La Habana</li>
             </ol>
         </nav>
@@ -72,7 +72,7 @@
         <p class="text-left">Paso 1: Escoge tu hotel</p>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar"
-                aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: 33%">
             </div>
         </div>
     </div>
@@ -80,13 +80,13 @@
     <div class="container-fluid">
         <div class="row row-cols-sm-1">
             <div class="dropdown mb-3 col-sm-6 p-3 d-block d-md-none">
-            <!-- Filtro para teléfono -->
+                <!-- Filtro para teléfono -->
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Filtrar <i class="fas fa-filter"></i>
                 </button>
                 <div class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenuButton">
-                    <div class="close mr-2"><i class="fas fa-window-close"></i></div>
+                    <div class="close mr-2 text-danger"><i class="fas fa-window-close"></i></div>
                     <form id="filtro-hoteles" class="p-3">
                         <h2 class="h5 text-center text-muted">Filtrar</h2>
                         <ul id="categoria" class="list-unstyled">
@@ -127,31 +127,37 @@
                             <li class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="melia">
                                 <label class="form-check-label" for="melia">
-                                    Meli&aacute;
+                                    Meli&aacute; <span id="cantidad-hotel-tipo" class="badge badge-success">15</span>
                                 </label>
                             </li>
                             <li class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="iberostar">
                                 <label class="form-check-label" for="iberostar">
-                                    Iberostar
+                                    Iberostar <span id="cantidad-hotel-tipo" class="badge badge-success">8</span>
                                 </label>
                             </li>
                             <li class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="roc">
                                 <label class="form-check-label" for="roc">
-                                    Roc
+                                    Roc <span id="cantidad-hotel-tipo" class="badge badge-success">5</span>
                                 </label>
                             </li>
                             <li class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="blueDiamond">
                                 <label class="form-check-label" for="blueDiamond">
-                                    Blue diamond
+                                    Blue diamond <span id="cantidad-hotel-tipo" class="badge badge-success">0</span>
                                 </label>
                             </li>
                             <li class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="solways">
                                 <label class="form-check-label" for="solways">
-                                    Solways
+                                    Solways <span id="cantidad-hotel-tipo" class="badge badge-success">0</span>
+                                </label>
+                            </li>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="solways">
+                                <label class="form-check-label" for="solways">
+                                    Paradisus <span id="cantidad-hotel-tipo" class="badge badge-success">10</span>
                                 </label>
                             </li>
                             <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i
@@ -204,7 +210,7 @@
             </div>
 
             <!-- Filtro para pc y tablets -->
-            <form id="filtro-hoteles" class="col-md-3 bg-light p-3 shadow d-none d-md-block">
+            <form id="filtro-hoteles" class="col-md-3 bg-light p-3 shadow d-none d-md-block h-100">
                 <h2 class="h5 text-center text-muted">Filtrar</h2>
                 <ul id="categoria" class="list-unstyled">
                     <h3 class="h6">Categor&iacute;a</h3>
@@ -243,31 +249,37 @@
                     <li class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="melia">
                         <label class="form-check-label" for="melia">
-                            Meli&aacute;
+                            Meli&aacute; <span id="cantidad-hotel-tipo" class="badge badge-success">15</span>
                         </label>
                     </li>
                     <li class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="iberostar">
                         <label class="form-check-label" for="iberostar">
-                            Iberostar
+                            Iberostar <span id="cantidad-hotel-tipo" class="badge badge-success">8</span>
                         </label>
                     </li>
                     <li class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="roc">
                         <label class="form-check-label" for="roc">
-                            Roc
+                            Roc <span id="cantidad-hotel-tipo" class="badge badge-success">5</span>
                         </label>
                     </li>
                     <li class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="blueDiamond">
                         <label class="form-check-label" for="blueDiamond">
-                            Blue diamond
+                            Blue diamond <span id="cantidad-hotel-tipo" class="badge badge-success">0</span>
                         </label>
                     </li>
                     <li class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="solways">
                         <label class="form-check-label" for="solways">
-                            Solways
+                            Solways <span id="cantidad-hotel-tipo" class="badge badge-success">0</span>
+                        </label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="solways">
+                        <label class="form-check-label" for="solways">
+                            Paradisus <span id="cantidad-hotel-tipo" class="badge badge-success">10</span>
                         </label>
                     </li>
                     <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i class="fas fa-check"></i></button>

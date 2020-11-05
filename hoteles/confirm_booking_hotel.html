@@ -56,7 +56,7 @@
 
 
     <!-- *********************************************************************************************************
-                                                INFORMACION DE RESERVA DEL AUTO DE RENTA
+                                                INFORMACION DE RESERVA DEL HOTEL
     **************************************************************************************************************-->
     <div class="container my-5">
         <p class="text-right">Paso 3: Verificar datos de reserva</p>
@@ -67,10 +67,25 @@
         </div>
     </div>
 
+    <div id="aviso-reserva" class="container alert alert-warning alert-dismissible fade show shadow mx-auto"
+        role="alert">
+        <h4 class="alert-heading">Importante!</h4>
+        <p>
+            Al confirmar su reserva recibir&aacute; en su correo electr&oacute;nico los
+            detalles de la reserva y el estado de la misma. En un per&iacute;odo m&aacute;ximo de 48 horas le
+            responderemos su solicitud.
+        </p>
+        <hr>
+        <p class="h5">Muchas gracias por elegirnos!!! <span class="float-right">WayTravelTrek</span></p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
     <div class="container">
-        <div class="row row-cols-sm-1 row-col-md-3">
+        <div class="row row-cols-sm-1 row-cols-lg-23">
             <!-- INFORMACION DEL CLIENTE -->
-            <div id="" class="col-sm-12 col-md-4">
+            <div id="" class="col-sm-12 col-lg-4">
                 <div class="container bg-light py-4 my-5 shadow">
                     <h2 class="h4 mb-4">Informaci&oacute;n del cliente</h2>
                     <div class="container-fluid border-bottom mb-3">
@@ -82,17 +97,23 @@
                             <span class="small" id="apellido-cliente">Rogahn</span>
                         </div>
                     </div>
-                    <div class="container-fluid border-bottom mb-3">
-                        <div class="row row-cols-1">
-                            <h6 class="text-muted">Email</h6>
-                            <span id="email-cliente" class="small">Keely.Dach23@hotmail.com</span>
+                    <div class="border-bottom">
+                        <div class="row row-cols-2">
+                            <div class="col-8">
+                                <h6 class="text-muted">Email</h6>
+                                <span id="email-cliente" class="small">Keely.Dach23@hotmail.com</span>
+                            </div>
+                            <div class="col-4">
+                                <h6 class="text-muted">Pasaporte</h6>
+                                <span id="pasaporte-cliente" class="small">GH4587AS</span>
+                            </div>      
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- INFORMACION DE LA RESERVA DEL HOTEL -->
-            <div id="" class="col-sm-12 col-md-4">
+            <div id="" class="col-sm-12 col-lg-4">
                 <div class="container bg-light py-4 my-5 shadow">
                     <h2 class="h4 mb-4">Informaci&oacute;n de la reserva</h2>
                     <div class="container-fluid border-bottom mb-3">
@@ -135,14 +156,14 @@
                     </div>
                     <div class="container-fluid">
                         <div class="row row-cols-1">
-                            <img src="../assets/img/hoteles/hotel1.jpg" alt="" class="img-fluid rounded">
+                            <img src="../assets/img/hoteles/hotel1.jpg" alt="" class="img-fluid rounded d-lg-block d-md-none">
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- INFORMACION DE PAGO -->
-            <div id="" class="col-sm-12 col-md-4">
+            <div id="" class="col-sm-12 col-lg-4">
                 <div class="container bg-light py-4 my-5 shadow">
                     <h2 class="h4 mb-4">Informaci&oacute;n de pago</h2>
                     <div class="container-fluid mb-3">
