@@ -98,11 +98,9 @@
                     Filtrar <i class="fas fa-filter"></i>
                 </button>
                 <div class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenuButton">
-                    <div id="filtro-autos" class="p-3">
+                    <div class="close mr-2 text-danger"><i class="fas fa-window-close"></i></div>
+                    <form id="filtro-autos" class="p-3">
                         <h2 class="h5 text-center text-muted">Filtrar</h2>
-                        <button type="button" class="close" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                         <ul id="categoria" class="list-unstyled">
                             <h3 class="h6">Categor&iacute;a</h3>
                             <li class="form-check">
@@ -118,38 +116,52 @@
                                 </label>
                             </li>
                             <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="auto-4x4" />
+                                <label class="form-check-label" for="auto-4x4">
+                                    4x4
+                                </label>
+                            </li>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="auto-suv" />
+                                <label class="form-check-label" for="auto-suv">
+                                    SUV
+                                </label>
+                            </li>
+                            <li class="form-check d-none">
                                 <input class="form-check-input" type="checkbox" value="" id="auto-c-standard" />
                                 <label class="form-check-label" for="auto-c-standard">
                                     C-Standard Autom&aacute;tico
                                 </label>
                             </li>
-                            <li class="form-check">
+                            <li class="form-check d-none">
                                 <input class="form-check-input" type="checkbox" value="" id="auto-d-standard" />
                                 <label class="form-check-label" for="auto-d-standard">
                                     D-Standard High Autom&aacute;tico
                                 </label>
                             </li>
-                            <li class="form-check">
+                            <li class="form-check d-none">
                                 <input class="form-check-input" type="checkbox" value="" id="auto-e-premium" />
                                 <label class="form-check-label" for="auto-e-premium">
                                     E-Premium
                                 </label>
                             </li>
-                            <li class="form-check">
+                            <li class="form-check d-none">
                                 <input class="form-check-input" type="checkbox" value="" id="auto-e-premium-plus" />
                                 <label class="form-check-label" for="auto-e-premium-plus">
                                     E-Premium-Plus
                                 </label>
                             </li>
-                            <li class="form-check">
+                            <li class="form-check d-none">
                                 <input class="form-check-input" type="checkbox" value="" id="auto-f-lujo" />
                                 <label class="form-check-label" for="auto-f-lujo">
                                     F-Lujo
                                 </label>
                             </li>
+                            <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i
+                                    class="fas fa-check"></i></button>
                         </ul>
 
-                        <ul id="franquicia" class="list-unstyled">
+                        <ul id="franquicia" class="list-unstyled d-none">
                             <h3 class="h6">Receptivo</h3>
                             <li class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="cubacar" />
@@ -167,6 +179,12 @@
                                 <input class="form-check-input" type="checkbox" value="" id="rex" />
                                 <label class="form-check-label" for="rex"> Rex </label>
                             </li>
+                            <li class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="via-car" />
+                                <label class="form-check-label" for="rex"> Via Car </label>
+                            </li>
+                            <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i
+                                    class="fas fa-check"></i></button>
                         </ul>
 
                         <ul id="transmision" class="list-unstyled">
@@ -179,6 +197,8 @@
                                 <input type="checkbox" id="automatico" class="form-check-input" />
                                 <label for="automatico" class="form-check-label">Autom&aacute;tico</label>
                             </li>
+                            <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i
+                                    class="fas fa-check"></i></button>
                         </ul>
 
                         <ul id="precio-autos" class="list-unstyled">
@@ -199,13 +219,15 @@
                                     $200 - $299
                                 </label>
                             </li>
+                            <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i
+                                    class="fas fa-check"></i></button>
                         </ul>
-                    </div>
+                    </form>
                 </div>
             </div>
 
             <!-- Filtro para computadoras y tablets -->
-            <div id="filtro-autos" class="col-md-3 bg-light p-3 shadow d-none d-md-block">
+            <form id="filtro-autos" class="col-md-3 bg-light p-3 shadow d-none d-md-block h-100">
                 <h2 class="h5 text-center text-muted">Filtrar</h2>
                 <ul id="categoria" class="list-unstyled">
                     <h3 class="h6">Categor&iacute;a</h3>
@@ -217,43 +239,62 @@
                     </li>
                     <li class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="auto-medio" />
-                        <label class="form-check-label" for="auto-medio"> Medio </label>
+                        <label class="form-check-label" for="auto-medio">
+                            Medio
+                        </label>
                     </li>
                     <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="auto-4x4" />
+                        <label class="form-check-label" for="auto-4x4">
+                            4x4
+                        </label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="auto-suv" />
+                        <label class="form-check-label" for="auto-suv">
+                            SUV
+                        </label>
+                    </li>
+                    <li class="form-check d-none">
                         <input class="form-check-input" type="checkbox" value="" id="auto-c-standard" />
                         <label class="form-check-label" for="auto-c-standard">
                             C-Standard Autom&aacute;tico
                         </label>
                     </li>
-                    <li class="form-check">
+                    <li class="form-check d-none">
                         <input class="form-check-input" type="checkbox" value="" id="auto-d-standard" />
                         <label class="form-check-label" for="auto-d-standard">
                             D-Standard High Autom&aacute;tico
                         </label>
                     </li>
-                    <li class="form-check">
+                    <li class="form-check d-none">
                         <input class="form-check-input" type="checkbox" value="" id="auto-e-premium" />
                         <label class="form-check-label" for="auto-e-premium">
                             E-Premium
                         </label>
                     </li>
-                    <li class="form-check">
+                    <li class="form-check d-none">
                         <input class="form-check-input" type="checkbox" value="" id="auto-e-premium-plus" />
                         <label class="form-check-label" for="auto-e-premium-plus">
                             E-Premium-Plus
                         </label>
                     </li>
-                    <li class="form-check">
+                    <li class="form-check d-none">
                         <input class="form-check-input" type="checkbox" value="" id="auto-f-lujo" />
-                        <label class="form-check-label" for="auto-f-lujo"> F-Lujo </label>
+                        <label class="form-check-label" for="auto-f-lujo">
+                            F-Lujo
+                        </label>
                     </li>
+                    <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i class="fas fa-check"></i></button>
                 </ul>
 
-                <ul id="franquicia" class="list-unstyled">
+                <ul id="franquicia" class="list-unstyled d-none">
                     <h3 class="h6">Receptivo</h3>
                     <li class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="cubacar" />
-                        <label class="form-check-label" for="cubacar"> Cubacar </label>
+                        <label class="form-check-label" for="cubacar">
+                            Cubacar
+                        </label>
                     </li>
                     <li class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="havanautos" />
@@ -265,18 +306,24 @@
                         <input class="form-check-input" type="checkbox" value="" id="rex" />
                         <label class="form-check-label" for="rex"> Rex </label>
                     </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="via-car" />
+                        <label class="form-check-label" for="rex"> Via Car </label>
+                    </li>
+                    <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i class="fas fa-check"></i></button>
                 </ul>
 
                 <ul id="transmision" class="list-unstyled">
                     <h3 class="h6">Transmisi&oacute;n</h3>
                     <li class="form-check">
                         <input type="checkbox" id="manual" class="form-check-input" />
-                        <label for="manual" class="form-check-label">Manual</label>
+                        <label for="mecanico" class="form-check-label">Manual</label>
                     </li>
                     <li class="form-check">
                         <input type="checkbox" id="automatico" class="form-check-input" />
                         <label for="automatico" class="form-check-label">Autom&aacute;tico</label>
                     </li>
+                    <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i class="fas fa-check"></i></button>
                 </ul>
 
                 <ul id="precio-autos" class="list-unstyled">
@@ -293,10 +340,13 @@
                     </li>
                     <li class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="medio" />
-                        <label class="form-check-label" for="medio"> $200 - $299 </label>
+                        <label class="form-check-label" for="medio">
+                            $200 - $299
+                        </label>
                     </li>
+                    <button type="submit" class="btn p-1 mt-1 btn-sm">Aplicar <i class="fas fa-check"></i></button>
                 </ul>
-            </div>
+            </form>
 
             <div class="col-md-9">
                 <!-- Barra de progreso de reserva -->
@@ -318,8 +368,7 @@
                                     <div class="card-body">
                                         <img src="../assets/img/autos/Mercedes_C_class_85x64.jpg" alt=""
                                             class="img-fluid img-thumbnail ml-3" id="car-img">
-                                        <img src="../assets/img/iconos/cubacar.png" alt="" id="logo-proveedor"
-                                            class="img-fluid float-right">
+                                        <span id="categoria-auto" class="h4 text-muted">Categoria</span>
                                         <h5>
                                             <i class="fas fa-car"></i>
                                             <span id="car-name">Car name</span>
@@ -340,10 +389,10 @@
                                         <div class="container-fluid my-4">
                                             <div class="row row-cols-2">
                                                 <div class="col-8">
-                                                    <button type="button" id="ver-descripcion-auto" class="btn" data-toggle="collapse"
-                                                        data-target="#car-name" aria-expanded="false"
-                                                        aria-controls="car-name">
-                                                        Ver descripcion
+                                                    <button type="button" id="ver-descripcion-auto" class="btn"
+                                                        data-toggle="collapse" data-target="#car-name"
+                                                        aria-expanded="false" aria-controls="car-name">
+                                                        Ver descripci&oacute;n
                                                     </button>
                                                     <div class="collapse container" id="car-name">
                                                         <ul class="list-group list-group-flush small shadow-sm">
@@ -365,7 +414,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <span id="precio-auto" class="float-right h3 font-weight-bold">$140
+                                                    <span id="precio-auto" class="float-right h3 font-weight-bold"><span
+                                                            class="h5">desde</span> $140
                                                         USD</span>
                                                 </div>
                                             </div>
@@ -383,8 +433,7 @@
                                     <div class="card-body">
                                         <img src="../assets/img/autos/Mercedes_C_class_85x64.jpg" alt=""
                                             class="img-fluid img-thumbnail ml-3" id="car-img">
-                                        <img src="../assets/img/iconos/havanautos.png" alt="" id="logo-proveedor"
-                                            class="img-fluid float-right">
+                                        <span id="categoria-auto" class="h4 text-muted">Categoria</span>
                                         <h5>
                                             <i class="fas fa-car"></i>
                                             <span id="car-name">Car name</span>
@@ -405,10 +454,10 @@
                                         <div class="container-fluid my-4">
                                             <div class="row row-cols-2">
                                                 <div class="col-8">
-                                                    <button type="button" id="ver-descripcion-auto" class="btn" data-toggle="collapse"
-                                                        data-target="#car-name" aria-expanded="false"
-                                                        aria-controls="car-name">
-                                                        Ver descripcion
+                                                    <button type="button" id="ver-descripcion-auto" class="btn"
+                                                        data-toggle="collapse" data-target="#car-name"
+                                                        aria-expanded="false" aria-controls="car-name">
+                                                        Ver descripci&oacute;n
                                                     </button>
                                                     <div class="collapse container" id="car-name">
                                                         <ul class="list-group list-group-flush small shadow-sm">
@@ -430,7 +479,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <span id="precio-auto" class="float-right h3 font-weight-bold">$140
+                                                    <span id="precio-auto" class="float-right h3 font-weight-bold"><span
+                                                            class="h5">desde</span> $140
                                                         USD</span>
                                                 </div>
                                             </div>
@@ -450,8 +500,7 @@
                                     <div class="card-body">
                                         <img src="../assets/img/autos/Mercedes_C_class_85x64.jpg" alt=""
                                             class="img-fluid img-thumbnail ml-3" id="car-img">
-                                        <img src="../assets/img/iconos/rex.png" alt="" id="logo-proveedor"
-                                            class="img-fluid float-right">
+                                        <span id="categoria-auto" class="h4 text-muted">Categoria</span>
                                         <h5>
                                             <i class="fas fa-car"></i>
                                             <span id="car-name">Car name</span>
@@ -472,10 +521,10 @@
                                         <div class="container-fluid my-4">
                                             <div class="row row-cols-2">
                                                 <div class="col-8">
-                                                    <button type="button" id="ver-descripcion-auto" class="btn" data-toggle="collapse"
-                                                        data-target="#car-name" aria-expanded="false"
-                                                        aria-controls="car-name">
-                                                        Ver descripcion
+                                                    <button type="button" id="ver-descripcion-auto" class="btn"
+                                                        data-toggle="collapse" data-target="#car-name"
+                                                        aria-expanded="false" aria-controls="car-name">
+                                                        Ver descripci&oacute;n
                                                     </button>
                                                     <div class="collapse container" id="car-name">
                                                         <ul class="list-group list-group-flush small shadow-sm">
@@ -497,7 +546,75 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <span id="precio-auto" class="float-right h3 font-weight-bold">$140
+                                                    <span id="precio-auto" class="float-right h3 font-weight-bold"><span
+                                                            class="h5">desde</span> $140
+                                                        USD</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="container border-top mt-2 pt-2">
+                                            <a href="booking_car.html" role="button" class="btn btn-block">Ver auto <i
+                                                    class="fas fa-chevron-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </div>
+
+                            <div id="car-type" class="text-decoration-none shadow text-reset">
+                                <li class="card mb-3 shadow-sm border p-1">
+                                    <div class="card-body">
+                                        <img src="../assets/img/autos/Mercedes_C_class_85x64.jpg" alt=""
+                                            class="img-fluid img-thumbnail ml-3" id="car-img">
+                                        <span id="categoria-auto" class="h4 text-muted">Categoria</span>
+                                        <h5>
+                                            <i class="fas fa-car"></i>
+                                            <span id="car-name">Car name</span>
+                                            <p class="text-muted small">o similar</p>
+                                        </h5>
+                                        <div id="auto-short-description" class="border-bottom mb-2 pb-2">
+                                            <i class="fas fa-user"></i><span id="asientos"
+                                                class="badge badge-light mr-3">5</span>
+                                            <i class="fas fa-gas-pump ml-3"></i><span id="combustible"
+                                                class="badge badge-light">gasolina</span>
+                                            <br />
+                                            <i class="fas fa-suitcase-rolling"></i><span id="capacidad-maletas"
+                                                class="badge badge-light mr-3">4</span>
+                                            <i class="fas fa-code-branch ml-3"></i><span id="transmision"
+                                                class="badge badge-light">transimision</span>
+                                        </div>
+
+                                        <div class="container-fluid my-4">
+                                            <div class="row row-cols-2">
+                                                <div class="col-8">
+                                                    <button type="button" id="ver-descripcion-auto" class="btn"
+                                                        data-toggle="collapse" data-target="#car-name"
+                                                        aria-expanded="false" aria-controls="car-name">
+                                                        Ver descripci&oacute;n
+                                                    </button>
+                                                    <div class="collapse container" id="car-name">
+                                                        <ul class="list-group list-group-flush small shadow-sm">
+                                                            <li class="list-group-item">
+                                                                <i class="fas fa-snowflake"></i> Aire
+                                                                acondicionado
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <i class="fas fa-gas-pump"></i> Full/Full
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <i class="fas fa-road"></i> Km ilimitados
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <i class="fas fa-check text-success"></i> Seguro
+                                                                inclu&iacute;do
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <span id="precio-auto" class="float-right h3 font-weight-bold"><span
+                                                            class="h5">desde</span> $140
                                                         USD</span>
                                                 </div>
                                             </div>

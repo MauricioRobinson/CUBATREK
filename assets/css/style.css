@@ -535,8 +535,8 @@ div#ubicacion-hotel {
     right: 7px;
     top: 7px;
 }
-#autos-disponibles div#car-type #logo-proveedor{
+#autos-disponibles div#car-type #categoria-auto{
     position: absolute;
     right: 20px;
-    top: 80px;
+    top: 110px;
 }
