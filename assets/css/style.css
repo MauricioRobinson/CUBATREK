@@ -42,6 +42,21 @@ ul.pagination a.page-link{
     color: black;
 } 
 
+.btn {
+    background-color: #001524;
+    color: #ff7b00c4;
+    text-decoration: none;
+    padding: 4px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .4),
+        1px 1px 4px rgba(0, 0, 0, .5),
+        2px 2px 6px rgba(0, 0, 0, .6);
+}
+
+.btn:hover {
+    color: #ff7d00;
+    background-color: #001524ee;
+}
+
 /*-----------------------------------------------------------------------------------------------------------------------
                         ESTILOS DE LA BARRA DE NAVEGACIÓN
 -------------------------------------------------------------------------------------------------------------------------*/
@@ -99,35 +114,31 @@ ul.pagination a.page-link{
 }
 
 #nuestros-servicios .title {
-    font-size: 4em;
+    font-size: 3.5em;
     margin-bottom: 1.5em;
-    color: #001524;
+    color: black;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, .4);
 
 }
 
-#nuestros-servicios div.servicio-hoteles {
-    width: 100%;
-    height: 300px;
-    background-image: url(../img/hoteles/melia-internacional.jpg);
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: opacity(1);
-    padding: 7px;
-    cursor: pointer;
+#nuestros-servicios h5.card-title{
+    font-size: 2.5em;
+    margin-bottom: 1.5em;
+    color: white;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    position: absolute;
+    top: 40%;
+    left: 36%;
 }
 
-#nuestros-servicios div.servicio-autos {
+#nuestros-servicios img.card-img{
     width: 100%;
-    height: 300px;
-    background-image: url(../img/autos/MAXUS5.jpg);
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: opacity(1);
-    padding: 7px;
-    cursor: pointer;
+}
+
+#nuestros-servicios a.card{
+    width: 100%;
+    border: none;
+    display: flex;
 }
 
 #nuestros-servicios div.servicio-hoteles:hover {
@@ -191,7 +202,7 @@ ul.pagination a.page-link{
 }
 
 .fa-star {
-    color: #d8b02c;
+    color: #f0c433;
 }
 
 #hoteles-recomendados .list-group-item {
@@ -221,22 +232,6 @@ ul.pagination a.page-link{
     border-radius: 5px 5px 5px 5px;
     padding: 7px;
 }
-
-.btn {
-    background-color: #001524;
-    color: #ff7b00c4;
-    text-decoration: none;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, .4),
-        1px 1px 4px rgba(0, 0, 0, .5),
-        2px 2px 6px rgba(0, 0, 0, .6);
-}
-
-.btn:hover {
-    color: #ff7d00;
-    background-color: #001524ee;
-}
-
-
 
 /*-----------------------------------------------------------------------------------------------------------------------
                         Estilos de ventana
