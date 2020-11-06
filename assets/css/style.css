@@ -57,6 +57,12 @@ ul.pagination a.page-link{
     background-color: #001524ee;
 }
 
+span.descuento::after{
+    font: 800 25px Arial;
+    content: counter(count);
+    animation: counter 3s linear infinite alternate;
+    counter-reset: count 0;
+}
 /*-----------------------------------------------------------------------------------------------------------------------
                         ESTILOS DE LA BARRA DE NAVEGACIÓN
 -------------------------------------------------------------------------------------------------------------------------*/
@@ -401,6 +407,71 @@ section#subscribirse h2.title {
     }
 }
 
+@keyframes counter {
+    0%{
+        counter-increment: count 0;
+    }
+    5%{
+        counter-increment: count 1;
+    }
+    10%{
+        counter-increment: count 2;
+    }
+    15%{
+        counter-increment: count 3;
+    }
+    20%{
+        counter-increment: count 4;
+    }
+    25%{
+        counter-increment: count 5;
+    }
+    30%{
+        counter-increment: count 6;
+    }
+    35%{
+        counter-increment: count 7;
+    }
+    40%{
+        counter-increment: count 8;
+    }
+    45%{
+        counter-increment: count 9;
+    }
+    50%{
+        counter-increment: count 10;
+    }
+    55%{
+        counter-increment: count 11;
+    }
+    60%{
+        counter-increment: count 12;
+    }
+    65%{
+        counter-increment: count 13;
+    }
+    70%{
+        counter-increment: count 14;
+    }
+    75%{
+        counter-increment: count 15;
+    }
+    80%{
+        counter-increment: count 16;
+    }
+    85%{
+        counter-increment: count 17;
+    }
+    90%{
+        counter-increment: count 18;
+    }
+    95%{
+        counter-increment: count 19;
+    }
+    100%{
+        counter-increment: count 20;
+    }
+}
 
 /*-----------------------------------------------------------------------------------------------------------------------
                 ****************** ESTILOS DE LA PAGINA DE HOTELES ************************

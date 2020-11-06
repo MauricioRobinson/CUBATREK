@@ -159,7 +159,30 @@
 
                         <div class="tab-pane fade" id="nav-accommodation" role="tabpanel"
                             aria-labelledby="nav-accommodation-tab">
+                            <div class="mt-2">
+                                <ul class="list-unstyled">
+                                    <li class="list-item">
+                                        <strong>Total habitaciones:</strong> <span id="cant-habitaciones" class="badge badge-light">234</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <p class="opt1">
+                                            <strong>Acomodaci&oacute;n:</strong> Niños de 2 a 11.99 obtienen un 50% de descuento
+                                        </p>
+                                        <p class="opt2 d-none">
+                                            <strong>Acomodaci&oacute;n:</strong> Niños de 0 a 1.99 obtienen un 100% de descuento
+                                        </p>
+                                        <p class="opt3 d-none">
+                                            <strong>Acomodaci&oacute;n:</strong> Solo adultos
+                                        </p>
+                                    </li>
+                                    <li class="list-item">
 
+                                    </li>
+                                    <li class="list-item">
+
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
 
                         <div class="tab-pane fade" id="nav-barDrinks" role="tabpanel"
@@ -218,24 +241,8 @@
                             </div>
                         </div>
                         <div class="container-fluid">
-                            <div class="row rows-cols-sm-1 row-cols-md-3 row-cols-lg-4 p-2">
-                                <div class="form-group col-sm-12 col-md-6 col-lg-3">
-                                    <label for="habitaciones">Habitaciones<span class="text-danger">*</span></label>
-                                    <select name="habitaciones" class="form-control" id="habitaciones" required>
-                                        <option value="" selected>-</option>
-                                        <option value="">1</option>
-                                        <option value="">2</option>
-                                        <option value="">3</option>
-                                        <option value="">4</option>
-                                    </select>
-                                    <div class="valid-feedback">
-                                        Correcto!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Debe escoger cu&aacute;ntas habitaciones quiere
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                            <div class="row rows-cols-sm-1 row-cols-md-3 p-2">
+                                <div class="form-group col-sm-12 col-md-4">
                                     <label for="adultos">Adultos <span class="text-danger">*</span></label>
                                     <select name="adultos" class="form-control" id="adultos" required>
                                         <option value="" selected>-</option>
@@ -255,7 +262,7 @@
                                         Debe indicar cu&aacute;ntos adultos son
                                     </div>
                                 </div>
-                                <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                                <div class="form-group col-sm-12 col-md-4">
                                     <label for="niños">Niños <span class="text-danger">*</span></label>
                                     <select name="niños" class="form-control" id="niños" required>
                                         <option value="" selected>-</option>
@@ -273,7 +280,7 @@
                                         Debe indicar cu&aacute;ntos niños son
                                     </div>
                                 </div>
-                                <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                                <div class="form-group col-sm-12 col-md-4">
                                     <label for="infantes">Infantes <span class="text-danger">*</span></label>
                                     <select name="infantes" class="form-control" id="infantes" required>
                                         <option value="" selected>-</option>
@@ -320,9 +327,9 @@
                         </div>
                         <div class="form-group col-sm-12 col-lg-6">
                             <label for="email">Email <span class="text-danger">*</span></label>
-                            <input type="email" name="email" id="email" class="form-control mb-2"
-                                placeholder="Su email" required>
-                                <small class="form-text text-muted">Donde recibir&aacute; el estado de su reserva</small>
+                            <input type="email" name="email" id="email" class="form-control mb-2" placeholder="Su email"
+                                required>
+                            <small class="form-text text-muted">Donde recibir&aacute; el estado de su reserva</small>
                             <div class="valid-feedback">
                                 Correcto!
                             </div>
@@ -332,8 +339,8 @@
                         </div>
                         <div class="form-group col-sm-12 col-lg-6">
                             <label for="pasaporte-cliente">Pasaporte <span class="text-danger">*</span></label>
-                            <input type="pasaporte" name="pasaporte-cliente" id="pasaporte-cliente" class="form-control mb-2"
-                                placeholder="Su pasaporte" required>
+                            <input type="pasaporte" name="pasaporte-cliente" id="pasaporte-cliente"
+                                class="form-control mb-2" placeholder="Su pasaporte" required>
                             <div class="valid-feedback">
                                 Correcto!
                             </div>
@@ -364,44 +371,127 @@
                             <button class="btn text-center mb-2" type="button" data-toggle="collapse"
                                 data-target="#precio-habitaciones-hotel" aria-expanded="false"
                                 aria-controls="precio-habitaciones-hotel">
-                                Ver disponibilidad <i class="fas fa-check-circle"></i>
+                                Escoger habitaciones <i class="fas fa-check-circle"></i>
                             </button>
                             <div class="collapse container" id="precio-habitaciones-hotel">
                                 <ul class="list-group">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Triple
-                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$64 USD</button>
+                                        <div class="form-group col-4">
+                                            <label for="habitacion-triple">Triple</label>
+                                            <select class="form-control" name="habitacion-triple" id="habitacion-triple"
+                                                required>
+                                                <option value="">-</option>
+                                                <option value="uno">1</option>
+                                                <option value="dos">2</option>
+                                                <option value="tres">3</option>
+                                            </select>
+                                        </div>
+                                        <button class="btn" value="habitacion-triple" id="habitacion-triple">$64
+                                            USD</button>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Doble
-                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$86 USD</button>
+                                        <div class="form-group col-4">
+                                            <label for="habitacion-doble">Doble</label>
+                                            <select class="form-control" name="habitacion-doble" id="habitacion-doble"
+                                                required>
+                                                <option value="">-</option>
+                                                <option value="uno">1</option>
+                                                <option value="dos">2</option>
+                                                <option value="tres">3</option>
+                                            </select>
+                                        </div>
+                                        <button class="btn" value="habitacion-doble" id="habitacion-doble">$86
+                                            USD</button>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Sencilla
-                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$115 USD</button>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center disabled">
-                                        Vista al mar
-                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$105 USD</button>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Junior Suite
-                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$130 USD</button>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Suite
-                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$160 USD</button>
+                                        <div class="form-group col-4">
+                                            <label for="habitacion-sencilla">Sencilla</label>
+                                            <select class="form-control" name="habitacion-sencilla"
+                                                id="habitacion-sencilla" required>
+                                                <option value="">-</option>
+                                                <option value="uno">1</option>
+                                                <option value="dos">2</option>
+                                            </select>
+                                        </div>
+                                        <button class="btn" value="habitacion-sencilla" id="habitacion-sencilla">$115
+                                            USD</button>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Deluxe
-                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$240 USD</button>
+                                        <div class="form-group col-4">
+                                            <label for="habitacion-vista-mar">Vista al mar</label>
+                                            <select class="form-control" name="habitacion-vista-mar"
+                                                id="habitacion-vista-mar" required>
+                                                <option value="" selected>-</option>
+                                                <option value="uno">1</option>
+                                                <option value="dos">2</option>
+                                            </select>
+                                        </div>
+                                        <button class="btn" value="habitacion-vista-mar" id="habitacion-vista-mar">$105
+                                            USD</button>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Grand Deluxe
-                                        <button class="btn btn-sm" type="submit" value="" id="tipo-habitacion">$520 USD</button>
+                                        <div class="form-group col-4">
+                                            <label for="habitacion-junior-suite">Junior Suite</label>
+                                            <select class="form-control" name="habitacion-junior-suite"
+                                                id="habitacion-junior-suite" required>
+                                                <option value="" selected>-</option>
+                                                <option value="uno">1</option>
+                                                <option value="dos">2</option>
+                                            </select>
+                                        </div>
+                                        <button class="btn" value="habitacion-junior-suite"
+                                            id="habitacion-junior-suite">$130 USD</button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="form-group col-4">
+                                            <label for="habitacion-suite">Suite</label>
+                                            <select class="form-control" name="habitacion-suite" id="habitacion-suite"
+                                                required>
+                                                <option value="" selected>-</option>
+                                                <option value="uno">1</option>
+                                                <option value="dos">2</option>
+                                            </select>
+                                        </div>
+                                        <button class="btn" value="habitacion-suite" id="habitacion-suite">$430
+                                            USD</button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="form-group col-4">
+                                            <label for="habitacion-deluxe">Deluxe</label>
+                                            <select class="form-control" name="habitacion-deluxe" id="habitacion-deluxe"
+                                                required>
+                                                <option value="" selected>-</option>
+                                                <option value="uno">1</option>
+                                            </select>
+                                        </div>
+                                        <button class="btn" value="habitacion-deluxe" id="habitacion-deluxe">$240
+                                            USD</button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="form-group col-4">
+                                            <label for="habitacion-grand-deluxe">Grand Deluxe</label>
+                                            <select class="form-control" name="habitacion-grand-deluxe"
+                                                id="habitacion-grand-deluxe" required>
+                                                <option value="" selected>-</option>
+                                                <option value="uno">1</option>
+                                            </select>
+                                        </div>
+                                        <button class="btn" value="habitacion-grand-deluxe"
+                                            id="habitacion-grand-deluxe">$520 USD</button>
+                                    </li>
+                                    <li class="list-group-item d-flex-justify-content-center align-items-center">
+                                        <div class="form-grouo col">
+                                            <label for="cupon-descuento">Cup&oacute;n de descuento:</label> 
+                                            <input type="text" class="form-control" name="cupon-descuento"
+                                                id="cupon-descuento" value="WTT-" placeholder="Entre su cup&oacute;n...">
+                                                <small class="form-text">
+                                                    Descubre c&oacute;mo obtener cupones de descuento <a href="../index.html#subscribirse" target="_blank">aqu&iacute;</a>
+                                                </small>
+                                        </div>
                                     </li>
                                 </ul>
+                                <button role="button" class="btn mt-3 d-flex justify-content-center align-items-center"
+                                    type="submit">Solicitar reserva <i class="fas fa-check ml-1"></i></button>
                             </div>
                         </div>
                     </div>
@@ -414,7 +504,7 @@
     <!-- *********************************************************************************************************
                                                 SECCIÓN DE AUTOS RECOMENDADOS
     **************************************************************************************************************-->
-    <section id="autos-recomendados">
+    <section id="autos-recomendados" class="d-none">
         <h2 class="title">Autos para explorar</h2>
         <div class="container">
             <div class="row row-cols-sm-1 row-cols-lg-3 container-fluid">
