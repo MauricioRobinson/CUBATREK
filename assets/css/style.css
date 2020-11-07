@@ -239,6 +239,12 @@ span.descuento::after{
     padding: 7px;
 }
 
+#hoteles-recomendados a.btn-block {
+    color: #ff7d00;
+    font-size: 1.4rem;
+}
+
+
 /*-----------------------------------------------------------------------------------------------------------------------
                         Estilos de ventana
 -------------------------------------------------------------------------------------------------------------------------*/
@@ -310,15 +316,10 @@ div.ventana-ciudad {
     float: right;
 }
 
-/* #autos-recomendados .media .precio-carro {
-    
-    width: 100%;
+#autos-recomendados a.btn-block{
     color: #ff7d00;
-    background-color: #001524;
-    border-radius: 5px 5px 5px 5px;
-    padding: 7px;
-    text-align: center;
-} */
+    font-size: 1.4rem;
+}
 
 /*-----------------------------------------------------------------------------------------------------------------------
                         ESTILOS DE LA SECCIÓN DE SUBSCRIBIRSE
