@@ -212,8 +212,6 @@ class AutoController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Auto::class);
         $auto = $repo->findOneById($id);
-        $repo2 = $em->getRepository(ReservaAuto::class);
-        $reservado = $repo2->findOneByAuto($auto);
         if ($form->isSubmitted() && $form->isValid())
         {
             
