@@ -29,7 +29,7 @@ class Reservacion {
     /**
      * @ORM\Column(type="string") 
      */ 
-    private $identidad;
+    private $mensaje;
 
     /**
      * @ORM\Column(type="date") 
@@ -44,8 +44,25 @@ class Reservacion {
     /**
      * @ORM\Column(type="integer") 
      */
-    private $pax;
+    private $cantHabitaciones;
     
+    /** 
+     * @ORM\Column(type="integer") 
+     */
+    private $adultos;
+    
+    /** 
+     * @ORM\Column(type="integer") 
+     */
+    private $ninos;
+    
+    /** 
+     * @ORM\Column(type="integer") 
+     */
+    private $infantes;
+    
+
+
     /**
      * @ORM\Column(type="string") 
      */
@@ -82,9 +99,9 @@ class Reservacion {
         return $this->fechaSalida;
     }
     
-    public function getIdentidad()
+    public function getMensaje()
     {
-        return $this->identidad;
+        return $this->mensaje;
     }
     
     public function getHabitacion()
@@ -92,9 +109,24 @@ class Reservacion {
         return $this->habitacion;
     }
     
-    public function getPax()
+    public function getCantHabitaciones()
     {
-        return $this->pax;
+        return $this->cantHabitaciones;
+    }
+    
+    public function getNinos()
+    {
+        return $this->ninos;
+    }
+    
+    public function getAdultos()
+    {
+        return $this->adultos;
+    }
+    
+    public function getInfantes()
+    {
+        return $this->infantes;
     }
 
     public function getCorreo()
@@ -113,9 +145,9 @@ class Reservacion {
         $this->apellido = $apellido;
     }
     
-    public function setIdentidad(string $identidad)
+    public function setMensaje(string $mensaje)
     {
-        $this->identidad = $identidad;
+        $this->mensaje = $mensaje;
     }
     
     public function setFechaEntrada( \DateTime $fecha_entrada)
@@ -132,10 +164,23 @@ class Reservacion {
     {
         $this->habitacion = $habitacion;
     }
-    public function setPax(int $cant_pax)
+    public function setCantHabitasiones(int $cant_hab)
     {
-        $this->pax = $cant_pax;
-    }        
+        $this->cantHabitaciones = $cant_hab;
+    }    
+    public function setAdultos(int $adultos)
+    {
+        $this->adultos = $adultos;
+    } 
+    
+    public function setNinos(int $ninos)
+    {
+        $this->ninos = $ninos;
+    } 
+    public function setInfantes(int $infantes)
+    {
+        $this->infantes = $infantes;
+    } 
     
     public function setCorreo(string $correo)
     {

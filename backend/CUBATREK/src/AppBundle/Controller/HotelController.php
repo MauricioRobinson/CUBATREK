@@ -14,6 +14,7 @@ use AppBundle\Entity\Habitacion;
 use AppBundle\Entity\Temporadas;
 use AppBundle\Entity\Oferta;
 use AppBundle\Entity\Foto;
+use AppBundle\Entity\Auto;
 use Doctrine\ORM\EntityManager;
 
 
@@ -73,7 +74,8 @@ class HotelController extends Controller {
     }
     
     public function deleteHotel(int $id)
-    {
+    {   
+        $em = $this->getDoctrine()->getManager();
         $repo = $this->em->getRepository(Hotel::class);
         $hotel = $repo->findOneById($id);
         
@@ -82,7 +84,6 @@ class HotelController extends Controller {
            throw $this->createNotFoundException('No se encontro hotel con id '.$id);
         }
         
-        $em = $this->em;
         $em->remove($hotel);
         $em->flush();
     }
@@ -93,12 +94,25 @@ class HotelController extends Controller {
     public function obtenerHoteles()
     {
         $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository(Hotel::class);
-        $hoteles = $repo->findAll();
-        return $this->render('default/hoteles.html.twig',array('hoteles'=>$hoteles));
+        $repo2 = $em->getRepository(Auto::class);
+        $economicos = $repo2->findBy(['categoria'=>"Economico"]); 
+        $medios = $repo2->findBy(['categoria'=>"Medio"]);
+        $lujos = $repo2->findBy(['categoria'=>"F-Lujo"]);
+        return $this->render('hoteles/index.html.twig',['economicos'=>$economicos,'medios'=>$medios,'lujos'=>$lujos]);
     }
     
     /**
+     * @Route ("/hotel/{region}",name="hotel-region")
+     */
+    public function porRegiones($region)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(Hotel::class);
+        $hoteles = $repo->findBy(['region'=>$region]);
+        return $this->render('hoteles/destinos_hotel.html.twig',array('hoteles'=>$hoteles));
+    }
+
+     /**
      * @Route ("/hotelesAdmin", name="hoteles_admin")
      */
     public function obtenerHotelesAddmin()
