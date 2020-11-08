@@ -38,6 +38,20 @@ class Hotel {
     private $region;
     
     /**
+     * @ORM\Column(type="float") 
+     */
+    private $latitud;
+    
+    /**
+     * @ORM\Column(type="float") 
+     */
+    private $longitud;
+    
+    /**
+     * @ORM\Column(type="string") 
+     */
+    private $direccion;
+    /**
      * @ORM\OneToMany(targetEntity="Foto", mappedBy="hotel") 
      */
     private $fotos;
@@ -80,11 +94,27 @@ class Hotel {
         return $this->cadena;
     }
     
+    public function getLatitud()
+    {
+        return $this->latitud;
+    }
+    
+    public function getLongitud()
+    {
+        return $this->longitud;
+    }
+    
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+    
+
     public function getRegion()
     {
         return $this->region;
     }
-
+    
     public function getFotos()
     {
         return $this->fotos;
@@ -128,4 +158,20 @@ class Hotel {
     {
         $this->region = $region;
     }
+    
+    public function setLatitud( float $latitud)
+    {
+        $this->latitud =$latitud;
+    }
+    
+     public function setLongitud(float $longitud)
+    {
+        $this->longitud =$longitud;
+    }
+    
+     public function setDireccion(float $direccion)
+    {
+        $this->direccion =$direccion;
+    }
+    
 }

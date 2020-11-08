@@ -113,12 +113,12 @@ class AutoController extends Controller {
             $categorias[] = $auto; 
          }
          
-         if ($token->getCstandar() && $auto->getCategoria() == "C-Standar")
+         if ($token->getFor4() && $auto->getCategoria() == "C-Standar")
          {
             $categorias[] = $auto; 
          }
          
-         if ($token->getDStandard() && $auto->getCategoria() == "D-Standar")
+         if ($token->getSUV() && $auto->getCategoria() == "D-Standar")
          {
             $categorias[] = $auto; 
          }
@@ -178,7 +178,7 @@ class AutoController extends Controller {
          }
           
         }
-      if($token->getEconomico() || $token->getMedio() || $token->getCstandar()|| $token->getDStandard() || $token->getEPremium() || $token->getEPremiumPlus() || $token->getFLujo()) 
+      if($token->getEconomico() || $token->getMedio() || $token->getSUV()|| $token->getFor4() || $token->getEPremium() || $token->getEPremiumPlus() || $token->getFLujo()) 
       {
         $autos = array_map('unserialize', array_intersect( array_map('serialize', $autos), array_map('serialize',$categorias) ));
       }

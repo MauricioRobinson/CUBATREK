@@ -42,6 +42,11 @@ class Habitacion {
     private $observacion;
     
     /**
+     * @ORM\Column(type="decimal" ,scale=2)    
+     */
+    private $precio;
+    
+    /**
      * @ORM\OneToMany(targetEntity="Reservacion", mappedBy="habitacion") 
      */
     private $reservaciones;
@@ -86,6 +91,11 @@ class Habitacion {
         return $this->disponibilidad;
     }        
      
+    public function getPrecio()
+    {
+        return $this->precio;
+    }
+
     public function getReservas()
     {
         return $this->reservaciones;
@@ -119,6 +129,11 @@ class Habitacion {
     public function setDisponibilidad(int $disponibilidad)
     {
         $this->disponibilidad = $disponibilidad;
+    }
+
+    public function setPrecio(float $precio)
+    {
+        $this->precio = $precio;
     }
 
     public function setHotel(Hotel $hotel)

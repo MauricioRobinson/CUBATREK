@@ -14,6 +14,8 @@ use AppBundle\Entity\Habitacion;
 use AppBundle\Entity\Temporadas;
 use AppBundle\Entity\Oferta;
 use AppBundle\Entity\Foto;
+use AppBundle\Form\FiltroH;
+use AppBundle\Controller\TokenD;
 use AppBundle\Entity\Auto;
 use Doctrine\ORM\EntityManager;
 
@@ -104,12 +106,120 @@ class HotelController extends Controller {
     /**
      * @Route ("/hotel/{region}",name="hotel-region")
      */
-    public function porRegiones($region)
+    public function porRegiones(Request $request,$region)
     {
+        $token = new TokenD();
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Hotel::class);
+        $form = $this->createForm(FiltroH::class, $token);
         $hoteles = $repo->findBy(['region'=>$region]);
+        $form->handleRequest($request);
+       if ($form->isSubmitted() && $form->isValid())
+        {
+         $token = $form->getData();
+         $hoteles= $this->filtrar($hoteles, $token);
+         
+        }
         return $this->render('hoteles/destinos_hotel.html.twig',array('hoteles'=>$hoteles));
+    }
+    
+    function filtrar($hoteles,TokenD $token)
+    {
+        $categorias = array();
+        $cadenas = array();  
+        $precios = array(); 
+         
+        foreach ($hoteles as $auto){
+         if ($token->getCinco() && $auto->getCategoria() == 5)
+         {
+            $categorias[] = $auto; 
+         }
+         
+         if ($token->get4() && $auto->getCategoria() == 4 )
+         {
+            $categorias[] = $auto; 
+         }
+         
+         if ($token->getTres() && $auto->getCategoria() == 3)
+         {
+            $categorias[] = $auto; 
+         }
+         
+         if ($token->getMelia() && $auto->getCadena() == "Melia")
+         {
+            $cadenas[] = $auto; 
+         }
+         
+         if ($token->getIberostar() && $auto->getCategoria() == "Iberostar")
+         {
+            $cadenas[] = $auto; 
+         }
+         
+         if ($token->getRoc() && $auto->getCategoria() == "Roc")
+         {
+            $cadenas[] = $auto; 
+         }
+         
+         if ($token->getBlueDiamond() && $auto->getCategoria() == "Blue Diamond")
+         {
+            $cadenas[] = $auto; 
+         }
+         
+         if ($token->getSolways() && $auto->getAgencia() == "Solways")
+         {
+            $cadenas[] = $auto; 
+         }
+         
+         if ($token->getParadisus() && $auto->getAgencia() == "Paradisus")
+         {
+            $cadenas[] = $auto; 
+         }
+         $habitaciones = $auto->getTipoHab();
+         if ($token->getBajo() && $habitaciones[0]->getPrecio < 100)
+         {
+            $precios[] = $auto; 
+         }
+      
+         if ($token->getEconomico() && $habitaciones[0]->getPrecio >= 100 && $habitaciones[0]->getPrecio < 200)
+         {
+            $precios[] = $auto; 
+         }
+         if ($token->getMedio() && $habitaciones[0]->getPrecio >= 200 && $habitaciones[0]->getPrecio < 300 )
+         {
+            $precios[] = $auto; 
+         }
+         
+         if ($token->getAlto() && $habitaciones[0]->getPrecio >= 300 && $habitaciones[0]->getPrecio < 400)
+         {
+            $precios[] = $auto; 
+         }
+         if ($token->getLujoso() && $habitaciones[0]->getPrecio >= 400 && $habitaciones[0]->getPrecio < 500)
+         {
+            $precios[] = $auto; 
+         }
+         
+          if ($token->getMuycaro() && $habitaciones[0]->getPrecio > 500)
+         {
+            $precios[] = $auto; 
+         }
+          
+        }
+      if($token->getCinco() || $token->getCuatro() || $token->getTres()) 
+      {
+        $hoteles = array_map('unserialize', array_intersect( array_map('serialize', $hoteles), array_map('serialize',$categorias) ));
+      }
+      
+      if( $token->getMelia() || $token->getIberostar() || $token->getRoc() || $token->getBlueDiamond() || $token->getSolways() || $token->getParadisus()) 
+      {
+        $hoteles = array_map('unserialize', array_intersect( array_map('serialize', $hoteles), array_map('serialize',$cadenas) ));
+      }
+      
+       if( $token->getBajo() || $token->getMedio() || $token->getEconomico() || $token->getAlto() || $token->getLujoso() || $token->getMuycaro() ) 
+      {
+       $hoteles = array_map('unserialize', array_intersect( array_map('serialize', $hoteles), array_map('serialize',$precios) ));
+      }
+      
+      return $hoteles;
     }
 
      /**
