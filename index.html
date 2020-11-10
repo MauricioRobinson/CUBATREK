@@ -5,21 +5,25 @@
     <title>CUBATREK</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="icon" href="assets/img/logo/logo_circulo.ico">
+    <link rel="icon" href="">
 
     <!-- Añadiendo Bootstrap -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <!-- Añadiendo normalize.css -->
-    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 
-    <!-- Añadiendo fontawesome -->
-    <link rel="stylesheet" href="assets/css/all.min.css">
+    <!-- Añadiendo animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
 
     <!-- Añadiendo mis setilos css -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <script src="https://kit.fontawesome.com/484a0c911a.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -38,16 +42,16 @@
 
             <div class="collapse navbar-collapse" id="collapsableNavbar">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item animate__animated animate__bounceInDown active">
                         <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Inicio<span
                                 class="sr-only"></span></a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item animate__animated animate__bounceInDown">
                         <a class="nav-link" href="hoteles/index.html"><i class="fas fa-hotel"></i> Hoteles</a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item animate__animated animate__bounceInDown">
                         <a class="nav-link" href="autos/index.html"><i class="fas fa-car"></i> Autos</a>
                     </li>
 
@@ -69,11 +73,11 @@
                                                 SECCIÓN DE NUESTROS SERVICIOS (PRIMERA SECCIÓN)
     **************************************************************************************************************-->
     <section id="nuestros-servicios">
-        <h2 class="title">Nuestros servicios</h2>
+        <h2 class="title animate__animated animate__backInDown">Nuestros servicios</h2>
         <div class="container">
             <div class="row row-cols-sm-1 row-cols-lg-2">
                 <div class="col-sm-12 col-md-6 mb-4">
-                    <a href="#" id="hoteles" class="card text-decoration-none text-reset mb-4">
+                    <a href="hoteles/index.html" id="hoteles" class="card text-decoration-none text-reset mb-4 animate__animated animate__backInLeft">
                         <img src="assets/img/hoteles/melia-internacional.jpg" alt="" class="card-img img-fluid">
                         <div class="card-img-overlay">
                             <h5 class="card-title h1">Hoteles</h5>
@@ -81,12 +85,12 @@
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-4">
-                     <a href="#" id="autos" class="card text-decoration-none text-reset mb-4">
-                         <img src="assets/img/autos/MAXUS5.jpg" alt="" class="card-img img-fluid">
-                         <div class="card-img-overlay">
-                             <h5 class="card-title h1">Autos</h5>
-                         </div>
-                     </a>
+                    <a href="autos/index.html" id="autos" class="card text-decoration-none text-reset mb-4 animate__animated animate__backInRight">
+                        <img src="assets/img/autos/MAXUS5.jpg" alt="" class="card-img img-fluid">
+                        <div class="card-img-overlay">
+                            <h5 class="card-title h1">Autos</h5>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -97,15 +101,16 @@
                                                 SECCIÓN DE HOTELES RECOMENDADOS (PRIMERA SECCIÓN)
     **************************************************************************************************************-->
     <section id="hoteles-recomendados">
-        <h2 class="title">HOTELES RECOMENDADOS</h2>
-        <div class="container">
+        <h2 class="title animate__animated animate__backInDown">HOTELES RECOMENDADOS</h2>
+        <div class="container animate__animated animate__slideInLeft">
             <div class="row row-cols-sm-1  row-cols-lg-3">
                 <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
                     <div class="card">
                         <div class="card-header">
                             Meli&aacute; Internacional
                         </div>
-                        <a href="hoteles/booking_hotel.html"><img src="assets/img/hoteles/hotel1.jpg" alt="" class="card-img-top"></a>
+                        <a href="hoteles/booking_hotel.html"><img src="assets/img/hoteles/hotel1.jpg" alt=""
+                                class="card-img-top"></a>
                         <div class="card-body">
                             <h5 class="card-title">
                                 <i class="fas fa-star"></i>
@@ -132,7 +137,8 @@
                         <div class="card-header">
                             Hotel Nacional
                         </div>
-                        <a href="hoteles/booking_hotel.html"><img src="assets/img/hoteles/hotel1.jpg" alt="" class="card-img-top"></a>
+                        <a href="hoteles/booking_hotel.html"><img src="assets/img/hoteles/hotel1.jpg" alt=""
+                                class="card-img-top"></a>
                         <div class="card-body">
                             <h5 class="card-title">
                                 <i class="fas fa-star"></i>
@@ -159,7 +165,8 @@
                         <div class="card-header">
                             Sol Palmeras
                         </div>
-                        <a href="hoteles/booking_hotel.html"><img src="assets/img/hoteles/hotel1.jpg" alt="" class="card-img-top"></a>
+                        <a href="hoteles/booking_hotel.html"><img src="assets/img/hoteles/hotel1.jpg" alt=""
+                                class="card-img-top"></a>
                         <div class="card-body">
                             <h5 class="card-title">
                                 <i class="fas fa-star"></i>
@@ -185,7 +192,8 @@
                         <div class="card-header">
                             Meli&aacute; Las Am&eacute;ricas
                         </div>
-                        <a href="hoteles/booking_hotel.html"><img src="assets/img/hoteles/hotel1.jpg" alt="" class="card-img-top"></a>
+                        <a href="hoteles/booking_hotel.html"><img src="assets/img/hoteles/hotel1.jpg" alt=""
+                                class="card-img-top"></a>
                         <div class="card-body">
                             <h5 class="card-title">
                                 <i class="fas fa-star"></i>
@@ -212,7 +220,8 @@
                         <div class="card-header">
                             Jardines del Rey
                         </div>
-                        <a href="hoteles/booking_hotel.html"><img src="assets/img/hoteles/hotel1.jpg" alt="" class="card-img-top"></a>
+                        <a href="hoteles/booking_hotel.html"><img src="assets/img/hoteles/hotel1.jpg" alt=""
+                                class="card-img-top"></a>
                         <div class="card-body">
                             <h5 class="card-title">
                                 <i class="fas fa-star"></i>
@@ -239,7 +248,8 @@
                         <div class="card-header">
                             Iberostar Star Fish
                         </div>
-                        <a href="hoteles/booking_hotel.html"><img src="assets/img/hoteles/hotel1.jpg" alt="" class="card-img-top"></a>
+                        <a href="hoteles/booking_hotel.html"><img src="assets/img/hoteles/hotel1.jpg" alt=""
+                                class="card-img-top"></a>
                         <div class="card-body">
                             <h5 class="card-title">
                                 <i class="fas fa-star"></i>
@@ -276,8 +286,8 @@
                                                 SECCIÓN DE AUTOS RECOMENDADOS
     **************************************************************************************************************-->
     <section id="autos-recomendados">
-        <h2 class="title">Autos para rentar</h2>
-        <div class="container">
+        <h2 class="title animate__animated animate__backInDown">Autos para rentar</h2>
+        <div class="container animate__animated animate__slideInRight">
             <div class="row row-cols-sm-1 row-cols-lg-3 container-fluid">
                 <div id="auto-economico" class="mb-2">
                     <h2 class="h4">Econ&oacute;mico</h2>
@@ -391,7 +401,7 @@
                                     <span id="precio" class="badge badge-success">desde 80.00 USD</span>
                                 </div>
                             </li>
-                        </a>          
+                        </a>
                     </ul>
                 </div>
             </div>
@@ -406,17 +416,19 @@
         <!-- *********************************************************************************************************
                                             SECCIÓN DE SUBSCRIPCIÓN 
     **************************************************************************************************************-->
-        <section id="subscribirse" class="container bg-light ">
+        <section id="subscribirse" class="container bg-light animate__animated animate__fadeInDownBig">
             <h2 class="title">Subscribirme</h2>
             <p class="small">Subscr&iacute;bete para que recibas todas nuestras ofertas y recibe cupones
                 con hasta<span class="badge badge-light"><span class="descuento"></span></span> % de descuento</p>
             <form id="promo-form" class="validated container-fluid form-inline" novalidate>
                 <div class="container-fluid">
                     <label class="sr-only" for="name">Nombre</label>
-                    <input type="text" class="form-control mb-1 mr-sm-2" name="name" id="name" placeholder="Su nombre" required>
+                    <input type="text" class="form-control mb-1 mr-sm-2" name="name" id="name" placeholder="Su nombre"
+                        required>
 
                     <label for="email" class="sr-only">Correo</label>
-                    <input type="email" id="email" class="form-control mb-1 mr-sm-2" name="email" placeholder="Su correo" required>           
+                    <input type="email" id="email" class="form-control mb-1 mr-sm-2" name="email"
+                        placeholder="Su correo" required>
                     <button type="submit" class="btn mb-2">Subscribirme <i class="fas fa-envelope-open"></i></button>
                 </div>
             </form>
@@ -427,14 +439,15 @@
     <!-- *********************************************************************************************************
                                             FORMULARIO DE CONTACTO 
     **************************************************************************************************************-->
-    <div id="contacto" class="container bg-light p-5">
+    <div id="contacto" class="container bg-light p-5 animate__animated animate__fadeInUpBig">
         <h2 class="title">Cont&aacute;ctenos</h2>
         <p class="text-danger small">Todos los campos con * son obligatorios</p>
         <form id="contact-form" action="" class="validated" novalidate>
             <div class="form-row">
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="name">Nombre <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control shadow" id="name" name="nombre" placeholder="Su nombre" required>
+                    <input type="text" class="form-control shadow" id="name" name="nombre" placeholder="Su nombre"
+                        required>
                     <div class="valid-feedback">
                         Correcto!
                     </div>
@@ -444,7 +457,8 @@
                 </div>
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="lastname">Apellido <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control shadow" id="lastname" name="apellido" placeholder="Su apellido" required>
+                    <input type="text" class="form-control shadow" id="lastname" name="apellido"
+                        placeholder="Su apellido" required>
                     <div class="valid-feedback">
                         Correcto!
                     </div>
@@ -456,8 +470,8 @@
             <div class="form-row">
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="email">Email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control shadow" id="email" name="email" placeholder="usuario@example.com"
-                        required>
+                    <input type="email" class="form-control shadow" id="email" name="email"
+                        placeholder="usuario@example.com" required>
                     <div class="valid-feedback">
                         Correcto!
                     </div>
@@ -467,8 +481,8 @@
                 </div>
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="confirmEmail">Confirmar email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control shadow" id="confirmEmail" name="email" placeholder="usuario@example.com"
-                        required>
+                    <input type="email" class="form-control shadow" id="confirmEmail" name="email"
+                        placeholder="usuario@example.com" required>
                     <div class="valid-feedback">
                         Correcto!
                     </div>
@@ -481,7 +495,8 @@
             <div class="form-row">
                 <div class="form-group col-sm-12">
                     <label for="mensaje">Mensaje <span class="text-danger">*</span></label>
-                    <textarea type="text" class="form-control shadow" rows="8" id="mensaje" name="mensaje" required></textarea>
+                    <textarea type="text" class="form-control shadow" rows="8" id="mensaje" name="mensaje"
+                        required></textarea>
                     <div class="valid-feedback">
                         Correcto!
                     </div>
@@ -497,7 +512,7 @@
                 <label class="custom-control-label" for="checkbox">
                     Doy mi consentimiento para que esta web almacene la informaci&oacute;n que env&iacute;o para que
                     puedan responder a mi petici&oacute;n. Por tanto acepto y estoy de acuerdo con la <a href="#">
-                    Pol&iacute;tica de privacidad</a> y los <a href="#">T&eacute;rminos y Condiciones</a> de
+                        Pol&iacute;tica de privacidad</a> y los <a href="#">T&eacute;rminos y Condiciones</a> de
                     WayTravelTrek.
                 </label>
                 <div class="valid-feedback">
@@ -559,13 +574,13 @@
     <a id="boton-subir" href="#nav" class="btn"><i class="fas fa-arrow-circle-up"></i></a>
 
     <!-- Añadiendo scripts js -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/all.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
     <script src="assets/js/validate-form.js"></script>
-
-
-
 
 </body>
 
