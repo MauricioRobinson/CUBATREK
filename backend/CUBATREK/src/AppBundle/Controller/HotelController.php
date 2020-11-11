@@ -114,13 +114,52 @@ class HotelController extends Controller {
         $form = $this->createForm(FiltroH::class, $token);
         $hoteles = $repo->findBy(['region'=>$region]);
         $form->handleRequest($request);
+        $cantM=0;
+        $cantI=0;
+        $cantR=0;
+        $cantB=0;
+        $cantS=0;
+        $cantP=0;
+        foreach ($hoteles as $hotel)
+        {           
+            if($hotel->getCadena()=="Melia")
+            {
+                $cantM =  $cantM + 1;
+            }
+            if($hotel->getCadena()=="Iberostar")
+            {
+                $cantI= $cantI +1;
+            }
+            if($hotel->getCadena()=="Roc")
+            {
+                $cantR = $cantR +1;
+            }
+            if($hotel->getCadena()=="Blue Diamond")
+            {
+                $cantB = $cantB +1;
+            }
+            if($hotel->getCadena()=="Paradisus")
+            {
+                $cantP= $cantP +1;
+            }
+            if($hotel->getCadena()=="Solways")
+            {
+                $cantS = $cantS +1;
+            }            
+        } 
        if ($form->isSubmitted() && $form->isValid())
         {
          $token = $form->getData();
          $hoteles= $this->filtrar($hoteles, $token);
          
-        }
-        return $this->render('hoteles/destinos_hotel.html.twig',array('hoteles'=>$hoteles));
+        }    
+        return $this->render('hoteles/destinos_hotel.html.twig',array('form' => $form->createView(),'hoteles'=>$hoteles,
+            'cantM'=>$cantM,
+            'cantI'=>$cantI,
+            'cantB'=>$cantB,
+            'cantR'=>$cantR,
+            'cantS'=>$cantS,
+            'cantP'=>$cantP));
     }
     
     function filtrar($hoteles,TokenD $token)
@@ -135,7 +174,7 @@ class HotelController extends Controller {
             $categorias[] = $auto; 
          }
          
-         if ($token->get4() && $auto->getCategoria() == 4 )
+         if ($token->getCuatro() && $auto->getCategoria() == 4 )
          {
             $categorias[] = $auto; 
          }
@@ -150,27 +189,27 @@ class HotelController extends Controller {
             $cadenas[] = $auto; 
          }
          
-         if ($token->getIberostar() && $auto->getCategoria() == "Iberostar")
+         if ($token->getIberostar() && $auto->getCadena() == "Iberostar")
          {
             $cadenas[] = $auto; 
          }
          
-         if ($token->getRoc() && $auto->getCategoria() == "Roc")
+         if ($token->getRoc() && $auto->getCadena() == "Roc")
          {
             $cadenas[] = $auto; 
          }
          
-         if ($token->getBlueDiamond() && $auto->getCategoria() == "Blue Diamond")
+         if ($token->getBlueDiamond() && $auto->getCadena() == "Blue Diamond")
          {
             $cadenas[] = $auto; 
          }
          
-         if ($token->getSolways() && $auto->getAgencia() == "Solways")
+         if ($token->getSolways() && $auto->getCadena() == "Solways")
          {
             $cadenas[] = $auto; 
          }
          
-         if ($token->getParadisus() && $auto->getAgencia() == "Paradisus")
+         if ($token->getParadisus() && $auto->getCadena() == "Paradisus")
          {
             $cadenas[] = $auto; 
          }

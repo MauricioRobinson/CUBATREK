@@ -17,18 +17,6 @@ class FormReservaH extends AbstractType {
         $builder
                 ->add('fechaEntrada', DateType::class,['widget'=>'single_text','label' => 'Entrada'])
                 ->add('fechaSalida', DateType::class,['widget'=>'single_text','label' => 'Salida'])
-                ->add('cantHabitaciones', ChoiceType::class,[
-                    'choices'=>[
-                        
-                        '-'=>0,
-                        '1'=>1,
-                        '2'=>2,
-                        '3'=>3,
-                        '4'=>4,
-                        '5'=>5,
-                        '6'=>6,
-                    ]
-                ,'label' => 'Habitaciones'])
                 ->add('adultos', ChoiceType::class,[
                     'choices'=>[
                         
@@ -69,7 +57,54 @@ class FormReservaH extends AbstractType {
                 ->add('apellido', TextType::class)
                 ->add('correo', EmailType::class,['label' => 'Email'])
                 ->add('mensaje',TextareaType::class,['label' => 'Mensaje (Opcional)','required'=> false])
-                ->add('token', HiddenType::class,['data' => 'abcdef','mapped'=>false])
-                ->add('save', SubmitType::class, ['label' => '200']);
+                ->add('Triple', ChoiceType::class,[
+                    'choices'=>[
+                        '-'=>0,
+                        '1'=>1,
+                        '2'=>2,
+                    ],'label' => 'Habitaciones','required'=> false,])
+                ->add('Doble', ChoiceType::class,[
+                    'choices'=>[
+                        '-'=>0,
+                        '1'=>1,
+                        '2'=>2,
+                    ],'label' => 'Habitaciones','required'=> false,])
+                ->add('Sencilla', ChoiceType::class,[
+                    'choices'=>[
+                        '-'=>0,
+                        '1'=>1,
+                        '2'=>2,
+                    ],'label' => 'Habitaciones','required'=> false,])
+                ->add('Vista_al_mar', ChoiceType::class,[
+                    'choices'=>[
+                        '-'=>0,
+                        '1'=>1,
+                        '2'=>2,
+                    ],'label' => 'Habitaciones','required'=> false,])
+                ->add('JuniorSuite', ChoiceType::class,[
+                    'choices'=>[
+                        '-'=>0,
+                        '1'=>1,
+                        '2'=>2,
+                    ],'label' => 'Habitaciones','required'=> false,])
+                ->add('Suite', ChoiceType::class,[
+                    'choices'=>[
+                        '-'=>0,
+                        '1'=>1,
+                        '2'=>2,
+                    ],'label' => 'Habitaciones','required'=> false,])
+                ->add('Deluxe', ChoiceType::class,[
+                    'choices'=>[
+                        '-'=>0,
+                        '1'=>1,
+                        '2'=>2,
+                    ],'label' => 'Habitaciones','required'=> false,])
+                ->add('GrandDeluxe', ChoiceType::class,[
+                    'choices'=>[
+                        '-'=>0,
+                        '1'=>1,
+                        '2'=>2,
+                    ],'label' => 'Habitaciones','required'=> false])
+                ->add('save', SubmitType::class, ['label' => 'Solicitar reserva']);
     }
 }

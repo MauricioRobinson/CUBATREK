@@ -228,7 +228,7 @@ class AutoController extends Controller {
                 $em->persist($reservacion);
                 $em->flush();
                 $idR= $reservacion->getId();
-                $code = "A-R".$idR."-".$auto->getMarca();
+                $code = "AR".$idR."-C".$auto->getId();
                 $reservacion->setCodigo($code);
                 $em->persist($reservacion);
                 $em->flush();

@@ -2,7 +2,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="habitacion")
@@ -46,20 +46,13 @@ class Habitacion {
      */
     private $precio;
     
-    /**
-     * @ORM\OneToMany(targetEntity="Reservacion", mappedBy="habitacion") 
-     */
-    private $reservaciones;
     
     /**
      * @ORM\ManyToOne(targetEntity="Hotel", inversedBy="tiposHabitaciones") 
      */
     private $hotel;
     
-    
-    public function __construct() {
-        $this->reservaciones = new ArrayCollection();
-    }
+
 
     public function getId()
     {

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -32,11 +33,14 @@ class Reservacion {
     private $mensaje;
 
     /**
+     * @Assert\DateTime() 
      * @ORM\Column(type="date") 
      */ 
     private $fechaEntrada;
     
     /**
+     * @Assert\DateTime() 
+     * @Assert\GreaterThan(propertyPath="fechaEntrada")
      * @ORM\Column(type="date") 
      */ 
     private $fechaSalida;
@@ -44,7 +48,42 @@ class Reservacion {
     /**
      * @ORM\Column(type="integer") 
      */
-    private $cantHabitaciones;
+    private $triple;
+    
+    /**
+     * @ORM\Column(type="integer") 
+     */
+    private $doble;
+    
+    /**
+     * @ORM\Column(type="integer") 
+     */
+    private $sencilla;
+    
+    /**
+     * @ORM\Column(type="integer") 
+     */
+    private $vista_al_mar;
+    
+    /**
+     * @ORM\Column(type="integer") 
+     */
+    private $juniorSuite;
+    
+    /**
+     * @ORM\Column(type="integer") 
+     */
+    private $suite;
+    
+    /**
+     * @ORM\Column(type="integer") 
+     */
+    private $deluxe;
+    
+    /**
+     * @ORM\Column(type="integer") 
+     */
+    private $grandDeluxe;
     
     /** 
      * @ORM\Column(type="integer") 
@@ -69,9 +108,23 @@ class Reservacion {
     private $correo;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Habitacion", inversedBy="reservaciones") 
+     * @ORM\ManyToOne(targetEntity="Hotel", inversedBy="reservaciones") 
      */
-    private $habitacion;
+    private $hotel;
+    
+    public function __construct()
+    {
+       $this->triple = 0;
+       $this->doble = 0;
+       $this->sencilla = 0;
+       $this->vista_al_mar = 0;
+       $this->juniorSuite = 0;
+       $this->suite = 0;
+       $this->deluxe = 0;
+       $this->grandDeluxe = 0;
+       
+    }
+    
     
     //Sección de los métodos get
     public function getNombre()
@@ -104,16 +157,50 @@ class Reservacion {
         return $this->mensaje;
     }
     
-    public function getHabitacion()
+    public function getHotel()
     {
-        return $this->habitacion;
+        return $this->hotel;
     }
     
-    public function getCantHabitaciones()
+    public function getTriple()
     {
-        return $this->cantHabitaciones;
+        return $this->triple;
     }
     
+    public function getDoble()
+    {
+        return $this->doble;
+    }
+    
+    public function getSencilla()
+    {
+        return $this->sencilla;
+    }
+    
+    public function getVistaAlMar()
+    {
+        return $this->vista_al_mar;
+    }
+    
+    public function getJuniorSuite()
+    {
+        return $this->juniorSuite;
+    }
+    
+    public function getDeluxe()
+    {
+        return $this->deluxe;
+    }
+    
+    public function getGrandDeluxe()
+    {
+        return $this->grandDeluxe;
+    }
+    
+    public function getSuite()
+    {
+        return $this->suite;
+    }
     public function getNinos()
     {
         return $this->ninos;
@@ -160,24 +247,65 @@ class Reservacion {
         $this->fechaSalida = $fecha_saida;
     }
     
-    public function setHabitacion(Habitacion $habitacion=NULL)
+    public function setHotel(Hotel $hotel=NULL)
     {
-        $this->habitacion = $habitacion;
+        $this->hotel = $hotel;
     }
-    public function setCantHabitasiones(int $cant_hab)
+    public function setTriple( $triple = 0)
+    {   if($triple !=NULL){
+        $this->triple = $triple; }
+        
+    }  
+    
+    public function setDoble( $triple = 0)
     {
-        $this->cantHabitaciones = $cant_hab;
-    }    
-    public function setAdultos(int $adultos)
+        if($triple !=NULL){
+        $this->doble = $triple;
+        }
+        
+    } 
+    
+    public function setSencilla( $triple=0)
+    {   if($triple !=NULL){
+        $this->sencilla = $triple;
+    } }
+    
+    public function setVistaAlMar( $triple=0)
+    {   if($triple !=NULL){
+        $this->vista_al_mar = $triple; }
+        
+    } 
+    
+    public function setJuniorSuite( $triple=0)
+    {   if($triple !=NULL){
+        $this->juniorSuite = $triple;}
+    } 
+    
+    public function setSuite($triple=0)
+    {   if($triple !=NULL){
+         $this->suite = $triple;}
+    } 
+    
+    public function setDeluxe($triple=0)
+    {   if($triple !=NULL){
+        $this->deluxe = $triple;}
+    } 
+    
+    public function setGrandDeluxe($triple=0)
+    {   if($triple !=NULL){
+        $this->grandDeluxe = $triple;}
+    } 
+    
+    public function setAdultos(int $adultos=0)
     {
         $this->adultos = $adultos;
     } 
     
-    public function setNinos(int $ninos)
+    public function setNinos(int $ninos=0)
     {
         $this->ninos = $ninos;
     } 
-    public function setInfantes(int $infantes)
+    public function setInfantes(int $infantes=0)
     {
         $this->infantes = $infantes;
     } 

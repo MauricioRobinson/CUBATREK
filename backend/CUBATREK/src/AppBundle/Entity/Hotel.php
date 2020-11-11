@@ -38,12 +38,12 @@ class Hotel {
     private $region;
     
     /**
-     * @ORM\Column(type="float") 
+     * @ORM\Column(type="decimal" ,scale=6) 
      */
     private $latitud;
     
     /**
-     * @ORM\Column(type="float") 
+     * @ORM\Column(type="decimal" ,scale=6) 
      */
     private $longitud;
     
@@ -61,6 +61,11 @@ class Hotel {
      */
     private $tiposHabitaciones;
     
+     /**
+     * @ORM\OneToMany(targetEntity="Reservacion", mappedBy="hotel") 
+     */
+    private $reservaciones;
+    
     /**
      * @ORM\OneToMany(targetEntity="Temporadas", mappedBy="hotel")  
      */
@@ -74,6 +79,7 @@ class Hotel {
 
     public function __construct() 
     {
+        $this->reservaciones = new ArrayCollection();
         $this->fotos = new ArrayCollection();
         $this->tiposHabitaciones =new ArrayCollection();
         $this->temporadas = new ArrayCollection;
@@ -128,6 +134,12 @@ class Hotel {
     public function getTipoHab()
     {
         return $this->tiposHabitaciones;
+    }
+    
+    
+    public function getReservas()
+    {
+       return $this->reservaciones;
     }
 
     public function getTemporadas()

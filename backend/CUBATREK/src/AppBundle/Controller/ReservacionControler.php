@@ -41,24 +41,157 @@ class ReservacionControler extends Controller {
         $medios = $repo2->findBy(['categoria'=>"Medio"]);
         $lujos = $repo2->findBy(['categoria'=>"F-Lujo"]);
         
-        if($form->isSubmitted() && $form->isValid())
+        $isTriple=false;
+        $isDoble=false;
+        $isSencilla=false;
+        $isVista=false;
+        $isJunior=false;
+        $isSuite=false;
+        $isDeluxe=false;
+        $isGrandDeluxe=false;
+        foreach ( $hotel->getTipoHab() as $habitacion)
         {
-            
+            if($habitacion->getTipo() =="Tripe"){$isTriple=true;}
+            if($habitacion->getTipo() =="Doble"){$isDoble=true;}
+            if($habitacion->getTipo() =="Sencilla"){$isSencilla=true;}
+            if($habitacion->getTipo() =="Vista al mar"){$isVista=true;}
+            if($habitacion->getTipo() =="Junior Suite"){$isJunior=true;}
+            if($habitacion->getTipo() =="Suite"){$isSuite=true;}
+            if($habitacion->getTipo() =="Deluxe"){$isDeluxe=true;}
+            if($habitacion->getTipo() =="Grand Deluxe"){$isGrandDeluxe=true;}
         }
         
-        return $this->render('hoteles/booking_hotel.html.twig',['form' => $form->createView(),'hotel'=>$hotel,'economicos'=>$economicos,'medios'=>$medios,'lujos'=>$lujos]);
+        if($form->isSubmitted() && $form->isValid())
+         {
+            
+          $reservacion = $form->getData();
+          if($reservacion->getTriple() > 0 || $reservacion->getDoble() > 0 || $reservacion->getSencilla() > 0 || $reservacion->getVistaAlMar() > 0|| $reservacion->getSuite() > 0 || $reservacion->getDeluxe() > 0 || $reservacion->getGrandDeluxe() > 0 || $reservacion->getJuniorSuite() > 0)   
+          { 
+         //Agregando la relacion entre las dos entidades 
+         $hotel->getReservas()->add($reservacion);
+         $reservacion->setHotel($hotel);
+  
+         //Guardando los datos en la BD y redireccionando exito
+         $em->persist($reservacion);
+         $em->flush();
+         $idR = $reservacion->getId();
+          return $this->redirectToRoute('habitacion-reservada',['id'=>$idR]);
+         }
+        }
+        
+        return $this->render('hoteles/booking_hotel.html.twig',['form' => $form->createView(),'hotel'=>$hotel,
+            'economicos'=>$economicos,
+            'medios'=>$medios,
+            'lujos'=>$lujos,
+            'isTriple'=>$isTriple,
+            'isDoble'=>$isDoble,
+            'isSencilla'=>$isSencilla,
+            'isVista'=>$isVista,
+            'isJunior'=>$isJunior,
+            'isSuite'=>$isSuite,
+            'isDeluxe'=>$isDeluxe,
+            'isGrandDeluxe'=>$isGrandDeluxe,
+            ]);
     }
     
     /**
-     * @Route ("/hotel/confirm/12r4r35y7{id}2fewte45", name = "hotel-confirm")
+     * @Route ("/hotel/confirm/12r4r35y7{id}2fewte45", name = "habitacion-reservada")
      */
     public function reservaInfo($id)
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Reservacion::class);
         $reserva = $repo->findOneById($id);
-        $auto = $reserva->getAuto();
-        return $this->render('hoteles/confirm_booking_hotel.html.twig',['reserva' =>$reserva ,'auto'=>$auto]);
+        $hotel = $reserva->getHotel();
+        $entrada = $reserva->getFechaEntrada();
+        $salida = $reserva->getFechaSalida();
+       
+        $triple=0;
+        $doble=0;
+        $sencilla=0;
+        $vista=0;
+        $junior=0;
+        $suite=0;
+        $deluxe=0;
+        $grandDeluxe=0;
+        $precio =0;
+        $habitaciones = $reserva->getTriple() +$reserva->getDoble() + $reserva->getSencilla() +$reserva->getVistaAlMar() +$reserva->getJuniorSuite() +$reserva->getSuite() +$reserva->getDeluxe() +$reserva->getGrandDeluxe();
+        foreach ($hotel->getTipoHab() as $habitacion)
+        {
+            if($habitacion->getTipo() =="Tripe"){$triple= $habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Doble"){$doble=$habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Sencilla"){$sencilla=$habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Vista al mar"){$vista=$habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Junior Suite"){$junior=$habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Suite"){$suite=$habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Deluxe"){$deluxe=$habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Grand Deluxe"){$grandDeluxe=$habitacion->getPrecio();}
+        }
+        foreach ($hotel->getTemporadas() as $temp)
+        {
+            $inicioT= $temp->getInicio();
+            $finT = $temp->getFin();
+            
+            
+            if( $entrada > $inicioT && $entrada < $finT && $salida < $finT )
+            {
+                
+
+                $interval = $entrada->diff($salida);
+                $dias = $interval->format("%d");
+                $meses = $interval->format("%m");
+                $precio += (($meses *30)+ $dias)* (($temp->getRebaja() + $triple)*$reserva->getTriple() +
+                        ($temp->getRebaja() + $doble)*$reserva->getDoble() +
+                        ($temp->getRebaja() + $sencilla)*$reserva->getSencilla() +
+                        ($temp->getRebaja() + $vista)*$reserva->getVistaAlMar() +
+                        ($temp->getRebaja() + $junior)*$reserva->getJuniorSuite() +
+                        ($temp->getRebaja() + $suite)*$reserva->getSuite() +
+                        ($temp->getRebaja() + $deluxe)*$reserva->getDeluxe() +
+                        ($temp->getRebaja() + $grandDeluxe)*$reserva->getGrandDeluxe());
+                
+            }elseif ($entrada > $inicioT && $entrada < $finT && $salida > $finT ) {
+                
+                $interval = $entrada->diff($finT);
+                $dias = $interval->format("%d");
+                $meses = $interval->format("%m");
+                $precio += (($meses *30)+ $dias)* (($temp->getRebaja() + $triple)*$reserva->getTriple() +
+                        ($temp->getRebaja() + $doble)*$reserva->getDoble() +
+                        ($temp->getRebaja() + $sencilla)*$reserva->getSencilla() +
+                        ($temp->getRebaja() + $vista)*$reserva->getVistaAlMar() +
+                        ($temp->getRebaja() + $junior)*$reserva->getJuniorSuite() +
+                        ($temp->getRebaja() + $suite)*$reserva->getSuite() +
+                        ($temp->getRebaja() + $deluxe)*$reserva->getDeluxe() +
+                        ($temp->getRebaja() + $grandDeluxe)*$reserva->getGrandDeluxe());
+            } elseif($salida > $inicioT && $salida < $finT && $entrada < $inicioT){
+             
+                
+                $interval = $inicioT->diff($salida);
+                $dias = $interval->format("%d");
+                $meses = $interval->format("%m");
+                $precio += (($meses *30)+ $dias)* (($temp->getRebaja() + $triple)*$reserva->getTriple() +
+                        ($temp->getRebaja() + $doble)*$reserva->getDoble() +
+                        ($temp->getRebaja() + $sencilla)*$reserva->getSencilla() +
+                        ($temp->getRebaja() + $vista)*$reserva->getVistaAlMar() +
+                        ($temp->getRebaja() + $junior)*$reserva->getJuniorSuite() +
+                        ($temp->getRebaja() + $suite)*$reserva->getSuite() +
+                        ($temp->getRebaja() + $deluxe)*$reserva->getDeluxe() +
+                        ($temp->getRebaja() + $grandDeluxe)*$reserva->getGrandDeluxe());
+            }
+            
+        } 
+            
+      
+        return $this->render('hoteles/confirm_booking_hotel.html.twig',['reserva' =>$reserva,'hotel'=>$hotel,'precio'=>$precio,
+            'triple'=>$triple,
+            'doble'=>$doble,
+            'sencilla'=>$sencilla,
+            'vista'=>$vista,
+            'junior'=>$junior,
+            'suite'=>$suite,
+            'deluxe'=>$deluxe,
+            'grandDeluxe'=>$grandDeluxe, 
+            'habitaciones'=>$habitaciones,
+            ]);
     }
     
     /**

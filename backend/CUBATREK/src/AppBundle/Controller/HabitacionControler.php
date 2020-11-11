@@ -15,28 +15,27 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class HabitacionControler extends Controller {
    
     /** 
-     * @Route ("/reservarHabitacion/{id}", name = "reservarH")
+     * @Route ("/reser/{id}", name = "reservarH")
      */
     public function addReserva(Request $request,$id)
     {
         //Creando la habitacion 
         $reserva = new Reservacion;
-        //Obteniendo los datos de la Temporada en un formulario
+        //Obteniendo los datos de la Reserva en un formulario
         $form = $this->createForm(FormReservaH::class, $reserva);
         
-        //Obteniendo el hotel vinculado a la habitacion
+        //Obteniendo el hotel vinculado a la Reserva
         $em = $this->getDoctrine()->getManager(); 
-        $repo = $em->getRepository(Habitacion::class);
-        $habitacion = $repo->findOneById($id);
-        $hotel = $habitacion->getHotel();
+        $repo = $em->getRepository(Hotel::class);
+        $hotel = $repo->findOneById($id);
         $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid())
     {
         $reserva = $form->getData();
         //Agregando la relacion entre las dos entidades 
-        $habitacion->getReservas()->add($reserva);
-        $reserva->setHabitacion($habitacion);
+        $hotel->getReservas()->add($reserva);
+        $reserva->setHabitacion($hotel);
         
         //Guardando los datos en la BD y redireccionando exito
         $em->persist($reserva);
@@ -44,11 +43,11 @@ class HabitacionControler extends Controller {
         $idR = $reserva->getId();
         return $this->redirectToRoute('habitacion-reservada',['id'=>$idR]);
     }
-      return $this->render('default/formReserva.html.twig', ['form' => $form->createView(),'hotel'=>$hotel,'habitacion'=>$habitacion]);
+      return $this->render('default/formReserva.html.twig', ['form' => $form->createView(),'hotel'=>$hotel]);
     }
     
     /** 
-     * @Route ("/HabitacionReservada/13577893{id}23124124242414", name = "habitacion-reservada")
+     * @Route ("/HabitacionReservada/13577893{id}23124124242414", name = "")
      */
     public function resultado($id)
     {
