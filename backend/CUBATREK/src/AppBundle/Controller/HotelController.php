@@ -18,12 +18,14 @@ use AppBundle\Form\FiltroH;
 use AppBundle\Controller\TokenD;
 use AppBundle\Entity\Auto;
 use Doctrine\ORM\EntityManager;
+use AppBundle\Form\FormHMovil;
+
 
 
 class HotelController extends Controller {
  
     /**
-     * @Route ("/crearHotel", name="crear_hotel") 
+     * @Route ("/admin/crearHotel", name="crear_hotel") 
      */
     public function crearHotel(Request $request)
     {
@@ -99,7 +101,7 @@ class HotelController extends Controller {
         $repo2 = $em->getRepository(Auto::class);
         $economicos = $repo2->findBy(['categoria'=>"Economico"]); 
         $medios = $repo2->findBy(['categoria'=>"Medio"]);
-        $lujos = $repo2->findBy(['categoria'=>"F-Lujo"]);
+        $lujos = $repo2->findBy(['categoria'=>"SUV"]);
         return $this->render('hoteles/index.html.twig',['economicos'=>$economicos,'medios'=>$medios,'lujos'=>$lujos]);
     }
     
@@ -112,7 +114,9 @@ class HotelController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Hotel::class);
         $form = $this->createForm(FiltroH::class, $token);
+        $form2 = $this->createForm(FormHMovil::class, $token);
         $hoteles = $repo->findBy(['region'=>$region]);
+        $form2->handleRequest($request);
         $form->handleRequest($request);
         $cantM=0;
         $cantI=0;
@@ -152,8 +156,14 @@ class HotelController extends Controller {
          $token = $form->getData();
          $hoteles= $this->filtrar($hoteles, $token);
          
-        }    
-        return $this->render('hoteles/destinos_hotel.html.twig',array('form' => $form->createView(),'hoteles'=>$hoteles,
+        }   
+        if ($form2->isSubmitted() && $form2->isValid())
+        {
+         $token = $form2->getData();
+         $hoteles= $this->filtrar($hoteles, $token);
+         
+        } 
+        return $this->render('hoteles/destinos_hotel.html.twig',array('form2'=>$form2->createView(),'form' => $form->createView(),'hoteles'=>$hoteles,
             'cantM'=>$cantM,
             'cantI'=>$cantI,
             'cantB'=>$cantB,
@@ -262,7 +272,7 @@ class HotelController extends Controller {
     }
 
      /**
-     * @Route ("/hotelesAdmin", name="hoteles_admin")
+     * @Route ("/admin/hoteles/", name="hoteles_admin")
      */
     public function obtenerHotelesAddmin()
     {
