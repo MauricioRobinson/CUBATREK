@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
 
     <script src="https://kit.fontawesome.com/484a0c911a.js" crossorigin="anonymous"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-54BLQT8SVW"></script>
+    <script src="assets/js/analytics.js"></script>
 
 </head>
 
@@ -57,7 +60,7 @@
                     <li class="nav-item animate__animated animate__bounceInDown">
                         <a href="accounts/register/index.html" target="__blank" class="nav-link">Crear cuenta <i class="fas fa-user-plus"></i> 
                             |
-                            Login <i class="fas fas-door-open"></i></a>
+                            Login<i class="fas fa-door-open"></i></a>
                     </li>   
                 </ul>
             </div>
@@ -446,7 +449,7 @@
     <div id="contacto" class="container bg-light p-5 animate__animated animate__fadeInUpBig">
         <h2 class="title">Cont&aacute;ctenos</h2>
         <p class="text-danger small">Todos los campos con * son obligatorios</p>
-        <form id="contact-form" action="" class="validated" novalidate>
+        <form id="contact-form" action="captcha.php" method="POST" class="validated" novalidate>
             <div class="form-row">
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="name">Nombre <span class="text-danger">*</span></label>
@@ -526,9 +529,9 @@
                     Debes estar de acuerdo para poder enviar el mensaje.
                 </div>
             </div>
-
+            <div class="g-recaptcha mt-2" data-sitekey="6LdupOIZAAAAAC3Uew6gwXrq1YfRXO82XC1zpGG7"></div>
             <div class="row text-right d-block">
-                <button type="submit" class="btn">Enviar <i class="fas fa-paper-plane"></i></button>
+                <button id="recaptcha" type="submit" class="btn">Enviar <i class="fas fa-paper-plane"></i></button>
             </div>
         </form>
     </div>
@@ -576,7 +579,7 @@
     </footer>
 
     <a id="boton-subir" href="#nav" class="btn"><i class="fas fa-arrow-circle-up"></i></a>
-
+    
     <!-- Añadiendo scripts js -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
@@ -587,5 +590,8 @@
     <script src="assets/js/validate-form.js"></script>
 
 </body>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNGFB9B" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
 
 </html>

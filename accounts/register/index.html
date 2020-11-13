@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../../assets/css/responsive.css">
 
     <script src="https://kit.fontawesome.com/484a0c911a.js" crossorigin="anonymous"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </head>
 
@@ -30,7 +31,7 @@
     </section>
 
     <div class="container shadow d-flex align-items-center justify-content-center bg-light py-2 px-5">
-        <form id="formulario-registro" class="validated" novalidate>
+        <form id="formulario-registro" action="../../captcha.php" method="POST" class="validated" novalidate>
             <h2 class="h5 text-left mb-3 mt-2 border-bottom border-dark">Por favor, reg&iacute;strese</h2>
             <div class="form-row">
                 <div class="form-gruop col-sm-12">
@@ -88,6 +89,8 @@
                         <div class="invalid-feedback">
                             Debes estar de acuerdo para poder registrarme.
                         </div>
+                        <div class="g-recaptcha mt-2" data-sitekey="6LdupOIZAAAAAC3Uew6gwXrq1YfRXO82XC1zpGG7"></div>
+                        <br />
                         <button role="button" type="submit" class="btn btn-block my-4">Registrame</button>
                         <h2 class="h5 text-left mb-3 mt-5 border-bottom border-dark">Ha creado una cuenta?</h2>
                         <a role="button" href="../login/index.html" class="btn btn-block">Iniciar sesi&oacute;n</a>

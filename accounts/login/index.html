@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../../assets/css/responsive.css">
 
     <script src="https://kit.fontawesome.com/484a0c911a.js" crossorigin="anonymous"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </head>
 
@@ -30,7 +31,7 @@
     </section>
 
     <div class="container shadow d-flex align-items-center justify-content-center bg-light py-2 px-5">
-        <form id="formulario-iniciar-sesion" class="validated" novalidate>
+        <form id="formulario-iniciar-sesion" action="../../captcha.php" method="POST" class="validated" novalidate>
             <h2 class="h5 text-left mb-3 mt-2 border-bottom border-dark">Iniciar sesi&oacute;n</h2>
             <div class="form-row">
                 <div class="form-group col-sm-12">
@@ -47,6 +48,8 @@
                     <div class="invalid-feedback">
                         Debe tener m&aacute;s de 5 caracteres
                     </div>
+                    <div class="g-recaptcha mt-2" data-sitekey="6LdupOIZAAAAAC3Uew6gwXrq1YfRXO82XC1zpGG7"></div>
+                    <br />
                 </div>
                 <div class="form-group col-sm-12">
                     <button role="button" type="submit" class="btn btn-block my-4">Iniciar sesi&oacute;n</button>
