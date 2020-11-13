@@ -10,6 +10,7 @@ use AppBundle\Entity\Reservacion;
 use AppBundle\Entity\Hotel;
 use AppBundle\Entity\Auto;
 use AppBundle\Form\FormReservaH;
+use AppBundle\Form\FormSub;
 
 /**
  * Description of ReservacionControler
@@ -39,7 +40,7 @@ class ReservacionControler extends Controller {
         $hotel = $repo->findOneById($id);
         $economicos = $repo2->findBy(['categoria'=>"Economico"]); 
         $medios = $repo2->findBy(['categoria'=>"Medio"]);
-        $lujos = $repo2->findBy(['categoria'=>"F-Lujo"]);
+        $lujos = $repo2->findBy(['categoria'=>"SUV"]);
         
         $isTriple=false;
         $isDoble=false;
@@ -97,7 +98,7 @@ class ReservacionControler extends Controller {
     /**
      * @Route ("/hotel/confirm/12r4r35y7{id}2fewte45", name = "habitacion-reservada")
      */
-    public function reservaInfo($id)
+    public function reservaInfo($id,  Request $request,\Swift_Mailer $mailer)
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Reservacion::class);
@@ -118,14 +119,14 @@ class ReservacionControler extends Controller {
         $habitaciones = $reserva->getTriple() +$reserva->getDoble() + $reserva->getSencilla() +$reserva->getVistaAlMar() +$reserva->getJuniorSuite() +$reserva->getSuite() +$reserva->getDeluxe() +$reserva->getGrandDeluxe();
         foreach ($hotel->getTipoHab() as $habitacion)
         {
-            if($habitacion->getTipo() =="Tripe"){$triple= $habitacion->getPrecio();}
-            if($habitacion->getTipo() =="Doble"){$doble=$habitacion->getPrecio();}
-            if($habitacion->getTipo() =="Sencilla"){$sencilla=$habitacion->getPrecio();}
-            if($habitacion->getTipo() =="Vista al mar"){$vista=$habitacion->getPrecio();}
-            if($habitacion->getTipo() =="Junior Suite"){$junior=$habitacion->getPrecio();}
-            if($habitacion->getTipo() =="Suite"){$suite=$habitacion->getPrecio();}
-            if($habitacion->getTipo() =="Deluxe"){$deluxe=$habitacion->getPrecio();}
-            if($habitacion->getTipo() =="Grand Deluxe"){$grandDeluxe=$habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Tripe" && $reserva->getTripe() > 0 ){$triple= $habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Doble" && $reserva->getDoble() > 0){$doble=$habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Sencilla" && $reserva->getSencilla() > 0){$sencilla=$habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Vista al mar" && $reserva->getVistaAlMar() > 0){$vista=$habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Junior Suite" && $reserva->getJuniorSuite() > 0){$junior=$habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Suite" && $reserva->getSuite() > 0){$suite=$habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Deluxe" && $reserva->getDeluxe() > 0){$deluxe=$habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Grand Deluxe" && $reserva->getGrandDeluxe() > 0){$grandDeluxe=$habitacion->getPrecio();}
         }
         foreach ($hotel->getTemporadas() as $temp)
         {
@@ -178,10 +179,26 @@ class ReservacionControler extends Controller {
                         ($temp->getRebaja() + $grandDeluxe)*$reserva->getGrandDeluxe());
             }
             
-        } 
-            
-      
-        return $this->render('hoteles/confirm_booking_hotel.html.twig',['reserva' =>$reserva,'hotel'=>$hotel,'precio'=>$precio,
+        }  
+        $reserva->setCosto($precio);
+        $em->persist($reserva);
+        $em->flush();
+        $form = $this->createForm(FormSub::class);
+        $form->handleRequest($request);
+  
+      if($form->isSubmitted() && $form->isValid())
+      {
+        $message = (new \Swift_Message('Confirmacion de Reserva'))
+        ->setFrom('send@example.com')
+        ->setTo('recipient@example.com')
+        ->setBody($this->renderView('confirmation.html.twig',['reserva'=>$reserva]),'text/html');
+
+        $mailer->send($message);
+
+    
+        return new Response('<html> <body><h1>Por cierto Mauricio Recuerda que hay que hacer algo para poner aqui</h1></body> </html>');
+      }
+        return $this->render('hoteles/confirm_booking_hotel.html.twig',['form' => $form->createView(),'reserva' =>$reserva,'hotel'=>$hotel,'precio'=>$precio,
             'triple'=>$triple,
             'doble'=>$doble,
             'sencilla'=>$sencilla,
@@ -197,12 +214,12 @@ class ReservacionControler extends Controller {
     /**
      * @Route ("/email", name = "email")
      */
-    public function mailAction(\Swift_Mailer $mailer)
+    public function mailAction(Reservacion $reserva,\Swift_Mailer $mailer)
     {
-        $message = (new \Swift_Message('Hello Email'))
+        $message = (new \Swift_Message('Confirmacion de Reserva'))
         ->setFrom('send@example.com')
         ->setTo('recipient@example.com')
-        ->setBody($this->renderView('confirmation.html.twig'),'text/html');
+        ->setBody($this->renderView('confirmation.html.twig',['reserva'=>$reserva]),'text/html');
 
         $mailer->send($message);
 

@@ -100,7 +100,10 @@ class Reservacion {
      */
     private $infantes;
     
-
+    /** 
+     * @ORM\Column(type="decimal", scale=2) 
+     */
+    private $costo;
 
     /**
      * @ORM\Column(type="string") 
@@ -122,7 +125,7 @@ class Reservacion {
        $this->suite = 0;
        $this->deluxe = 0;
        $this->grandDeluxe = 0;
-       
+       $this->costo = 0;
     }
     
     
@@ -221,6 +224,11 @@ class Reservacion {
         return $this->correo;
     }
 
+    public function getCosto()
+    {
+        return $this->costo;
+    }
+
     //Sección de los métodos set
     public function setNombre(string $nombre)
     {
@@ -232,7 +240,7 @@ class Reservacion {
         $this->apellido = $apellido;
     }
     
-    public function setMensaje(string $mensaje)
+    public function setMensaje(string $mensaje =NULL)
     {
         $this->mensaje = $mensaje;
     }
@@ -309,8 +317,14 @@ class Reservacion {
     {
         $this->infantes = $infantes;
     } 
-    
-    public function setCorreo(string $correo)
+    public function setCosto( $costo )
+    {
+        if($costo !=NULL){
+            $this->costo = $costo;
+        } else{$this->costo =0;}
+    }
+
+        public function setCorreo(string $correo)
     {
         $this->correo = $correo;
     }

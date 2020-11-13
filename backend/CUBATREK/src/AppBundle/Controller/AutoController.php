@@ -13,6 +13,9 @@ use AppBundle\Entity\ReservaAuto;
 use AppBundle\Form\FormReservaA;
 use AppBundle\Form\Filtro;
 use AppBundle\Controller\TokenC;
+use AppBundle\Form\FormAMovil;
+use AppBundle\Form\FormSub;
+
 
 /**
  * Description of AutoController
@@ -82,7 +85,10 @@ class AutoController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Auto::class);
         $form = $this->createForm(Filtro::class, $token);
+        $form2  = $this->createForm(FormAMovil::class, $token);
+        
         $autos = $repo->findAll();
+        $form2->handleRequest($request);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
@@ -90,8 +96,14 @@ class AutoController extends Controller {
          $autos= $this->filtrar($autos, $token);
          
         }
+         if ($form2->isSubmitted() && $form2->isValid())
+        {
+         $token = $form2->getData();
+         $autos= $this->filtrar($autos, $token);
+         
+        }
         
-        return $this->render('autos/index.html.twig',['form' => $form->createView(),'autos'=>$autos]);
+        return $this->render('autos/index.html.twig',['form2' => $form2->createView(),'form' => $form->createView(),'autos'=>$autos]);
        
     }
     
@@ -242,12 +254,27 @@ class AutoController extends Controller {
     /**
      * @Route ("/auto/confirm/12r4r35y7{id}2fewte45", name = "auto-confirm")
      */
-    public function reservaInfo($id)
+    public function reservaInfo($id,Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(ReservaAuto::class);
+        $form =  $this->createForm(FormSub::class);
+        $form->handleRequest($request);
         $reserva = $repo->findOneById($id);
         $auto = $reserva->getAuto();
+        
+      if($form->isSubmitted() && $form->isValid())
+      {
+        $message = (new \Swift_Message('Confirmacion de Reserva'))
+        ->setFrom('send@example.com')
+        ->setTo('recipient@example.com')
+        ->setBody($this->renderView('confirmation.html.twig',['reserva'=>$reserva]),'text/html');
+
+        $mailer->send($message);
+
+    
+        return new Response('<html> <body><h1>Por cierto Mauricio Recuerda que hay que hacer algo para poner aqui</h1></body> </html>');
+      }
         return $this->render('autos/confirm_booking_car.html.twig',['reserva' =>$reserva ,'auto'=>$auto]);
     }
 
