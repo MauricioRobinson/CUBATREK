@@ -65,8 +65,10 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
-    delivery_addresses: ['marcoapadron7@gmail.com']
+    encryption: ssl
+    
 
 sensio_framework_extra:
    router:
         annotations: false
+ 

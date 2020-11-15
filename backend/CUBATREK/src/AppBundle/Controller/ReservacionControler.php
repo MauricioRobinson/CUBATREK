@@ -189,8 +189,8 @@ class ReservacionControler extends Controller {
       if($form->isSubmitted() && $form->isValid())
       {
         $message = (new \Swift_Message('Confirmacion de Reserva'))
-        ->setFrom('send@example.com')
-        ->setTo('recipient@example.com')
+        ->setFrom('promo@waytraveltrek.com')
+        ->setTo($reserva->getCorreo())
         ->setBody($this->renderView('confirmation.html.twig',['reserva'=>$reserva]),'text/html');
 
         $mailer->send($message);

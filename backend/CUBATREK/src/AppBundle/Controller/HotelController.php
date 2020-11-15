@@ -18,6 +18,7 @@ use AppBundle\Form\FiltroH;
 use AppBundle\Controller\TokenD;
 use AppBundle\Entity\Auto;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use AppBundle\Form\FormHMovil;
 
 
@@ -106,16 +107,27 @@ class HotelController extends Controller {
     }
     
     /**
-     * @Route ("/hotel/{region}",name="hotel-region")
+     * @Route ("/hoteles/{region}/{page}",name="hotel-region")
      */
-    public function porRegiones(Request $request,$region)
+    public function porRegiones(Request $request,$region,$page = 1)
     {
         $token = new TokenD();
         $em = $this->getDoctrine()->getManager();
+        $limit = 10;
         $repo = $em->getRepository(Hotel::class);
+        $todos = $repo->findBy(['region' => $region]);
+        $contador = count($todos);
+        $maxPage = ceil($contador / $limit); 
+        $query = $repo->createQueryBuilder('h')
+            ->where('h.region = :region')
+            ->setParameter('region',$region)
+            ->setFirstResult($limit *($page - 1))
+            ->setMaxResults($limit)
+            ->orderBy('h.categoria', 'DESC')
+            ->getQuery();
+        $hoteles = $query->getResult();
         $form = $this->createForm(FiltroH::class, $token);
         $form2 = $this->createForm(FormHMovil::class, $token);
-        $hoteles = $repo->findBy(['region'=>$region]);
         $form2->handleRequest($request);
         $form->handleRequest($request);
         $cantM=0;
@@ -153,15 +165,16 @@ class HotelController extends Controller {
         } 
        if ($form->isSubmitted() && $form->isValid())
         {
+         $hoteles = $repo->findBy(['region'=>$region]);
          $token = $form->getData();
          $hoteles= $this->filtrar($hoteles, $token);
-         
+      
         }   
         if ($form2->isSubmitted() && $form2->isValid())
         {
+         $hoteles = $repo->findBy(['region'=>$region]);
          $token = $form2->getData();
-         $hoteles= $this->filtrar($hoteles, $token);
-         
+         $hoteles= $this->filtrar($hoteles, $token);      
         } 
         return $this->render('hoteles/destinos_hotel.html.twig',array('form2'=>$form2->createView(),'form' => $form->createView(),'hoteles'=>$hoteles,
             'cantM'=>$cantM,
@@ -169,7 +182,12 @@ class HotelController extends Controller {
             'cantB'=>$cantB,
             'cantR'=>$cantR,
             'cantS'=>$cantS,
-            'cantP'=>$cantP));
+            'cantP'=>$cantP,
+            'limit'=>$limit,
+            'page'=>$page,
+            'maxPages'=>$maxPage,
+            'region'=>$region
+                )); 
     }
     
     function filtrar($hoteles,TokenD $token)
@@ -270,8 +288,10 @@ class HotelController extends Controller {
       
       return $hoteles;
     }
+    
 
-     /**
+
+    /**
      * @Route ("/admin/hoteles/", name="hoteles_admin")
      */
     public function obtenerHotelesAddmin()

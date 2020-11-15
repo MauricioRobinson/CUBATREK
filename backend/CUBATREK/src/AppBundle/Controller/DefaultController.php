@@ -6,7 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Auto;
-use AppBundle\Entity\Hotel;
+use AppBundle\Entity\Hotel;  
+
 class DefaultController extends Controller
 {
     /**
