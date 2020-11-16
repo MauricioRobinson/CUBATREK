@@ -65,10 +65,8 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
-    encryption: ssl
-    
+
 
 sensio_framework_extra:
    router:
         annotations: false
- 

@@ -61,10 +61,11 @@ class ReservacionControler extends Controller {
             if($habitacion->getTipo() =="Deluxe"){$isDeluxe=true;}
             if($habitacion->getTipo() =="Grand Deluxe"){$isGrandDeluxe=true;}
         }
-        
-        if($form->isSubmitted() && $form->isValid())
+         
+
+        if($form->isSubmitted() && $form->isValid() && $this->captchaverify($request->get('g-recaptcha-response')))
          {
-            
+          
           $reservacion = $form->getData();
           if($reservacion->getTriple() > 0 || $reservacion->getDoble() > 0 || $reservacion->getSencilla() > 0 || $reservacion->getVistaAlMar() > 0|| $reservacion->getSuite() > 0 || $reservacion->getDeluxe() > 0 || $reservacion->getGrandDeluxe() > 0 || $reservacion->getJuniorSuite() > 0)   
           { 
@@ -76,9 +77,19 @@ class ReservacionControler extends Controller {
          $em->persist($reservacion);
          $em->flush();
          $idR = $reservacion->getId();
+         $code = "WTrek-".$idR."-H-".$hotel->getId();
+         $reservacion->setCodigo($code);
+         $em->persist($reservacion);
+         $em->flush();
+               
+                
           return $this->redirectToRoute('habitacion-reservada',['id'=>$idR]);
          }
         }
+        if($form->isSubmitted() &&  $form->isValid() && !$this->captchaverify($request->get('g-recaptcha-response')))
+            {     
+                $this->addFlash('error','Captcha Require');             
+            }
         
         return $this->render('hoteles/booking_hotel.html.twig',['form' => $form->createView(),'hotel'=>$hotel,
             'economicos'=>$economicos,
@@ -93,6 +104,21 @@ class ReservacionControler extends Controller {
             'isDeluxe'=>$isDeluxe,
             'isGrandDeluxe'=>$isGrandDeluxe,
             ]);
+    }
+    
+   function captchaverify($recaptcha){
+        $url = "https://www.google.com/recaptcha/api/siteverify";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); 
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, array("secret"=>"6LdupOIZAAAAAN7kc-2Xj03WKLJN6RBYV4WVDQdC","response"=>$recaptcha));
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $data = json_decode($response);     
+        
+        return $data->success;        
     }
     
     /**

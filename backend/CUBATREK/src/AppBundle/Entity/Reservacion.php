@@ -109,6 +109,11 @@ class Reservacion {
      * @ORM\Column(type="string") 
      */
     private $correo;
+    
+    /**
+     * @ORM\Column(type="string") 
+     */
+    private $codigo;
 
     /**
      * @ORM\ManyToOne(targetEntity="Hotel", inversedBy="reservaciones") 
@@ -228,6 +233,11 @@ class Reservacion {
     {
         return $this->costo;
     }
+    
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
 
     //Sección de los métodos set
     public function setNombre(string $nombre)
@@ -319,9 +329,12 @@ class Reservacion {
     } 
     public function setCosto( $costo )
     {
-        if($costo !=NULL){
             $this->costo = $costo;
-        } else{$this->costo =0;}
+    }
+    
+    public function setCodigo( $costo )
+    {
+           $this->codigo = $costo;
     }
 
         public function setCorreo(string $correo)

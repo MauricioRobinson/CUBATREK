@@ -254,7 +254,7 @@ class AutoController extends Controller {
     /**
      * @Route ("/auto/confirm/12r4r35y7{id}2fewte45", name = "auto-confirm")
      */
-    public function reservaInfo($id,Request $request)
+    public function reservaInfo($id,Request $request,\Swift_Mailer $mailer)
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(ReservaAuto::class);
@@ -266,16 +266,17 @@ class AutoController extends Controller {
       if($form->isSubmitted() && $form->isValid())
       {
         $message = (new \Swift_Message('Confirmacion de Reserva'))
-        ->setFrom('send@example.com')
-        ->setTo('recipient@example.com')
+        ->setFrom('promo@waytraveltrek.com')
+        ->setTo($reserva->getEmail())
         ->setBody($this->renderView('confirmation.html.twig',['reserva'=>$reserva]),'text/html');
 
         $mailer->send($message);
 
     
         return new Response('<html> <body><h1>Por cierto Mauricio Recuerda que hay que hacer algo para poner aqui</h1></body> </html>');
+
       }
-        return $this->render('autos/confirm_booking_car.html.twig',['reserva' =>$reserva ,'auto'=>$auto]);
+    return $this->render('autos/confirm_booking_car.html.twig',['form'=>$form->createView(),'reserva' =>$reserva ,'auto'=>$auto]);
     }
 
     public function finReserva(int $id)
