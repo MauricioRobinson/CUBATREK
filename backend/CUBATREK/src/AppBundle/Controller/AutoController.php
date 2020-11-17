@@ -273,7 +273,7 @@ class AutoController extends Controller {
         $mailer->send($message);
 
     
-        return new Response('<html> <body><h1>Por cierto Mauricio Recuerda que hay que hacer algo para poner aqui</h1></body> </html>');
+        return $this->render('response/thank_you.html.twig',['reserva'=>$reserva]);
 
       }
     return $this->render('autos/confirm_booking_car.html.twig',['form'=>$form->createView(),'reserva' =>$reserva ,'auto'=>$auto]);
