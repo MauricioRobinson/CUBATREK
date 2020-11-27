@@ -34,11 +34,7 @@ class FormReservaH extends AbstractType {
                         
                         '-'=>0,
                         '1'=>1,
-                        '2'=>2,
-                        '3'=>3,
-                        '4'=>4,
-                        '5'=>5,
-                        '6'=>6,
+                        '2'=>2
                     ]
                 ,'label' => 'Niños'])
                 ->add('infantes', ChoiceType::class,[
@@ -46,11 +42,7 @@ class FormReservaH extends AbstractType {
                         
                         '-'=>0,
                         '1'=>1,
-                        '2'=>2,
-                        '3'=>3,
-                        '4'=>4,
-                        '5'=>5,
-                        '6'=>6,
+                        '2'=>2
                     ]
                 ])
                 ->add('nombre', TextType::class)
@@ -105,6 +97,7 @@ class FormReservaH extends AbstractType {
                         '1'=>1,
                         '2'=>2,
                     ],'label' => 'Habitaciones','required'=> false])
+                ->add('Cupon',TextType::class,['required'=> false])
                 ->add('save', SubmitType::class, ['label' => 'Solicitar reserva']);
     }
 }

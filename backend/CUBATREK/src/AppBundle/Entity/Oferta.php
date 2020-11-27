@@ -22,15 +22,31 @@ class Oferta {
     private $tipo;
     
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="date") 
      */
-    private $periodo;
+    private $fechaInicio;
+    
+    /**
+     * @ORM\Column(type="date") 
+     */
+    private $fechaFin;
     
     /**
      * @ORM\Column(type="date") 
      */
     private $fechaLimite;
     
+    /**
+     * @ORM\Column(type="string")  
+     */
+    private $cupon;
+    
+    /**
+     * @ORM\Column(type="integer")  
+     */
+    private $monto;
+
+
     /**
      * @ORM\ManyToOne(targetEntity="Hotel", inversedBy="ofertas") 
      */
@@ -50,13 +66,22 @@ class Oferta {
         $this->tipo = $tipo;
     }
     
-    public function getPeriodo()
+    public function getFechaInicio()
     {
-        return $this->periodo;
+        return $this->fechaInicio;
     }
-    public function setPeriodo(string $periodo)
+    public function setFechaInicio(\DateTime $inicio)
     {
-        $this->periodo = $periodo;
+        $this->fechaInicio = $inicio ;
+    }
+    
+    public function getFechaFin()
+    {
+        return $this->fechaFin;
+    }
+    public function setFechaFin( \DateTime $fin)
+    {
+        $this->fechaFin = $fin ;
     }
     
     public function getFechaLimite()
@@ -66,6 +91,24 @@ class Oferta {
     public function setFechaLimite(\DateTime $fechaLimite)
     {
         $this->fechaLimite = $fechaLimite;
+    }
+    
+    public function getCupon()
+    {
+        return $this->cupon;
+    }
+    public function setCupon(string $cupon)
+    {
+        $this->cupon = $cupon;
+    }
+    
+    public function getMonto()
+    {
+        return $this->monto;
+    }
+    public function setMonto(int $monto)
+    {
+        $this->monto = $monto;
     }
     
     public function getHotel()

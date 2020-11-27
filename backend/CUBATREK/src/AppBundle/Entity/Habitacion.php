@@ -31,10 +31,7 @@ class Habitacion {
      */
     private $extraPax;
     
-    /**
-     * @ORM\Column(type="text")   
-     */
-    private $politica;
+   
     
     /**
      * @ORM\Column(type="text")    
@@ -67,11 +64,6 @@ class Habitacion {
     public function getPax()
     {
         return $this->extraPax;
-    }
-    
-    public function getPolitica()
-    {
-        return $this->politica;
     }
     
     public function getObservacion()
@@ -107,11 +99,6 @@ class Habitacion {
     public function setPax(int $pax)
     {
         $this->extraPax = $pax;
-    }
-    
-    public function setPolitica(string $politica)
-    {
-        $this->politica = $politica;
     }
     
     public function setObservacion(string $observacion)

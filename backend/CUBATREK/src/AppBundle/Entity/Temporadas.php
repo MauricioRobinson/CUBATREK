@@ -20,13 +20,13 @@ class Temporadas {
     /**
      * @ORM\Column(type="decimal",scale=2)     
      */
-    private $precio;
+    private $sencilla;
 
 
     /**
      * @ORM\Column(type="decimal",scale=2)   
      */
-    private $rebaja;
+    private $doble;
 
 
     /**
@@ -51,22 +51,22 @@ class Temporadas {
         return $this->id;  
     } 
     
-    public function getPrecio()
+    public function getSencilla()
     {
-        return $this->precio;
+        return $this->sencilla;
     }
-    public function setPrecio(float $precio)
+    public function setSencilla(float $sencilla)
     {
-        $this->precio = $precio;
+        $this->sencilla = $sencilla;
     } 
     
-    public function getRebaja()
+    public function getDoble()
     {
-        return $this->rebaja;
+        return $this->doble;
     }
-    public function setRebaja(float $rebaja)
+    public function setDoble(float $doble)
     {
-        $this->rebaja = $rebaja;
+        $this->doble = $doble;
     } 
     
     public function getInicio()

@@ -42,6 +42,14 @@ class ReservacionControler extends Controller {
         $medios = $repo2->findBy(['categoria'=>"Medio"]);
         $lujos = $repo2->findBy(['categoria'=>"SUV"]);
         
+        $triple=0;
+        $doble=0;
+        $sencilla=0;
+        $vista=0;
+        $junior=0;
+        $suite=0;
+        $deluxe=0;
+        $grandDeluxe=0;
         $isTriple=false;
         $isDoble=false;
         $isSencilla=false;
@@ -50,16 +58,55 @@ class ReservacionControler extends Controller {
         $isSuite=false;
         $isDeluxe=false;
         $isGrandDeluxe=false;
+        $precio_tem=0;
+        $precio_doble =0;
+        foreach ($hotel->getTemporadas() as $temporada)
+        {
+            $inicioT= $temporada->getInicio();
+            $finT = $temporada->getFin();
+            $hoy = new \DateTime();
+             if($hoy > $inicioT && $hoy < $finT )
+            {
+                $precio_tem= $temporada->getSencilla();
+                $precio_doble =$temporada->getDoble();
+            }
+        
+        }
+        
         foreach ( $hotel->getTipoHab() as $habitacion)
         {
-            if($habitacion->getTipo() =="Tripe"){$isTriple=true;}
-            if($habitacion->getTipo() =="Doble"){$isDoble=true;}
-            if($habitacion->getTipo() =="Sencilla"){$isSencilla=true;}
-            if($habitacion->getTipo() =="Vista al mar"){$isVista=true;}
-            if($habitacion->getTipo() =="Junior Suite"){$isJunior=true;}
-            if($habitacion->getTipo() =="Suite"){$isSuite=true;}
-            if($habitacion->getTipo() =="Deluxe"){$isDeluxe=true;}
-            if($habitacion->getTipo() =="Grand Deluxe"){$isGrandDeluxe=true;}
+            if($habitacion->getTipo() =="Tripe"){
+                $isTriple=true;
+                $triple = $habitacion->getPrecio()+$precio_doble; 
+            }
+            if($habitacion->getTipo() =="Doble"){
+                $isDoble=true;
+                $doble = $habitacion->getPrecio()+$precio_doble;
+            }
+            if($habitacion->getTipo() =="Sencilla"){
+                $isSencilla=true;
+                $sencilla=$habitacion->getPrecio()+$precio_tem ;
+            }
+            if($habitacion->getTipo() =="Vista al mar"){
+                $isVista=true;
+                $vista = $habitacion->getPrecio()+$precio_tem ;
+            }
+            if($habitacion->getTipo() =="Junior Suite"){
+                $isJunior=true;
+                $junior = $habitacion->getPrecio()+$precio_tem ;
+            }
+            if($habitacion->getTipo() =="Suite"){
+                $isSuite=true;
+                $suite = $habitacion->getPrecio()+$precio_tem ;
+            }
+            if($habitacion->getTipo() =="Deluxe"){
+                $isDeluxe=true;
+                $deluxe = $habitacion->getPrecio()+$precio_tem ;
+            }
+            if($habitacion->getTipo() =="Grand Deluxe"){
+                $isGrandDeluxe=true;
+                $grandDeluxe = $habitacion->getPrecio()+$precio_tem ;
+            }
         }
          
 
@@ -103,6 +150,14 @@ class ReservacionControler extends Controller {
             'isSuite'=>$isSuite,
             'isDeluxe'=>$isDeluxe,
             'isGrandDeluxe'=>$isGrandDeluxe,
+            'triple'=>$triple+(3*$triple/100),
+            'doble'=>$doble+(3*$doble/100),
+            'sencilla'=>$sencilla+(3*$sencilla/100),
+            'vista'=>$vista+(3*$vista/100),
+            'junior'=>$junior+(3*$junior/100),
+            'suite'=>$suite+(3*$suite/100),
+            'deluxe'=>$deluxe+(3*$deluxe/100),
+            'grandDeluxe'=>$grandDeluxe+(3*$grandDeluxe/100),
             ]);
     }
     
@@ -130,9 +185,7 @@ class ReservacionControler extends Controller {
         $repo = $em->getRepository(Reservacion::class);
         $reserva = $repo->findOneById($id);
         $hotel = $reserva->getHotel();
-        $entrada = $reserva->getFechaEntrada();
-        $salida = $reserva->getFechaSalida();
-       
+        $precio = $this->finalPrice($reserva);  
         $triple=0;
         $doble=0;
         $sencilla=0;
@@ -141,71 +194,35 @@ class ReservacionControler extends Controller {
         $suite=0;
         $deluxe=0;
         $grandDeluxe=0;
-        $precio =0;
+        $precio_tem=0;
+        $precio_doble=0;
         $habitaciones = $reserva->getTriple() +$reserva->getDoble() + $reserva->getSencilla() +$reserva->getVistaAlMar() +$reserva->getJuniorSuite() +$reserva->getSuite() +$reserva->getDeluxe() +$reserva->getGrandDeluxe();
+        
+        foreach ($hotel->getTemporadas() as $temporada)
+        {
+            $inicioT= $temporada->getInicio();
+            $finT = $temporada->getFin();
+            $hoy = new \DateTime();
+             if($hoy > $inicioT && $hoy < $finT )
+            {
+                $precio_tem= $temporada->getSencilla();
+                $precio_doble =$temporada->getDoble();
+            }
+        
+        }
         foreach ($hotel->getTipoHab() as $habitacion)
         {
-            if($habitacion->getTipo() =="Tripe" && $reserva->getTripe() > 0 ){$triple= $habitacion->getPrecio();}
-            if($habitacion->getTipo() =="Doble" && $reserva->getDoble() > 0){$doble=$habitacion->getPrecio();}
-            if($habitacion->getTipo() =="Sencilla" && $reserva->getSencilla() > 0){$sencilla=$habitacion->getPrecio();}
-            if($habitacion->getTipo() =="Vista al mar" && $reserva->getVistaAlMar() > 0){$vista=$habitacion->getPrecio();}
-            if($habitacion->getTipo() =="Junior Suite" && $reserva->getJuniorSuite() > 0){$junior=$habitacion->getPrecio();}
-            if($habitacion->getTipo() =="Suite" && $reserva->getSuite() > 0){$suite=$habitacion->getPrecio();}
-            if($habitacion->getTipo() =="Deluxe" && $reserva->getDeluxe() > 0){$deluxe=$habitacion->getPrecio();}
-            if($habitacion->getTipo() =="Grand Deluxe" && $reserva->getGrandDeluxe() > 0){$grandDeluxe=$habitacion->getPrecio();}
+            if($habitacion->getTipo() =="Tripe" && $reserva->getTripe() > 0 ){$triple= $habitacion->getPrecio()+$precio_doble+(3*($habitacion->getPrecio()+$precio_doble)/100);}
+            if($habitacion->getTipo() =="Doble" && $reserva->getDoble() > 0){$doble=$habitacion->getPrecio()+$precio_doble+(3*($habitacion->getPrecio()+$precio_doble)/100);}
+            if($habitacion->getTipo() =="Sencilla" && $reserva->getSencilla() > 0){$sencilla=$habitacion->getPrecio()+$precio_tem+(3*($habitacion->getPrecio()+$precio_tem)/100);}
+            if($habitacion->getTipo() =="Vista al mar" && $reserva->getVistaAlMar() > 0){$vista=$habitacion->getPrecio()+$precio_tem+(3*($habitacion->getPrecio()+$precio_tem)/100);}
+            if($habitacion->getTipo() =="Junior Suite" && $reserva->getJuniorSuite() > 0){$junior=$habitacion->getPrecio()+$precio_tem+(3*($habitacion->getPrecio()+$precio_tem)/100);}
+            if($habitacion->getTipo() =="Suite" && $reserva->getSuite() > 0){$suite=$habitacion->getPrecio()+$precio_tem+(3*($habitacion->getPrecio()+$precio_tem)/100);}
+            if($habitacion->getTipo() =="Deluxe" && $reserva->getDeluxe() > 0){$deluxe=$habitacion->getPrecio()+$precio_tem+(3*($habitacion->getPrecio()+$precio_tem)/100);}
+            if($habitacion->getTipo() =="Grand Deluxe" && $reserva->getGrandDeluxe() > 0){$grandDeluxe=$habitacion->getPrecio()+$precio_tem+(3*($habitacion->getPrecio()+$precio_tem)/100);}
         }
-        foreach ($hotel->getTemporadas() as $temp)
-        {
-            $inicioT= $temp->getInicio();
-            $finT = $temp->getFin();
-            
-            
-            if( $entrada > $inicioT && $entrada < $finT && $salida < $finT )
-            {
-                
-
-                $interval = $entrada->diff($salida);
-                $dias = $interval->format("%d");
-                $meses = $interval->format("%m");
-                $precio += (($meses *30)+ $dias)* (($temp->getRebaja() + $triple)*$reserva->getTriple() +
-                        ($temp->getRebaja() + $doble)*$reserva->getDoble() +
-                        ($temp->getRebaja() + $sencilla)*$reserva->getSencilla() +
-                        ($temp->getRebaja() + $vista)*$reserva->getVistaAlMar() +
-                        ($temp->getRebaja() + $junior)*$reserva->getJuniorSuite() +
-                        ($temp->getRebaja() + $suite)*$reserva->getSuite() +
-                        ($temp->getRebaja() + $deluxe)*$reserva->getDeluxe() +
-                        ($temp->getRebaja() + $grandDeluxe)*$reserva->getGrandDeluxe());
-                
-            }elseif ($entrada > $inicioT && $entrada < $finT && $salida > $finT ) {
-                
-                $interval = $entrada->diff($finT);
-                $dias = $interval->format("%d");
-                $meses = $interval->format("%m");
-                $precio += (($meses *30)+ $dias)* (($temp->getRebaja() + $triple)*$reserva->getTriple() +
-                        ($temp->getRebaja() + $doble)*$reserva->getDoble() +
-                        ($temp->getRebaja() + $sencilla)*$reserva->getSencilla() +
-                        ($temp->getRebaja() + $vista)*$reserva->getVistaAlMar() +
-                        ($temp->getRebaja() + $junior)*$reserva->getJuniorSuite() +
-                        ($temp->getRebaja() + $suite)*$reserva->getSuite() +
-                        ($temp->getRebaja() + $deluxe)*$reserva->getDeluxe() +
-                        ($temp->getRebaja() + $grandDeluxe)*$reserva->getGrandDeluxe());
-            } elseif($salida > $inicioT && $salida < $finT && $entrada < $inicioT){
-             
-                
-                $interval = $inicioT->diff($salida);
-                $dias = $interval->format("%d");
-                $meses = $interval->format("%m");
-                $precio += (($meses *30)+ $dias)* (($temp->getRebaja() + $triple)*$reserva->getTriple() +
-                        ($temp->getRebaja() + $doble)*$reserva->getDoble() +
-                        ($temp->getRebaja() + $sencilla)*$reserva->getSencilla() +
-                        ($temp->getRebaja() + $vista)*$reserva->getVistaAlMar() +
-                        ($temp->getRebaja() + $junior)*$reserva->getJuniorSuite() +
-                        ($temp->getRebaja() + $suite)*$reserva->getSuite() +
-                        ($temp->getRebaja() + $deluxe)*$reserva->getDeluxe() +
-                        ($temp->getRebaja() + $grandDeluxe)*$reserva->getGrandDeluxe());
-            }
-            
-        }  
+        
+          
         $reserva->setCosto($precio);
         $em->persist($reserva);
         $em->flush();
@@ -215,9 +232,9 @@ class ReservacionControler extends Controller {
       if($form->isSubmitted() && $form->isValid())
       {
         $message = (new \Swift_Message('Confirmacion de Reserva'))
-        ->setFrom('promo@waytraveltrek.com')
+        ->setFrom('info@waytraveltrek.com')
         ->setTo($reserva->getCorreo())
-        ->setBody($this->renderView('confirmation.html.twig',['reserva'=>$reserva]),'text/html');
+        ->setBody($this->renderView('reserva-hotel-pendiente.html.twig',['reserva'=>$reserva,'hotel'=>$hotel,'precio'=>$precio,'habitaciones'=>$habitaciones]),'text/html');
 
         $mailer->send($message);
 
@@ -237,19 +254,225 @@ class ReservacionControler extends Controller {
             ]);
     }
     
-    /**
-     * @Route ("/email", name = "email")
-     */
-    public function mailAction(Reservacion $reserva,\Swift_Mailer $mailer)
+    public function finalPrice(Reservacion $reserva)
     {
-        $message = (new \Swift_Message('Confirmacion de Reserva'))
-        ->setFrom('send@example.com')
-        ->setTo('recipient@example.com')
-        ->setBody($this->renderView('confirmation.html.twig',['reserva'=>$reserva]),'text/html');
-
-        $mailer->send($message);
-
-    
-        return new Response('<html> <body>Vienbenido a:<Strong> Todo bien</Strong>todo correcto</body> </html>');
+        $hotel = $reserva->getHotel();
+        $entrada = $reserva->getFechaEntrada();
+        $salida = $reserva->getFechaSalida();
+        
+        $triple=0;
+        $doble=0;
+        $sencilla=0;
+        $vista=0;
+        $junior=0;
+        $suite=0;
+        $deluxe=0;
+        $grandDeluxe=0;
+        $precio = 0;
+        $kid_discount = 0;
+        $ganancia = 3;
+        $cuenta =0;
+        foreach ($hotel->getTemporadas() as $temp)
+        {
+            $inicioT= $temp->getInicio();
+            $finT = $temp->getFin();
+         if( $entrada > $inicioT && $entrada < $finT && $salida < $finT )
+         {  $precio =0;
+            $interval = $entrada->diff($salida);
+            $dias = $interval->days;
+            $sencilla = $temp->getSencilla();
+            $doble = $temp->getDoble();
+            $resto = $reserva->getAdultos();
+            $kid_discount = 50 * ($doble+(3*$doble/100))/100;  
+            
+            foreach ($hotel->getTipoHab() as $habitacion)
+            {
+                if($habitacion->getTipo() =="Tripe" && $reserva->getTripe() > 0 )
+                {
+                    $p_hab= ($habitacion->getPrecio() + $doble);
+                    $pax = ($habitacion->getPax() * $p_hab)/100;
+                    $precio += (($p_hab+(($ganancia*$p_hab)/100)) * $reserva->getTripe()* 2) +(($p_hab - $pax) * $reserva->getTripe() ); 
+                    $resto = $resto - ($reserva->getTripe() *3); 
+                }
+                if($habitacion->getTipo() =="Doble" && $reserva->getDoble() > 0)
+                {
+                    $p_hab= $habitacion->getPrecio() + $doble;
+                    $precio += (($p_hab+(($ganancia*$p_hab)/100)) * $reserva->getDoble()* 2)+ ($kid_discount *$reserva->getNinos()) +($kid_discount *$reserva->getInfantes());
+                    $resto = $resto - ($reserva->getDoble() *2);
+                }
+                if($habitacion->getTipo() =="Sencilla" && $reserva->getSencilla() > 0)
+                {
+                    $precio +=($sencilla+(($ganancia*$sencilla)/100)) *  $resto;
+                }
+                if($habitacion->getTipo() =="Vista al mar" && $reserva->getVistaAlMar() > 0)
+                {
+                    $vista=$habitacion->getPrecio();
+                    $p_hab = $sencilla + $vista;
+                    $precio += ($p_hab+($ganancia*$p_hab)/100)*  $resto;
+                }
+                if($habitacion->getTipo() =="Junior Suite" && $reserva->getJuniorSuite() > 0)
+                {
+                    $junior=$habitacion->getPrecio();
+                    $p_hab = $sencilla + $junior;
+                   $precio += ($p_hab+($ganancia*$p_hab)/100)*  $resto;
+                }
+                if($habitacion->getTipo() =="Suite" && $reserva->getSuite() > 0)
+                { 
+                    $suite=$habitacion->getPrecio();
+                    $p_hab = $sencilla + $suite;
+                   $precio += ($p_hab+($ganancia*$p_hab)/100)*$reserva->getSuite();
+                }
+                if($habitacion->getTipo() =="Deluxe" && $reserva->getDeluxe() > 0)
+                {
+                    $deluxe=$habitacion->getPrecio();
+                    $p_hab = $sencilla + $deluxe;
+                   $precio += ($p_hab+($ganancia*$p_hab)/100)*  $resto;
+                }
+                if($habitacion->getTipo() =="Grand Deluxe" && $reserva->getGrandDeluxe() > 0)
+                {
+                  $grandDeluxe=$habitacion->getPrecio();
+                  $p_hab = $sencilla + $grandDeluxe;
+                  $precio += ($p_hab+($ganancia*$p_hab)/100)*  $resto;
+                }
+           }
+                $cuenta += $precio* $dias;
+                
+            }elseif ($entrada > $inicioT && $entrada < $finT && $salida > $finT ) {
+            $precio =0;
+            $interval = $entrada->diff($finT);
+            $dias = $interval->days +1;
+            $sencilla = $temp->getSencilla();
+            $doble = $temp->getDoble();
+            $resto = $reserva->getAdultos();
+            $kid_discount = (50 * $doble)/100;  
+            
+            foreach ($hotel->getTipoHab() as $habitacion)
+            {
+                if($habitacion->getTipo() =="Tripe" && $reserva->getTripe() > 0 )
+                {
+                    $p_hab= ($habitacion->getPrecio() + $doble);
+                    $pax = ($habitacion->getPax() * $p_hab)/100;
+                    $precio += (($p_hab+(($ganancia*$p_hab)/100)) * $reserva->getTripe()* 2) +(($p_hab - $pax) * $reserva->getTripe() ); 
+                    $resto = $resto - ($reserva->getTripe() *3); 
+                }
+                if($habitacion->getTipo() =="Doble" && $reserva->getDoble() > 0)
+                {
+                    $p_hab= $habitacion->getPrecio() + $doble;
+                    $precio += (($p_hab+(($ganancia*$p_hab)/100)) * $reserva->getDoble()* 2)+ ($kid_discount *$reserva->getNinos()) +($kid_discount *$reserva->getInfantes());
+                    $resto = $resto - ($reserva->getDoble() *2);
+                }
+                if($habitacion->getTipo() =="Sencilla" && $reserva->getSencilla() > 0)
+                {
+                    $precio +=($sencilla+(($ganancia*$sencilla)/100)) *  $resto;
+                }
+                if($habitacion->getTipo() =="Vista al mar" && $reserva->getVistaAlMar() > 0)
+                {
+                    $vista=$habitacion->getPrecio();
+                    $p_hab = $sencilla + $vista;
+                    $precio += ($p_hab+($ganancia*$p_hab)/100)*  $resto;
+                }
+                if($habitacion->getTipo() =="Junior Suite" && $reserva->getJuniorSuite() > 0)
+                {
+                    $junior=$habitacion->getPrecio();
+                    $p_hab = $sencilla + $junior;
+                   $precio += ($p_hab+($ganancia*$p_hab)/100)*  $resto;
+                }
+                if($habitacion->getTipo() =="Suite" && $reserva->getSuite() > 0)
+                { 
+                    $suite=$habitacion->getPrecio();
+                    $p_hab = $sencilla + $suite;
+                   $precio += ($p_hab+($ganancia*$p_hab)/100)*$reserva->getSuite();
+                }
+                if($habitacion->getTipo() =="Deluxe" && $reserva->getDeluxe() > 0)
+                {
+                    $deluxe=$habitacion->getPrecio();
+                    $p_hab = $sencilla + $deluxe;
+                   $precio += ($p_hab+($ganancia*$p_hab)/100)*  $resto;
+                }
+                if($habitacion->getTipo() =="Grand Deluxe" && $reserva->getGrandDeluxe() > 0)
+                {
+                  $grandDeluxe=$habitacion->getPrecio();
+                  $p_hab = $sencilla + $grandDeluxe;
+                  $precio += ($p_hab+($ganancia*$p_hab)/100)*  $resto;
+                }
+           }
+                $cuenta += $precio* $dias;
+                
+            } elseif($salida > $inicioT && $salida < $finT && $entrada < $inicioT){
+             
+            $precio =0;
+            $interval = $inicioT->diff($salida);
+            $dias = $interval->days;
+            $sencilla = $temp->getSencilla();
+            $doble = $temp->getDoble();
+            $resto = $reserva->getAdultos();
+            $kid_discount = (50 * $doble)/100;  
+            
+            foreach ($hotel->getTipoHab() as $habitacion)
+            {
+                if($habitacion->getTipo() =="Tripe" && $reserva->getTripe() > 0 )
+                {
+                    $p_hab= ($habitacion->getPrecio() + $doble);
+                    $pax = ($habitacion->getPax() * $p_hab)/100;
+                    $precio += (($p_hab+(($ganancia*$p_hab)/100)) * $reserva->getTripe()* 2) +(($p_hab - $pax) * $reserva->getTripe() ); 
+                    $resto = $resto - ($reserva->getTripe() *3); 
+                }
+                if($habitacion->getTipo() =="Doble" && $reserva->getDoble() > 0)
+                {
+                    $p_hab= $habitacion->getPrecio() + $doble;
+                    $precio += (($p_hab+(($ganancia*$p_hab)/100)) * $reserva->getDoble()* 2)+ ($kid_discount *$reserva->getNinos()) +($kid_discount *$reserva->getInfantes());
+                    $resto = $resto - ($reserva->getDoble() *2);
+                }
+                if($habitacion->getTipo() =="Sencilla" && $reserva->getSencilla() > 0)
+                {
+                    $precio +=($sencilla+(($ganancia*$sencilla)/100)) *  $resto;
+                }
+                if($habitacion->getTipo() =="Vista al mar" && $reserva->getVistaAlMar() > 0)
+                {
+                    $vista=$habitacion->getPrecio();
+                    $p_hab = $sencilla + $vista;
+                    $precio += ($p_hab+($ganancia*$p_hab)/100)*  $resto;
+                }
+                if($habitacion->getTipo() =="Junior Suite" && $reserva->getJuniorSuite() > 0)
+                {
+                    $junior=$habitacion->getPrecio();
+                    $p_hab = $sencilla + $junior;
+                   $precio += ($p_hab+($ganancia*$p_hab)/100)*  $resto;
+                }
+                if($habitacion->getTipo() =="Suite" && $reserva->getSuite() > 0)
+                { 
+                    $suite=$habitacion->getPrecio();
+                    $p_hab = $sencilla + $suite;
+                   $precio += ($p_hab+($ganancia*$p_hab)/100)*$reserva->getSuite();
+                }
+                if($habitacion->getTipo() =="Deluxe" && $reserva->getDeluxe() > 0)
+                {
+                    $deluxe=$habitacion->getPrecio();
+                    $p_hab = $sencilla + $deluxe;
+                   $precio += ($p_hab+($ganancia*$p_hab)/100)*  $resto;
+                }
+                if($habitacion->getTipo() =="Grand Deluxe" && $reserva->getGrandDeluxe() > 0)
+                {
+                  $grandDeluxe=$habitacion->getPrecio();
+                  $p_hab = $sencilla + $grandDeluxe;
+                  $precio += ($p_hab+($ganancia*$p_hab)/100)*  $resto;
+                }
+           }
+                $cuenta += $precio* $dias;
+            }
+            
+        }
+        $monto = 0;
+        foreach ($hotel->getOfertas() as $descuento)
+        {
+            if($reserva->getCupon() == $descuento->getCupon() && $reserva->getFechaEntrada() > $descuento->getFechaInicio() && $reserva->getFechaEntrada() < $descuento->getFechaFin() && date('now') < $descuento->getFechaLimite() )
+            {$monto = $descuento->getMonto();}
+        }
+        
+        $cupon_discount = ($monto * $cuenta)/100;
+        $costo = ($cuenta - $cupon_discount); 
+        
+        return $costo;
     }
+    
 }

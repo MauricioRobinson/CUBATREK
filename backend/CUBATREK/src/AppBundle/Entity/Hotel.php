@@ -51,6 +51,12 @@ class Hotel {
      * @ORM\Column(type="string") 
      */
     private $direccion;
+    
+     /**
+     * @ORM\Column(type="text")   
+     */
+    private $politica;
+    
     /**
      * @ORM\OneToMany(targetEntity="Foto", mappedBy="hotel") 
      */
@@ -115,7 +121,11 @@ class Hotel {
         return $this->direccion;
     }
     
-
+    public function getPolitica()
+    {
+        return $this->politica;
+    }
+    
     public function getRegion()
     {
         return $this->region;
@@ -166,6 +176,12 @@ class Hotel {
     {
         $this->cadena = $cadena;
     }
+    
+    public function setPolitica(string $politica)
+    {
+        $this->politica = $politica;
+    }
+    
     public function setRegion(string $region)
     {
         $this->region = $region;

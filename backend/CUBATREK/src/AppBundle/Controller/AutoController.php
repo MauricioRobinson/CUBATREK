@@ -150,12 +150,12 @@ class AutoController extends Controller {
             $categorias[] = $auto; 
          }
          
-         if ($token->getCubacar() && $auto->getAgencia() == "Cuba Car")
+         if ($token->getCubacar() && $auto->getAgencia() == "Cubacar")
          {
             $provedores[] = $auto; 
          }
          
-         if ($token->getHavanautos() && $auto->getAgencia() == "Havana Autos")
+         if ($token->getHavanautos() && $auto->getAgencia() == "Havanautos")
          {
             $provedores[] = $auto; 
          }
@@ -262,21 +262,28 @@ class AutoController extends Controller {
         $form->handleRequest($request);
         $reserva = $repo->findOneById($id);
         $auto = $reserva->getAuto();
+        $entrada = $reserva->getFechaRecogida();
+        $salida=$reserva->getFechaEntrega();
+        $interval = $entrada->diff($salida);
+        $dias = $interval->days;
+        $subtotal= $auto->getPrecio() +(3*$auto->getPrecio()/100)+ $auto->getDeposito();
+        $precio = ($auto->getPrecio()+(3*$auto->getPrecio()/100))*$dias;
+        $reserva->setCosto($precio);
+        $em->persist($reserva);
+        $em->flush();
         
       if($form->isSubmitted() && $form->isValid())
       {
         $message = (new \Swift_Message('Confirmacion de Reserva'))
-        ->setFrom('promo@waytraveltrek.com')
+        ->setFrom('info@waytraveltrek.com')
         ->setTo($reserva->getEmail())
-        ->setBody($this->renderView('confirmation.html.twig',['reserva'=>$reserva]),'text/html');
+        ->setBody($this->renderView('reserva-auto-pendiente.html.twig',['reserva'=>$reserva,'auto'=>$auto,'total'=>$precio,'subtotal'=>$subtotal]),'text/html');
 
         $mailer->send($message);
-
-    
         return $this->render('response/thank_you.html.twig',['reserva'=>$reserva]);
 
       }
-    return $this->render('autos/confirm_booking_car.html.twig',['form'=>$form->createView(),'reserva' =>$reserva ,'auto'=>$auto]);
+    return $this->render('autos/confirm_booking_car.html.twig',['form'=>$form->createView(),'reserva' =>$reserva ,'auto'=>$auto,'total'=>$precio,'subtotal'=>$subtotal]);
     }
 
     public function finReserva(int $id)

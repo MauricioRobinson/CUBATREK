@@ -28,7 +28,7 @@ class Reservacion {
     private $apellido;
     
     /**
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string",nullable=TRUE) 
      */ 
     private $mensaje;
 
@@ -101,7 +101,7 @@ class Reservacion {
     private $infantes;
     
     /** 
-     * @ORM\Column(type="decimal", scale=2) 
+     * @ORM\Column(type="decimal", scale=2, nullable=TRUE) 
      */
     private $costo;
 
@@ -111,9 +111,14 @@ class Reservacion {
     private $correo;
     
     /**
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string", nullable=TRUE) 
      */
     private $codigo;
+    
+    /**
+     * @ORM\Column(type="string", nullable=TRUE) 
+     */
+    private $cupon;
 
     /**
      * @ORM\ManyToOne(targetEntity="Hotel", inversedBy="reservaciones") 
@@ -238,6 +243,11 @@ class Reservacion {
     {
         return $this->codigo;
     }
+    
+    public function getCupon()
+    {
+        return $this->cupon;
+    }
 
     //Sección de los métodos set
     public function setNombre(string $nombre)
@@ -337,8 +347,12 @@ class Reservacion {
            $this->codigo = $costo;
     }
 
-        public function setCorreo(string $correo)
+    public function setCorreo(string $correo)
     {
         $this->correo = $correo;
+    }
+    public function setCupon(string $cupon)
+    {
+        $this->cupon =  $cupon;
     }
 }
