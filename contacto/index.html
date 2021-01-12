@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>CUBATREK</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <meta name="description" content="Cubatrek Travel Agency, Agencia de viajes Cubatrek" />
+    <meta name="keywords" content="autos en Cuba, rent de autos, Cuba, Cubatrek" />
+    <link rel="icon" href="">
+
+    <!-- Añadiendo Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!-- Añadiendo normalize.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <!-- Añadiendo mis setilos css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+
+    <script src="https://kit.fontawesome.com/484a0c911a.js" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+        i.fa-facebook-f, i.fa-facebook-messenger, i.fa-twitter, i.fa-whatsapp{
+            font-size: 40px;
+        }
+
+        .enmarcado{
+            width: 80px;
+            height: 80px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- *********************************************************************************************************
+                                                Barra de navegación
+    **************************************************************************************************************-->
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light navbar-color">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html"><img src="../assets/img/logo/logo_navbar350x90.jpg"
+                    alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsableNavbar"
+                aria-controls="collapsableNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsableNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"><i class="fas fa-home"></i> Inicio<span
+                                class="sr-only"></span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../hoteles/index.html"><i class="fas fa-hotel"></i> Hoteles</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-car"></i> Autos</a>
+                    </li>
+                    <li class="nav-item animate__animated animate__bounceInDown active">
+                        <a class="nav-link" href="..contacto/index.html">Contacto <i class="fas fa-envelope-open-text"></i></a>
+                    </li> 
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- *********************************************************************************************************
+                                                Seciión de contacto
+    **************************************************************************************************************-->
+    <section id="contacto">
+        <h2 class="title">Cont&aacute;ctenos</h2>
+        <p class="text-center container mb-5">
+            Muchas gracias por contactarse con nosotros. Puede escribirnos por correo electr&oacute;nico llenando el formulario a continuaci&oacute;n o por nuestras redes sociales que aparecen debajo del formulario de contacto. En cualquier caso le responderemos en 24 horas como m&aacute;ximo. 
+        </p>
+        <div id="contacto" class="container bg-light p-5 animate__animated animate__fadeInUpBig shadow">
+        <p class="text-danger small">Todos los campos con * son obligatorios</p>
+        <form id="contact-form" action="captcha.php" method="POST" class="validated" novalidate>
+            <div class="form-row">
+                <div class="form-group col-md-6 col-sm-12">
+                    <label for="name">Nombre <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control shadow" id="name" name="nombre" placeholder="Su nombre"
+                        required>
+                    <div class="valid-feedback">
+                        Correcto!
+                    </div>
+                    <div class="invalid-feedback">
+                        Por favor, introduce un nombre v&aacute;lido.
+                    </div>
+                </div>
+                <div class="form-group col-md-6 col-sm-12">
+                    <label for="lastname">Apellido <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control shadow" id="lastname" name="apellido"
+                        placeholder="Su apellido" required>
+                    <div class="valid-feedback">
+                        Correcto!
+                    </div>
+                    <div class="invalid-feedback">
+                        Por favor, ingrese un apellido v&aacute;lido
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6 col-sm-12">
+                    <label for="email">Email <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control shadow" id="email" name="email"
+                        placeholder="usuario@example.com" required>
+                    <div class="valid-feedback">
+                        Correcto!
+                    </div>
+                    <div class="invalid-feedback">
+                        Por favor, ingrese un email v&aacute;lido
+                    </div>
+                </div>
+                <div class="form-group col-md-6 col-sm-12">
+                    <label for="confirmEmail">Confirmar email <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control shadow" id="confirmEmail" name="email"
+                        placeholder="usuario@example.com" required>
+                    <div class="valid-feedback">
+                        Correcto!
+                    </div>
+                    <div class="invalid-feedback">
+                        Por favor, verifique que su email sea v&aacute;lido y que coincida con el que insertado
+                        anteriormente.
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <label for="asunto">Asunto</label>
+                    <input type="text" name="asunto" id="asunto" class="form-control shadow" placeholder="Asunto">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    <label for="mensaje">Mensaje <span class="text-danger">*</span></label>
+                    <textarea type="text" class="form-control shadow" rows="8" id="mensaje" name="mensaje"
+                        required></textarea>
+                    <div class="valid-feedback">
+                        Correcto!
+                    </div>
+                    <div class="invalid-feedback">
+                        Por favor, aseg&uacute;rese de haber escrito un mensaje.
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="checkbox" required>
+                <label class="custom-control-label" for="checkbox">
+                    Doy mi consentimiento para que esta web almacene la informaci&oacute;n que env&iacute;o para que
+                    puedan responder a mi petici&oacute;n. Por tanto acepto y estoy de acuerdo con la <a href="#">
+                        Pol&iacute;tica de privacidad</a> y los <a href="#">T&eacute;rminos y Condiciones</a> de
+                    WayTravelTrek.
+                </label>
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-tooltip">
+                    Debes estar de acuerdo para poder enviar el mensaje.
+                </div>
+            </div>
+            <div class="g-recaptcha mt-2" data-sitekey=""></div>
+            <div class="row text-right d-block">
+                <button id="recaptcha" type="submit" class="btn btn-color">Enviar <i class="fas fa-paper-plane"></i></button>
+            </div>
+        </form>
+    </div>
+    </section>
+
+
+    <div class="container mt-5">
+        <h3 class="text-center">S&iacute;ganos en nuestras redes sociales</h3>
+        <p>
+            No olvides seguirnos en nuestras redes y compartir todo nuestro contenido. Estaremos publicando ofertas y promociones. Muchas gracias por elegir WayTravelTrek para planear su viaje.
+        </p>
+        <div class="row row-cols-4 mb-3 p-4">
+            <div class="col-sm-3 d-flex justify-content-center align-items-center">
+                <div class="shadow enmarcado rounded-circle d-flex justify-content-center align-items-center">
+                    <a href="#" target="__blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="col-sm-3 d-flex justify-content-center align-items-center">
+                <div class="shadow enmarcado rounded-circle d-flex justify-content-center align-items-center">
+                    <a href="https://waytraveltrek.com#subscribirse" target="__blank"><i class="fab fa-facebook-messenger"></i></a>
+                </div>
+            </div>
+            <div class="col-sm-3 d-flex justify-content-center align-items-center">
+                <div class="shadow enmarcado rounded-circle d-flex justify-content-center align-items-center">
+                    <a href="#" target="__blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="col-sm-3 d-flex justify-content-center align-items-center">
+                <div class="shadow enmarcado rounded-circle d-flex justify-content-center align-items-center">
+                    <a href="#" target="__blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Añadiendo scripts js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

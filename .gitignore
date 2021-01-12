@@ -5,3 +5,8 @@ assets/img
 /backend/CUBATREK/nbproject/private/
 experiencias
 admin_control
+assets/css/bootstrap.min.css
+assets/css/all.min.css
+assets/js/bootstrap.bundle.min.js
+assets/js/jquery.min.js
+assets/js/all.js
