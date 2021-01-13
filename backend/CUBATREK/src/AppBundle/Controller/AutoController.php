@@ -266,8 +266,8 @@ class AutoController extends Controller {
         $salida=$reserva->getFechaEntrega();
         $interval = $entrada->diff($salida);
         $dias = $interval->days;
-        $subtotal= $auto->getPrecio() +(3*$auto->getPrecio()/100)+ $auto->getDeposito();
-        $precio = ($auto->getPrecio()+(3*$auto->getPrecio()/100))*$dias;
+        $subtotal= $auto->getPrecio() +(20*$auto->getPrecio()/100)+ $auto->getDeposito();
+        $precio = (($auto->getPrecio()+(20*$auto->getPrecio()/100))*$dias)+$auto->getDeposito();
         $reserva->setCosto($precio);
         $em->persist($reserva);
         $em->flush();
