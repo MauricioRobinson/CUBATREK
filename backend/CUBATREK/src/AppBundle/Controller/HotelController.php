@@ -103,7 +103,7 @@ class HotelController extends Controller {
         $economicos = $repo2->findBy(['categoria'=>"Economico"]); 
         $medios = $repo2->findBy(['categoria'=>"Medio"]);
         $lujos = $repo2->findBy(['categoria'=>"SUV"]);
-        return $this->render('hoteles/index.html.twig',['economicos'=>$economicos,'medios'=>$medios,'lujos'=>$lujos]);
+        return $this->render('hoteles/index-hotel.html.twig',['economicos'=>$economicos,'medios'=>$medios,'lujos'=>$lujos]);
     }
     
     /**
