@@ -19,6 +19,8 @@
 
  //Modificadores de estilos y agregador de funcinalidades
  (function(){
-    $('button').removeClass('btn-color');;
-    $('button').addClass('btn-color');
+     $('button').addClass('btn-color');
+
+    $('#lista-hoteles').removeClass('badge-light');
+    $('#lista-hoteles').addClass('');
  })();

@@ -19,6 +19,23 @@
         font-size: 2em;
         margin: 0 7px;
     }
+
+    #lista-hoteles .hotel-card{
+        max-width: 100%;
+        background-color: #fafafa;
+        border-radius: 5px 5px 0px 0px;
+    
+    }
+    #lista-hoteles .hotel-card:hover{
+        background-color: #f1f1f1;
+    
+    }
+    
+    #lista-hoteles .card img{
+        width: 100%;
+        height: 100%;
+        border-radius: 5px 5px 0px 0px;
+    }
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -32,6 +49,22 @@
         font-size: 1.3em;
     }
 
+    #lista-hoteles .hotel-card{
+        max-width: 100%;
+        background-color: #fafafa;
+        border-radius: 5px 5px 0px 0px;
+    
+    }
+    #lista-hoteles .hotel-card:hover{
+        background-color: #f1f1f1;
+    
+    }
+    
+    #lista-hoteles .card img{
+        width: 100%;
+        height: 100%;
+        border-radius: 5px 5px 0px 0px;
+    }
     /*-----------------------------------------------------------------------------------------------------------------------
                         ESTILOS DE LA SECCION DE HOTELES RECOMENDADOS
     -------------------------------------------------------------------------------------------------------------------------*/
@@ -62,6 +95,7 @@
     .fa-twitter {
         font-size: 1.8em;
     }
+
 }
 
 /* Medium devices (tablets, 768px and up) */

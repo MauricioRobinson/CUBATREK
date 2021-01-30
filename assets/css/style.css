@@ -74,11 +74,21 @@ span.descuento::after {
      color: #ff7d00;
  }
 
+ .badge-color{
+    background-color: #fafafa;
+    color: #001524;
+ }
+ .badge-color:hover{
+    background-color: #f1f1f1;
+    color: #001524;
+ }
+
 /*-----------------------------------------------------------------------------------------------------------------------
                         ESTILOS DE LA BARRA DE NAVEGACIÓN
 -------------------------------------------------------------------------------------------------------------------------*/
 #nav .navbar-toggler {
     background-color: #ff7d00;
+    color: #ff7d00;
 }
 
 #nav ul .nav-link {
@@ -579,6 +589,44 @@ section#subscribirse h2.title {
         0px 0px 4px rgba(0, 0, 0, .6);
 }
 
+/*-----------------------------------------------------------------------------------------------------------------------
+                ****************** ESTILOS DE LISTA DE HOTELES ************************
+-------------------------------------------------------------------------------------------------------------------------*/
+#lista-hoteles .hotel-card{
+    max-width: 100%;
+    background-color: #fafafa;
+    border-radius: 8px;
+
+}
+#lista-hoteles .hotel-card:hover{
+    background-color: #f1f1f1;
+
+}
+
+#lista-hoteles #hotel-name{
+    font-size: 1.8em;
+    font-weight: bolder;
+} 
+#lista-hoteles #price-box{
+    float: right;
+    margin: 4px;
+    text-align: right;
+}
+#lista-hoteles #hotel-precio{
+    font-size: 1.3em;
+    padding-right: 0;
+}
+
+#lista-hoteles .card img{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px 2px 2px 8px;
+}
+
+#lista-hoteles #hotel-ubicacion{
+    font-size: 1.2em;
+    margin-top: 45px;
+}
 
 /*-----------------------------------------------------------------------------------------------------------------------
                 ****************** ESTILOS DE LA PAGINA DE HOTEL INDIVIDUAL ************************
@@ -669,4 +717,25 @@ div#ubicacion-hotel {
     position: absolute;
     right: 20px;
     top: 110px;
+}
+
+/* *********************************************************************************************************
+                                                ESTILOS DE PAGINAS DE CONTACTOS
+************************************************************************************************************** */
+
+i.fa-facebook-f, i.fa-instagram, i.fa-twitter, i.fa-youtube{
+    font-size: 40px;
+}
+i.fa-youtube{
+    color: rgb(219, 12, 12);
+}
+i.fa-instagram{
+    color: #D6249F;
+
+}
+
+
+.enmarcado{
+    width: 80px;
+    height: 80px;
 }
